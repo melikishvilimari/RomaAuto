@@ -1,0 +1,20 @@
+﻿@using RomaAuto.Models;
+@model RomaAuto.Models.Saler
+
+
+<h2>EditSaler</h2>
+
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+
+<form method="post" action="/Admin/EditSaler"> 
+    <input type="hidden" value="@Model.SalerID" name="id"/>
+    <input type="text" value="@Model.Name" name="Name" />
+    <input type="text" value="@Model.Lastname" name="Lastname" />
+   
+    @*<input type="text" value="@Model.City.Name" name="City.Name" />*@ 
+    <input type="text" value="@Model.Address" name="Address" />
+    <input type="submit" value="შეცვლა" />
+    
+
+   
+</form>

@@ -1,0 +1,71 @@
+﻿@using RomaAuto.Models;
+@model List<Order>
+
+@{
+    string noInfo = "---------";
+}
+
+<link href="~/Style/TableStyle.css" rel="stylesheet" />
+<h2>შეკვეთების სია</h2>
+
+
+<table>
+    <tr>
+        <th>მწარმოებელი</th>
+        <th>მოდელი</th>
+        <th>კატეგორია</th>
+        <th>წელი</th>
+        <th>ტრანსმისია</th>
+        <th>მდებარეობა</th>
+        <th>საკონტაქტო ნომერი</th>
+        <th>შენიშვნა</th>
+        <th>გამყიდვეების სია</th>
+    </tr>
+    @foreach (Order order in Model)
+    {
+        <tr>
+            <td>
+                @{
+                    string manufacturer = order.ManufacturerID == null ? noInfo : order.Manufacturer.Name;
+                }
+                @manufacturer
+            </td>
+            <td>
+               @{
+                 string carModel = order.CarModelID == null ? noInfo : order.CarModel.Name;
+               }
+               @carModel
+            </td>
+            <td>
+                @{
+                    string category = order.CarCategoryID == null ? noInfo : order.CarCategory.Name;
+                }
+                @category
+            </td>
+            <td>@order.OutputDate</td>
+            <td>
+                @{
+                    string transmision = order.TransmisionID == null ? noInfo : order.Transmision.Name;
+                }
+                @category
+            </td>
+            <td>
+                @{
+                     string city = order.CityID == null ? noInfo : order.City.Name;
+                }
+                @city
+            </td>
+            <td>@order.Phone</td>
+            <td>@order.Note</td>
+
+            <td>
+                @{
+                    int? manId = order.ManufacturerID;
+                    int? carId = order.CarModelID;
+                    int? catId = order.CarCategoryID;
+                }
+                <a href="/Sellers/Index?OrderID=@order.OrderID&ManufacturerId=@manId&CarModelId=@carId&CarCategoryId=@catId" target="_blank">გამყიდველების სია</a>
+            </td>
+        </tr>
+    }
+</table>

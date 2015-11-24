@@ -1,0 +1,976 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RomaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CarModels">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ManufacturerID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manufacturers">
+          <Key>
+            <PropertyRef Name="ManufacturerID" />
+          </Key>
+          <Property Name="ManufacturerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Operators">
+          <Key>
+            <PropertyRef Name="OperatorID" />
+          </Key>
+          <Property Name="OperatorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ManufacturerID" Type="int" />
+          <Property Name="CarModelID" Type="int" />
+          <Property Name="OpenDate" Type="datetime" Nullable="false" />
+          <Property Name="CarCategoryID" Type="int" />
+          <Property Name="OutputDate" Type="int" Nullable="false" />
+          <Property Name="TransmisionID" Type="int" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Part" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="CloseDate" Type="datetime" />
+          <Property Name="OpenOperatorID" Type="int" Nullable="false" />
+          <Property Name="CloseOperatorID" Type="int" />
+          <Property Name="IsClosed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Salers">
+          <Key>
+            <PropertyRef Name="SalerID" />
+          </Key>
+          <Property Name="SalerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalersPart">
+          <Key>
+            <PropertyRef Name="SalersPartID" />
+          </Key>
+          <Property Name="SalersPartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Helped" Type="int" />
+          <Property Name="DontHelped" Type="int" />
+          <Property Name="SalerID" Type="int" Nullable="false" />
+          <Property Name="CarModelsID" Type="int" />
+          <Property Name="ManufacturerID" Type="int" />
+          <Property Name="CarCategoryID" Type="int" />
+          <Property Name="CarTransmissionID" Type="int" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="CarCategory">
+          <Key>
+            <PropertyRef Name="CarCategoryID" />
+          </Key>
+          <Property Name="CarCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Seller_Order">
+          <Key>
+            <PropertyRef Name="SellerOrderID" />
+          </Key>
+          <Property Name="SellerOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SellerID" Type="int" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transmision">
+          <Key>
+            <PropertyRef Name="TransmisionID" />
+          </Key>
+          <Property Name="TransmisionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CarModels_Manufacturers">
+          <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="1" />
+          <End Role="CarModels" Type="Self.CarModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="CarModels">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operators_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Operators" Type="Self.Operators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Operators">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_CarCategory">
+          <End Role="CarCategory" Type="Self.CarCategory" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarCategory">
+              <PropertyRef Name="CarCategoryID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CarModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_CarModels">
+          <End Role="CarModels" Type="Self.CarModels" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarModels">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CarModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Manufacturers">
+          <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Transmision">
+          <End Role="Transmision" Type="Self.Transmision" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transmision">
+              <PropertyRef Name="TransmisionID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="TransmisionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Salers_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Salers" Type="Self.Salers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Salers">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalersPart_CarCategory">
+          <End Role="CarCategory" Type="Self.CarCategory" Multiplicity="0..1" />
+          <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarCategory">
+              <PropertyRef Name="CarCategoryID" />
+            </Principal>
+            <Dependent Role="SalersPart">
+              <PropertyRef Name="CarCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalersPart_CarModels">
+          <End Role="CarModels" Type="Self.CarModels" Multiplicity="0..1" />
+          <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarModels">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="SalersPart">
+              <PropertyRef Name="CarModelsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalersPart_CarModels1">
+          <End Role="CarModels" Type="Self.CarModels" Multiplicity="0..1" />
+          <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarModels">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="SalersPart">
+              <PropertyRef Name="CarModelsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalersPart_Manufacturers">
+          <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="0..1" />
+          <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="SalersPart">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalersPart_Salers">
+          <End Role="Salers" Type="Self.Salers" Multiplicity="1" />
+          <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Salers">
+              <PropertyRef Name="SalerID" />
+            </Principal>
+            <Dependent Role="SalersPart">
+              <PropertyRef Name="SalerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalersPart_Transmision">
+          <End Role="Transmision" Type="Self.Transmision" Multiplicity="0..1" />
+          <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transmision">
+              <PropertyRef Name="TransmisionID" />
+            </Principal>
+            <Dependent Role="SalersPart">
+              <PropertyRef Name="CarTransmissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seller_Order_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Seller_Order" Type="Self.Seller_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="Seller_Order">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seller_Order_Salers">
+          <End Role="Salers" Type="Self.Salers" Multiplicity="1" />
+          <End Role="Seller_Order" Type="Self.Seller_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Salers">
+              <PropertyRef Name="SalerID" />
+            </Principal>
+            <Dependent Role="Seller_Order">
+              <PropertyRef Name="SellerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RomaDBModelStoreContainer">
+          <EntitySet Name="CarModels" EntityType="Self.CarModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manufacturers" EntityType="Self.Manufacturers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operators" EntityType="Self.Operators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Salers" EntityType="Self.Salers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalersPart" EntityType="Self.SalersPart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarCategory" EntityType="Self.CarCategory" Schema="shota" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="shota" store:Type="Tables" />
+          <EntitySet Name="Seller_Order" EntityType="Self.Seller_Order" Schema="shota" store:Type="Tables" />
+          <EntitySet Name="Transmision" EntityType="Self.Transmision" Schema="shota" store:Type="Tables" />
+          <AssociationSet Name="FK_CarModels_Manufacturers" Association="Self.FK_CarModels_Manufacturers">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="CarModels" EntitySet="CarModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operators_Category" Association="Self.FK_Operators_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Operators" EntitySet="Operators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_CarCategory" Association="Self.FK_Orders_CarCategory">
+            <End Role="CarCategory" EntitySet="CarCategory" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_CarModels" Association="Self.FK_Orders_CarModels">
+            <End Role="CarModels" EntitySet="CarModels" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_City" Association="Self.FK_Orders_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Manufacturers" Association="Self.FK_Orders_Manufacturers">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Transmision" Association="Self.FK_Orders_Transmision">
+            <End Role="Transmision" EntitySet="Transmision" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Salers_City" Association="Self.FK_Salers_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Salers" EntitySet="Salers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalersPart_CarCategory" Association="Self.FK_SalersPart_CarCategory">
+            <End Role="CarCategory" EntitySet="CarCategory" />
+            <End Role="SalersPart" EntitySet="SalersPart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalersPart_CarModels" Association="Self.FK_SalersPart_CarModels">
+            <End Role="CarModels" EntitySet="CarModels" />
+            <End Role="SalersPart" EntitySet="SalersPart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalersPart_CarModels1" Association="Self.FK_SalersPart_CarModels1">
+            <End Role="CarModels" EntitySet="CarModels" />
+            <End Role="SalersPart" EntitySet="SalersPart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalersPart_Manufacturers" Association="Self.FK_SalersPart_Manufacturers">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="SalersPart" EntitySet="SalersPart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalersPart_Salers" Association="Self.FK_SalersPart_Salers">
+            <End Role="Salers" EntitySet="Salers" />
+            <End Role="SalersPart" EntitySet="SalersPart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalersPart_Transmision" Association="Self.FK_SalersPart_Transmision">
+            <End Role="Transmision" EntitySet="Transmision" />
+            <End Role="SalersPart" EntitySet="SalersPart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seller_Order_Orders" Association="Self.FK_Seller_Order_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Seller_Order" EntitySet="Seller_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seller_Order_Salers" Association="Self.FK_Seller_Order_Salers">
+            <End Role="Salers" EntitySet="Salers" />
+            <End Role="Seller_Order" EntitySet="Seller_Order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RomaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CarModel">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Manufacturer" Relationship="Self.FK_CarModels_Manufacturers" FromRole="CarModels" ToRole="Manufacturers" />
+          <NavigationProperty Name="SalersParts" Relationship="Self.FK_SalersPart_CarModels" FromRole="CarModels" ToRole="SalersPart" />
+          <NavigationProperty Name="SalersParts1" Relationship="Self.FK_SalersPart_CarModels1" FromRole="CarModels" ToRole="SalersPart" />
+          <NavigationProperty Name="Orders" Relationship="RomaDBModel.FK_Orders_CarModels" FromRole="CarModel" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Operators" Relationship="Self.FK_Operators_Category" FromRole="Category" ToRole="Operators" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="ManufacturerID" />
+          </Key>
+          <Property Name="ManufacturerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CarModels" Relationship="Self.FK_CarModels_Manufacturers" FromRole="Manufacturers" ToRole="CarModels" />
+          <NavigationProperty Name="SalersParts" Relationship="Self.FK_SalersPart_Manufacturers" FromRole="Manufacturers" ToRole="SalersPart" />
+          <NavigationProperty Name="Orders" Relationship="RomaDBModel.FK_Orders_Manufacturers" FromRole="Manufacturer" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Operator">
+          <Key>
+            <PropertyRef Name="OperatorID" />
+          </Key>
+          <Property Name="OperatorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Operators_Category" FromRole="Operators" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="Saler">
+          <Key>
+            <PropertyRef Name="SalerID" />
+          </Key>
+          <Property Name="SalerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SalersParts" Relationship="Self.FK_SalersPart_Salers" FromRole="Salers" ToRole="SalersPart" />
+          <NavigationProperty Name="Seller_Order" Relationship="RomaDBModel.FK_Seller_Order_Salers" FromRole="Saler" ToRole="Seller_Order" />
+          <NavigationProperty Name="City" Relationship="RomaDBModel.FK_Salers_City" FromRole="Saler" ToRole="City" />
+        </EntityType>
+        <EntityType Name="SalersPart">
+          <Key>
+            <PropertyRef Name="SalersPartID" />
+          </Key>
+          <Property Name="SalersPartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Helped" Type="Int32" />
+          <Property Name="DontHelped" Type="Int32" />
+          <Property Name="SalerID" Type="Int32" Nullable="false" />
+          <Property Name="CarModelsID" Type="Int32" />
+          <Property Name="ManufacturerID" Type="Int32" />
+          <Property Name="CarCategoryID" Type="Int32" />
+          <Property Name="CarTransmissionID" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CarModel" Relationship="Self.FK_SalersPart_CarModels" FromRole="SalersPart" ToRole="CarModels" />
+          <NavigationProperty Name="CarModel1" Relationship="Self.FK_SalersPart_CarModels1" FromRole="SalersPart" ToRole="CarModels" />
+          <NavigationProperty Name="Manufacturer" Relationship="Self.FK_SalersPart_Manufacturers" FromRole="SalersPart" ToRole="Manufacturers" />
+          <NavigationProperty Name="Saler" Relationship="Self.FK_SalersPart_Salers" FromRole="SalersPart" ToRole="Salers" />
+          <NavigationProperty Name="CarCategory" Relationship="Self.FK_SalersPart_CarCategory" FromRole="SalersPart" ToRole="CarCategory" />
+          <NavigationProperty Name="Transmision" Relationship="Self.FK_SalersPart_Transmision" FromRole="SalersPart" ToRole="Transmision" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CarCategory">
+          <Key>
+            <PropertyRef Name="CarCategoryID" />
+          </Key>
+          <Property Name="CarCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SalersParts" Relationship="Self.FK_SalersPart_CarCategory" FromRole="CarCategory" ToRole="SalersPart" />
+          <NavigationProperty Name="Orders" Relationship="RomaDBModel.FK_Orders_CarCategory" FromRole="CarCategory" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Transmision">
+          <Key>
+            <PropertyRef Name="TransmisionID" />
+          </Key>
+          <Property Name="TransmisionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SalersParts" Relationship="Self.FK_SalersPart_Transmision" FromRole="Transmision" ToRole="SalersPart" />
+          <NavigationProperty Name="Orders" Relationship="RomaDBModel.FK_Orders_Transmision" FromRole="Transmision" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_CarModels_Manufacturers">
+          <End Role="Manufacturers" Type="Self.Manufacturer" Multiplicity="1" />
+          <End Role="CarModels" Type="Self.CarModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="CarModels">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalersPart_CarModels">
+          <End Role="CarModels" Type="Self.CarModel" Multiplicity="0..1" />
+          <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarModels">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="SalersPart">
+              <PropertyRef Name="CarModelsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalersPart_CarModels1">
+          <End Role="CarModels" Type="Self.CarModel" Multiplicity="0..1" />
+          <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarModels">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="SalersPart">
+              <PropertyRef Name="CarModelsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operators_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Operators" Type="Self.Operator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Operators">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalersPart_Manufacturers">
+          <End Role="Manufacturers" Type="Self.Manufacturer" Multiplicity="0..1" />
+          <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="SalersPart">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalersPart_Salers">
+          <End Role="Salers" Type="Self.Saler" Multiplicity="1" />
+          <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Salers">
+              <PropertyRef Name="SalerID" />
+            </Principal>
+            <Dependent Role="SalersPart">
+              <PropertyRef Name="SalerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalersPart_CarCategory">
+          <End Role="CarCategory" Type="Self.CarCategory" Multiplicity="0..1" />
+          <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarCategory">
+              <PropertyRef Name="CarCategoryID" />
+            </Principal>
+            <Dependent Role="SalersPart">
+              <PropertyRef Name="CarCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalersPart_Transmision">
+          <End Role="Transmision" Type="Self.Transmision" Multiplicity="0..1" />
+          <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transmision">
+              <PropertyRef Name="TransmisionID" />
+            </Principal>
+            <Dependent Role="SalersPart">
+              <PropertyRef Name="CarTransmissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RomaDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CarModels" EntityType="Self.CarModel" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Manufacturers" EntityType="Self.Manufacturer" />
+          <EntitySet Name="Operators" EntityType="Self.Operator" />
+          <EntitySet Name="Salers" EntityType="Self.Saler" />
+          <EntitySet Name="SalersParts" EntityType="Self.SalersPart" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="CarCategories" EntityType="Self.CarCategory" />
+          <EntitySet Name="Transmisions" EntityType="Self.Transmision" />
+          <AssociationSet Name="FK_CarModels_Manufacturers" Association="Self.FK_CarModels_Manufacturers">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="CarModels" EntitySet="CarModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalersPart_CarModels" Association="Self.FK_SalersPart_CarModels">
+            <End Role="CarModels" EntitySet="CarModels" />
+            <End Role="SalersPart" EntitySet="SalersParts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalersPart_CarModels1" Association="Self.FK_SalersPart_CarModels1">
+            <End Role="CarModels" EntitySet="CarModels" />
+            <End Role="SalersPart" EntitySet="SalersParts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operators_Category" Association="Self.FK_Operators_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Operators" EntitySet="Operators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalersPart_Manufacturers" Association="Self.FK_SalersPart_Manufacturers">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="SalersPart" EntitySet="SalersParts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalersPart_Salers" Association="Self.FK_SalersPart_Salers">
+            <End Role="Salers" EntitySet="Salers" />
+            <End Role="SalersPart" EntitySet="SalersParts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalersPart_CarCategory" Association="Self.FK_SalersPart_CarCategory">
+            <End Role="CarCategory" EntitySet="CarCategories" />
+            <End Role="SalersPart" EntitySet="SalersParts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalersPart_Transmision" Association="Self.FK_SalersPart_Transmision">
+            <End Role="Transmision" EntitySet="Transmisions" />
+            <End Role="SalersPart" EntitySet="SalersParts" />
+          </AssociationSet>
+          <EntitySet Name="Seller_Order" EntityType="RomaDBModel.Seller_Order" />
+          <AssociationSet Name="FK_Seller_Order_Salers" Association="RomaDBModel.FK_Seller_Order_Salers">
+            <End Role="Saler" EntitySet="Salers" />
+            <End Role="Seller_Order" EntitySet="Seller_Order" />
+          </AssociationSet>
+          <EntitySet Name="Orders" EntityType="RomaDBModel.Order" />
+          <EntitySet Name="Cities" EntityType="RomaDBModel.City" />
+          <AssociationSet Name="FK_Orders_CarModels" Association="RomaDBModel.FK_Orders_CarModels">
+            <End Role="CarModel" EntitySet="CarModels" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Manufacturers" Association="RomaDBModel.FK_Orders_Manufacturers">
+            <End Role="Manufacturer" EntitySet="Manufacturers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_CarCategory" Association="RomaDBModel.FK_Orders_CarCategory">
+            <End Role="CarCategory" EntitySet="CarCategories" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_City" Association="RomaDBModel.FK_Orders_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Transmision" Association="RomaDBModel.FK_Orders_Transmision">
+            <End Role="Transmision" EntitySet="Transmisions" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Seller_Order_Orders" Association="RomaDBModel.FK_Seller_Order_Orders">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Seller_Order" EntitySet="Seller_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Salers_City" Association="RomaDBModel.FK_Salers_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Saler" EntitySet="Salers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Seller_Order">
+          <Key>
+            <PropertyRef Name="SellerOrderID" />
+          </Key>
+          <Property Name="SellerOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SellerID" Type="Int32" Nullable="false" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Saler" Relationship="RomaDBModel.FK_Seller_Order_Salers" FromRole="Seller_Order" ToRole="Saler" />
+          <NavigationProperty Name="Order" Relationship="RomaDBModel.FK_Seller_Order_Orders" FromRole="Seller_Order" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_Seller_Order_Salers">
+          <End Type="RomaDBModel.Saler" Role="Saler" Multiplicity="1" />
+          <End Type="RomaDBModel.Seller_Order" Role="Seller_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Saler">
+              <PropertyRef Name="SalerID" />
+            </Principal>
+            <Dependent Role="Seller_Order">
+              <PropertyRef Name="SellerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ManufacturerID" Type="Int32" />
+          <Property Name="CarModelID" Type="Int32" />
+          <Property Name="OpenDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CarCategoryID" Type="Int32" />
+          <Property Name="OutputDate" Type="Int32" Nullable="false" />
+          <Property Name="TransmisionID" Type="Int32" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Part" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CloseDate" Type="DateTime" Precision="3" />
+          <Property Name="OpenOperatorID" Type="Int32" Nullable="false" />
+          <Property Name="CloseOperatorID" Type="Int32" />
+          <Property Name="IsClosed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CarModel" Relationship="RomaDBModel.FK_Orders_CarModels" FromRole="Order" ToRole="CarModel" />
+          <NavigationProperty Name="Manufacturer" Relationship="RomaDBModel.FK_Orders_Manufacturers" FromRole="Order" ToRole="Manufacturer" />
+          <NavigationProperty Name="CarCategory" Relationship="RomaDBModel.FK_Orders_CarCategory" FromRole="Order" ToRole="CarCategory" />
+          <NavigationProperty Name="City" Relationship="RomaDBModel.FK_Orders_City" FromRole="Order" ToRole="City" />
+          <NavigationProperty Name="Transmision" Relationship="RomaDBModel.FK_Orders_Transmision" FromRole="Order" ToRole="Transmision" />
+          <NavigationProperty Name="Seller_Order" Relationship="RomaDBModel.FK_Seller_Order_Orders" FromRole="Order" ToRole="Seller_Order" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="RomaDBModel.FK_Orders_City" FromRole="City" ToRole="Order" />
+          <NavigationProperty Name="Salers" Relationship="RomaDBModel.FK_Salers_City" FromRole="City" ToRole="Saler" />
+        </EntityType>
+        <Association Name="FK_Orders_CarModels">
+          <End Type="RomaDBModel.CarModel" Role="CarModel" Multiplicity="0..1" />
+          <End Type="RomaDBModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarModel">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CarModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Manufacturers">
+          <End Type="RomaDBModel.Manufacturer" Role="Manufacturer" Multiplicity="0..1" />
+          <End Type="RomaDBModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturer">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_CarCategory">
+          <End Type="RomaDBModel.CarCategory" Role="CarCategory" Multiplicity="0..1" />
+          <End Type="RomaDBModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarCategory">
+              <PropertyRef Name="CarCategoryID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CarModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_City">
+          <End Type="RomaDBModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="RomaDBModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Transmision">
+          <End Type="RomaDBModel.Transmision" Role="Transmision" Multiplicity="0..1" />
+          <End Type="RomaDBModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transmision">
+              <PropertyRef Name="TransmisionID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="TransmisionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Seller_Order_Orders">
+          <End Type="RomaDBModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="RomaDBModel.Seller_Order" Role="Seller_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="Seller_Order">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Salers_City">
+          <End Type="RomaDBModel.City" Role="City" Multiplicity="1" />
+          <End Type="RomaDBModel.Saler" Role="Saler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Saler">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RomaDBModelStoreContainer" CdmEntityContainer="RomaDBEntities">
+          <EntitySetMapping Name="CarModels">
+            <EntityTypeMapping TypeName="RomaDBModel.CarModel">
+              <MappingFragment StoreEntitySet="CarModels">
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="RomaDBModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manufacturers">
+            <EntityTypeMapping TypeName="RomaDBModel.Manufacturer">
+              <MappingFragment StoreEntitySet="Manufacturers">
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operators">
+            <EntityTypeMapping TypeName="RomaDBModel.Operator">
+              <MappingFragment StoreEntitySet="Operators">
+                <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salers">
+            <EntityTypeMapping TypeName="RomaDBModel.Saler">
+              <MappingFragment StoreEntitySet="Salers">
+                <ScalarProperty Name="SalerID" ColumnName="SalerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalersParts">
+            <EntityTypeMapping TypeName="RomaDBModel.SalersPart">
+              <MappingFragment StoreEntitySet="SalersPart">
+                <ScalarProperty Name="SalersPartID" ColumnName="SalersPartID" />
+                <ScalarProperty Name="Helped" ColumnName="Helped" />
+                <ScalarProperty Name="DontHelped" ColumnName="DontHelped" />
+                <ScalarProperty Name="SalerID" ColumnName="SalerID" />
+                <ScalarProperty Name="CarModelsID" ColumnName="CarModelsID" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="CarCategoryID" ColumnName="CarCategoryID" />
+                <ScalarProperty Name="CarTransmissionID" ColumnName="CarTransmissionID" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RomaDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarCategories">
+            <EntityTypeMapping TypeName="RomaDBModel.CarCategory">
+              <MappingFragment StoreEntitySet="CarCategory">
+                <ScalarProperty Name="CarCategoryID" ColumnName="CarCategoryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transmisions">
+            <EntityTypeMapping TypeName="RomaDBModel.Transmision">
+              <MappingFragment StoreEntitySet="Transmision">
+                <ScalarProperty Name="TransmisionID" ColumnName="TransmisionID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seller_Order">
+            <EntityTypeMapping TypeName="RomaDBModel.Seller_Order">
+              <MappingFragment StoreEntitySet="Seller_Order">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="SellerID" ColumnName="SellerID" />
+                <ScalarProperty Name="SellerOrderID" ColumnName="SellerOrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="RomaDBModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+                <ScalarProperty Name="CloseOperatorID" ColumnName="CloseOperatorID" />
+                <ScalarProperty Name="OpenOperatorID" ColumnName="OpenOperatorID" />
+                <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Part" ColumnName="Part" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="TransmisionID" ColumnName="TransmisionID" />
+                <ScalarProperty Name="OutputDate" ColumnName="OutputDate" />
+                <ScalarProperty Name="CarCategoryID" ColumnName="CarCategoryID" />
+                <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
+                <ScalarProperty Name="CarModelID" ColumnName="CarModelID" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="RomaDBModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

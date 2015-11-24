@@ -1,0 +1,207 @@
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\roslyn\csc.exe
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\roslyn\vbc.exe
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\roslyn\VBCSCompiler.exe
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\RomaAuto.dll.config
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\RomaAuto.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\RomaAuto.pdb
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Antlr3.Runtime.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\EntityFramework.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\EntityFramework.SqlServer.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Newtonsoft.Json.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Owin.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\System.Web.Helpers.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\System.Web.Mvc.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\System.Web.Optimization.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\System.Web.Razor.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\System.Web.WebPages.Deployment.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\System.Web.WebPages.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\System.Web.WebPages.Razor.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\WebGrease.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\System.Web.Helpers.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\System.Web.Mvc.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\System.Web.Optimization.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\System.Web.Razor.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\System.Web.WebPages.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\System.Web.WebPages.Deployment.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\System.Web.WebPages.Razor.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Antlr3.Runtime.pdb
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Newtonsoft.Json.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\EntityFramework.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\EntityFramework.SqlServer.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\obj\Debug\RomaAuto.csprojResolveAssemblyReference.cache
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\obj\Debug\RomaAuto.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\obj\Debug\RomaAuto.pdb
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\csc.exe
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\vbc.exe
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\VBCSCompiler.exe
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\RomaAuto.dll.config
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\RomaAuto.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\RomaAuto.pdb
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Antlr3.Runtime.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\EntityFramework.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\EntityFramework.SqlServer.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Newtonsoft.Json.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Owin.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Helpers.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Mvc.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Optimization.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Razor.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.WebPages.Deployment.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.WebPages.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.WebPages.Razor.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\WebGrease.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Helpers.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Mvc.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Optimization.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Razor.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.WebPages.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.WebPages.Deployment.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.WebPages.Razor.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Antlr3.Runtime.pdb
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Newtonsoft.Json.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\EntityFramework.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\EntityFramework.SqlServer.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\obj\Debug\RomaAuto.csprojResolveAssemblyReference.cache
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\obj\Debug\RomaAuto.dll
+C:\Users\mari melikishvili\Desktop\სქ\RomaAuto-master\RomaAuto\RomaAuto\obj\Debug\RomaAuto.pdb
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\csc.exe
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\vbc.exe
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\VBCSCompiler.exe
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\RomaAuto.dll.config
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\RomaAuto.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\RomaAuto.pdb
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Antlr3.Runtime.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\EntityFramework.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\EntityFramework.SqlServer.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Newtonsoft.Json.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Owin.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Helpers.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Mvc.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Optimization.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Razor.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.WebPages.Deployment.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.WebPages.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.WebPages.Razor.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\WebGrease.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Helpers.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Mvc.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Optimization.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.Razor.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.WebPages.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.WebPages.Deployment.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\System.Web.WebPages.Razor.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Antlr3.Runtime.pdb
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Newtonsoft.Json.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\EntityFramework.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\EntityFramework.SqlServer.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\obj\Debug\RomaAuto.csprojResolveAssemblyReference.cache
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\obj\Debug\RomaAuto.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\obj\Debug\RomaAuto.pdb

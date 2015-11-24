@@ -1,0 +1,68 @@
+﻿@using RomaAuto.Models;
+@model RomaAuto.Models.Saler
+
+
+<link href="~/Style/TableStyle.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "დეტალები";
+}
+<h3>მომწოდებელი</h3>
+<br />
+<br />
+<div>
+    <table id="PersonalInfo">
+        <tr>
+            <th> სახელი</th>
+            <th>გვარი</th>
+        
+            <th> მისამართი</th>
+            <th>ტელეფონი</th>
+        </tr>
+        <tr>
+            <td>@Model.Name</td>
+            <td> @Model.Lastname</td>
+
+            <td> @Model.Address </td>
+            <td>@Model.Phone </td>
+           
+
+
+        </tr>
+    </table>
+</div>
+<div class="Edit">
+    <div id="EditPersosnalInfo">
+        <p>  @Html.ActionLink("რედაქტირება", "EditSaler", new { id = Model.SalerID })</p>
+    </div>
+</div>
+<br />
+<h3>პროდუქტი</h3>
+<br />
+<br />
+
+<br />
+<br />
+<table id="SubjectInfo">
+    <tr>
+        <th>მწარმოებელი</th>
+        <th> მოდელი</th>
+        <th>კატეგორია</th>
+        <th>შენიშვნა</th>
+    </tr>
+   
+        @foreach (var s in Model.SalersParts)
+        {<tr>
+            <td>
+                @s.Manufacturer.Name
+            </td>
+            <td>@s.CarModel.Name</td>
+            <td>@s.CarCategory.Name</td>
+            <td>@s.Note</td>
+            </tr>
+        }
+    </table>
+<div class="Edit">
+    <div id="EditPersosnalInfo">
+        <p>  @Html.ActionLink("რედაქტირება", "Edit", new { id = Model.SalerID })</p>
+    </div>
+</div>

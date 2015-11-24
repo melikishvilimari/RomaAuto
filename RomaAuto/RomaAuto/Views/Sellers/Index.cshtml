@@ -1,0 +1,159 @@
+﻿@using RomaAuto.Models;
+@model List<OrdersList>
+@{
+    ViewBag.Title = "მომწოდებლები";
+}
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<link href="~/Style/TableStyle.css" rel="stylesheet" />
+<script>
+
+    $(document).ready(function () {
+        $('.msgRow').click(function () {
+            //Check to see if background color is set or if it's set to white.
+            if ($(this).parent().css('background-color') != 'rgb(0, 128, 0)') {
+                console.log($(this).parent().css('background-color'))
+                $(this).parent().css('background-color', 'green');
+            }
+            else {
+                var x;
+                if (confirm("გსურთ მონიშნულის გაუქმება?!") == true) {
+                    $(this).parent().css('background-color', 'white');
+                } else {
+                    $(this).parent().css('background-color', 'green');
+                }
+
+            }
+        });
+        $('.help').on('click', function () {
+            var td = $(this).parent(); //get parent tag
+            var id = parseInt($(this).attr('data-sellerpartid')); //get database object id
+            var func = $(this).attr('data-function');
+            var json = { "id": id };
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "/Sellers/" + func,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                success: function (data) {
+                    console.log(data.success)
+                    if (data.success == true) { // if response was successful
+                        var number = parseInt(td.text());
+                        td.text(number + 1); // increment number
+                        $(this).remove(); // remove button
+                    }
+                },
+                error: function (request, status, error) {
+                    console.log(error + " " + status)
+                }
+            });
+        });
+
+        $('input[type="checkbox"]').on('change', function () {
+            $('.label').text($('input[type="checkbox"]:checked').length);
+        });
+
+        $('#save').click(function () {
+            var selectedInputs = $('input[type="checkbox"]:checked');
+            if (selectedInputs.length == 0) {
+                return
+            }
+            else {
+                var clibordText = ""
+                selectedInputs.each(function (index, value) {
+                    var name = $(this).parent().parent().find('td:nth-child(2)').text()
+                    var sellerID = $(this).next().val();
+                    $('form').append('<input type="hidden" name="SellerIDs[' + index + ']" value="' + sellerID + '" />')
+
+                    var surname = $(this).parent().parent().find('td:nth-child(3)').text()
+                    var phone = $(this).parent().parent().find('td:nth-child(4)').text()
+
+                    clibordText += name + '-' + surname + '-' + phone + '; '
+                });
+
+                console.log(clibordText)
+                var $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val(clibordText).select();
+                document.execCommand("copy");
+                $temp.remove();
+            }
+
+            $('form').submit();
+        });
+    });
+</script>
+
+<h2>შეკვეთების სია</h2>
+<style>
+    .form-wrapper {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+</style>
+<div class="col-lg-12 form-wrapper">
+    <div class="col-lg-6 form-wrapper">
+        <form method="post" action="/Sellers/Index">
+            <input name="part" type="text" value="@ViewBag.Part" class="form-control" style="float: left;" placeholder="ნაწილი">
+            <input name="ManufacturerId" type="hidden" value="@ViewBag.ManufacturerId">
+            <input name="CarModelId" type="hidden" value="@ViewBag.CarModelId">
+            <input name="CarCategoryId" type="hidden" value="@ViewBag.CarCategoryId">
+            <input type="submit" value="ძებნა" class="btn" />
+        </form>
+    </div>
+    <div class="col-lg-6 form-wrapper">
+        <form method="post" action="/Orders/CloseOrder">
+            <input type="hidden" value="@ViewBag.OrderID" name="OrderID" />
+            <button id="save" class="btn btn-success" style="float:right;">დახურვა</button>
+            <span class="label label-danger" style="float:right;">0</span>
+        </form>
+    </div>
+</div>
+<br />
+<br />
+
+<table id="mytable">
+    <tr>
+        <th></th>
+        <th>სახელი</th>
+        <th>გვარი</th>
+        <th>ტელეფონის ნომერი</th>
+        <th>მისამართი</th>
+        <th>ქალაქი</th>
+        <th>შენიშვნა</th>
+        <th>დაგვეხმარა</th>
+        <th>ვერ დაგვეხმარა</th>
+        <th>დაკავშირება</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        
+        <tr>
+            <td>
+                <input type="checkbox" name="name1">
+                <input type="hidden" value="@item.SalerID" />
+            </td>
+            <td>@item.Name</td>
+            <td>@item.Lastname</td>
+            <td>@item.Phone</td>
+            <td>@item.Address</td>
+            <td>@item.City</td>
+            <td>@item.Note</td>
+            <td>
+                @item.Helped
+                <button class="help btn" data-function="helped" data-sellerpartid="@item.SellerPartID" style="float: right;">დაგვეხმარა</button>
+            </td>
+            <td>
+                @item.NotHelped
+                <button class="help btn" data-function="nothelped" data-sellerpartid="@item.SellerPartID" style="float: right;">ვერ დაგვეხმარა</button>
+            </td>
+            <td class="msgRow" style="color:tomato;"><strong>დავუკავშირდი</strong></td>
+        </tr>
+    }
+</table>
+
+
+
+  
+
