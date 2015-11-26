@@ -40,6 +40,8 @@
     <Property Name="CategoryID" Type="Int32" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Category" Relationship="Self.FK_Operators_Category" FromRole="Operators" ToRole="Category" />
+    <NavigationProperty Name="Orders" Relationship="RomaDBModel.FK_Orders_Operators" FromRole="Operator" ToRole="Order" />
+    <NavigationProperty Name="Orders1" Relationship="RomaDBModel.FK_Orders_Operators1" FromRole="Operator" ToRole="Order" />
   </EntityType>
   <EntityType Name="Saler">
     <Key>
@@ -277,6 +279,14 @@
       <End Role="City" EntitySet="Cities" />
       <End Role="Saler" EntitySet="Salers" />
     </AssociationSet>
+    <AssociationSet Name="FK_Orders_Operators" Association="RomaDBModel.FK_Orders_Operators">
+      <End Role="Operator" EntitySet="Operators" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Operators1" Association="RomaDBModel.FK_Orders_Operators1">
+      <End Role="Operator" EntitySet="Operators" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Seller_Order">
     <Key>
@@ -325,6 +335,8 @@
     <NavigationProperty Name="City" Relationship="RomaDBModel.FK_Orders_City" FromRole="Order" ToRole="City" />
     <NavigationProperty Name="Transmision" Relationship="RomaDBModel.FK_Orders_Transmision" FromRole="Order" ToRole="Transmision" />
     <NavigationProperty Name="Seller_Order" Relationship="RomaDBModel.FK_Seller_Order_Orders" FromRole="Order" ToRole="Seller_Order" />
+    <NavigationProperty Name="Operator" Relationship="RomaDBModel.FK_Orders_Operators" FromRole="Order" ToRole="Operator" />
+    <NavigationProperty Name="Operator1" Relationship="RomaDBModel.FK_Orders_Operators1" FromRole="Order" ToRole="Operator" />
   </EntityType>
   <EntityType Name="City">
     <Key>
@@ -416,6 +428,30 @@
       </Principal>
       <Dependent Role="Saler">
         <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Operators">
+    <End Type="RomaDBModel.Operator" Role="Operator" Multiplicity="1" />
+    <End Type="RomaDBModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operator">
+        <PropertyRef Name="OperatorID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="OpenOperatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Operators1">
+    <End Type="RomaDBModel.Operator" Role="Operator" Multiplicity="0..1" />
+    <End Type="RomaDBModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operator">
+        <PropertyRef Name="OperatorID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CloseOperatorID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

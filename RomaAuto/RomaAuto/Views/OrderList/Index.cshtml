@@ -1,14 +1,14 @@
-﻿@using RomaAuto.Models;
-@model List<Order>
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList <RomaAuto.Models.Order>
 
 @{
     string noInfo = "---------";
 }
-
+<link href="~/Content/PagedList.css" rel="stylesheet" />
 <link href="~/Style/TableStyle.css" rel="stylesheet" />
 <h2>შეკვეთების სია</h2>
 
-
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 <table>
     <tr>
         <th>მწარმოებელი</th>
@@ -18,10 +18,11 @@
         <th>ტრანსმისია</th>
         <th>მდებარეობა</th>
         <th>საკონტაქტო ნომერი</th>
+        <th>ნაწილი</th>
         <th>შენიშვნა</th>
         <th>გამყიდვეების სია</th>
     </tr>
-    @foreach (Order order in Model)
+    @foreach (var order in Model)
     {
         <tr>
             <td>
@@ -56,6 +57,7 @@
                 @city
             </td>
             <td>@order.Phone</td>
+            <td>@order.Part</td>
             <td>@order.Note</td>
 
             <td>
@@ -69,3 +71,4 @@
         </tr>
     }
 </table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

@@ -1,6 +1,6 @@
-﻿@using PagedList.Mvc;
-@model PagedList.IPagedList<RomaAuto.Models.Order>
-<link href="~/Content/PagedList.css" rel="stylesheet" />
+﻿@using RomaAuto.Models;
+@model List<Order>
+
 <link href="~/Style/TableStyle.css" rel="stylesheet" />
 <h2>ყველა შეკვეთა</h2>
 @{
@@ -12,9 +12,11 @@
     }
 </style>
 
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
 <table>
     <tr>
+        
+        
         <th>მწარმოებელი</th>
         <th>მოდელი</th>
         <th>კატეგორია</th>
@@ -30,7 +32,7 @@
         <th>შეკვეთის თარიღი</th>
         <th>დახურვის თარიღი</th>
     </tr>
-    @foreach (var order in Model)
+    @foreach (Order order in Model)
     {
         var isClosedColor = order.IsClosed ? "closed" : "";
         <tr class="@isClosedColor">
@@ -103,4 +105,3 @@
         </tr>
                     }
 </table>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

@@ -7,29 +7,18 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RomaAuto.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace RomaAuto.Controllers
 {
     public class AllOrdersListController : Controller
     {
-        private RomaDBEntities db = new RomaDBEntities();
-
-        // GET: Orders1
-        public ActionResult Index()
+        RomaDBEntities db = new RomaDBEntities();
+        public ActionResult Index(int page = 1)
         {
-            AllOrder allOrders = new AllOrder();
-            allOrders.orders = db.Orders.ToList();
-
-            allOrders.operators = db.Operators.ToList();
-            allOrders.sellers = db.Salers.ToList();
-            allOrders.salerOrders = db.Seller_Order.ToList();
-
-            return View(allOrders);
+            var result = db.Orders.ToList();
+            return View(result.ToPagedList(page, 10));
         }
-
-      
-
-     
-     
     }
 }

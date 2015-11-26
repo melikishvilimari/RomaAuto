@@ -189,6 +189,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Orders_Operators">
+    <End Role="Operators" Type="Self.Operators" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operators">
+        <PropertyRef Name="OperatorID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="OpenOperatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Operators1">
+    <End Role="Operators" Type="Self.Operators" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operators">
+        <PropertyRef Name="OperatorID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="CloseOperatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Orders_Transmision">
     <End Role="Transmision" Type="Self.Transmision" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
@@ -344,6 +368,14 @@
     </AssociationSet>
     <AssociationSet Name="FK_Orders_Manufacturers" Association="Self.FK_Orders_Manufacturers">
       <End Role="Manufacturers" EntitySet="Manufacturers" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Operators" Association="Self.FK_Orders_Operators">
+      <End Role="Operators" EntitySet="Operators" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Operators1" Association="Self.FK_Orders_Operators1">
+      <End Role="Operators" EntitySet="Operators" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
     <AssociationSet Name="FK_Orders_Transmision" Association="Self.FK_Orders_Transmision">

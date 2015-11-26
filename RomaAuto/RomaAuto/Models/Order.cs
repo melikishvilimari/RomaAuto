@@ -41,5 +41,7 @@ namespace RomaAuto.Models
         public virtual City City { get; set; }
         public virtual Transmision Transmision { get; set; }
         public virtual ICollection<Seller_Order> Seller_Order { get; set; }
+        public virtual Operator Operator { get; set; }
+        public virtual Operator Operator1 { get; set; }
     }
 }

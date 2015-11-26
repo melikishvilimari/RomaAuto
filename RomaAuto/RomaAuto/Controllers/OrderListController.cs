@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using RomaAuto.Models;
 using RomaAuto.Filters;
+using PagedList;
+using PagedList.Mvc;
 
 namespace RomaAuto.Controllers
 {
@@ -13,11 +15,10 @@ namespace RomaAuto.Controllers
     {
          RomaDBEntities _db = new RomaDBEntities();
         // GET: OrderList
-        public ActionResult Index()
-        {
-            
+        public ActionResult Index(int page = 1)
+        { 
             var orders = _db.Orders.Where(e => e.IsClosed == false).ToList();
-            return View(orders);
+            return View(orders.ToPagedList(page, 10));
         }
 
         // GET: OrderList/Details/5

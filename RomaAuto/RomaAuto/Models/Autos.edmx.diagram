@@ -33,6 +33,8 @@
         <AssociationConnector Association="RomaDBModel.FK_Orders_Transmision" />
         <AssociationConnector Association="RomaDBModel.FK_Seller_Order_Orders" />
         <AssociationConnector Association="RomaDBModel.FK_Salers_City" />
+        <AssociationConnector Association="RomaDBModel.FK_Orders_Operators" />
+        <AssociationConnector Association="RomaDBModel.FK_Orders_Operators1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

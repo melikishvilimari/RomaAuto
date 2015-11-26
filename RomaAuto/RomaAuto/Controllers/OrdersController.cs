@@ -199,7 +199,7 @@ namespace RomaAuto.Controllers
             }
 
             db.SaveChanges();
-            return RedirectToAction("Successs", "Orders");
+            return RedirectToAction("Index", "OrderList");
         }
     }
 }

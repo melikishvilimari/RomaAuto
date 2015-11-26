@@ -14,6 +14,12 @@ namespace RomaAuto.Models
     
     public partial class Operator
     {
+        public Operator()
+        {
+            this.Orders = new HashSet<Order>();
+            this.Orders1 = new HashSet<Order>();
+        }
+    
         public int OperatorID { get; set; }
         public string Name { get; set; }
         public string Lastname { get; set; }
@@ -21,5 +27,7 @@ namespace RomaAuto.Models
         public string Password { get; set; }
     
         public virtual Category Category { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Order> Orders1 { get; set; }
     }
 }
