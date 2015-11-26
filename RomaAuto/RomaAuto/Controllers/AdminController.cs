@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using RomaAuto.Models;
 using RomaAuto.Filters;
+using System.Net;
 namespace RomaAuto.Controllers
 {
     [LoginFilter]
@@ -160,28 +161,51 @@ namespace RomaAuto.Controllers
         // GET: Admin/Delete/5
         public ActionResult Delete(int id)
         {
-            var result = _db.Salers.FirstOrDefault(s => s.SalerID == id);
-            result.IsActive = false;
-            _db.SaveChanges();
-            return RedirectToAction("Index", "Admin");
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Saler saler = _db.Salers.Find(id);
+            if (saler == null)
+            {
+                return HttpNotFound();
+            }
+            return View(saler);
+
+
+
+
+
+            //var result = _db.Salers.FirstOrDefault(s => s.SalerID == id);
+            //result.IsActive = false;
+            //_db.SaveChanges();
+            //return RedirectToAction("Index", "Admin");
             //return RedirectToAction("Index");
 
            // return View();
         }
 
         // POST: Admin/Delete/5
-        [HttpPost]
+        
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add delete logic here
-                return View();
-            }
-            catch
-            {
-                return View();
-            }
+
+            Saler saler = _db.Salers.Find(id);
+            _db.Salers.Remove(saler);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
+
+
+  
+
+      
+
+
+
+
     }
 }

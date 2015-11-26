@@ -1,0 +1,117 @@
+﻿@model IEnumerable<RomaAuto.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OpenDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarCategoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OutputDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Part)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CloseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpenOperatorID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CloseOperatorID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsClosed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarModel.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarCategory.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Transmision.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OpenDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarCategoryID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OutputDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Part)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CloseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OpenOperatorID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CloseOperatorID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsClosed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarModel.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarCategory.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Transmision.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
+        </td>
+    </tr>
+}
+
+</table>

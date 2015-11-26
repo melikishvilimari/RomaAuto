@@ -23,6 +23,7 @@
                 <ul class="nav navbar-nav menu">
                     <li>@Html.ActionLink("შეკვეთის მიღება", "create", "orders")</li>
                     <li>@Html.ActionLink("შეკვეთების სია", "index", "OrderList")</li>
+                    <li>@Html.ActionLink("ყველა შეკვეთა","index","AllOrdersList")</li>
                     
                     @if (RomaAuto.Helpers.LoginHelper.IsLoggedIn() && RomaAuto.Helpers.LoginHelper.CurrentUser().Category > 2)
                     {

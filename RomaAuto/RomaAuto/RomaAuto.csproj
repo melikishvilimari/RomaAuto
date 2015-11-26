@@ -171,6 +171,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderListController.cs" />
+    <Compile Include="Controllers\AllOrdersListController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\SellersController.cs" />
     <Compile Include="Controllers\TestSellerController.cs" />
@@ -330,6 +331,13 @@
     <Content Include="Views\TestSeller\Details.cshtml" />
     <Content Include="Views\TestSeller\Edit.cshtml" />
     <Content Include="Views\TestSeller\Index.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Orders1\Create.cshtml" />
+    <Content Include="Views\Orders1\Delete.cshtml" />
+    <Content Include="Views\Orders1\Details.cshtml" />
+    <Content Include="Views\Orders1\Edit.cshtml" />
+    <Content Include="Views\Orders1\Index.cshtml" />
+    <Content Include="Views\AllOrdersList\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

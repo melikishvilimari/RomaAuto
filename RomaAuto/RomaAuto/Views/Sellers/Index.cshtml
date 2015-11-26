@@ -95,6 +95,7 @@
     <div class="col-lg-6 form-wrapper">
         <form method="post" action="/Sellers/Index">
             <input name="part" type="text" value="@ViewBag.Part" class="form-control" style="float: left;" placeholder="ნაწილი">
+            <input name="OrderID" type="hidden" value="@ViewBag.OrderID">
             <input name="ManufacturerId" type="hidden" value="@ViewBag.ManufacturerId">
             <input name="CarModelId" type="hidden" value="@ViewBag.CarModelId">
             <input name="CarCategoryId" type="hidden" value="@ViewBag.CarCategoryId">

@@ -1,0 +1,108 @@
+﻿@using RomaAuto.Models;
+@model AllOrder
+
+<link href="~/Style/TableStyle.css" rel="stylesheet" />
+<h2>ყველა შეკვეთა</h2>
+@{
+    string noInfo = "---------";
+}
+
+
+<table>
+    <tr>
+        <th>შეკვეთის თარიღი</th>
+        <th>შეკვეთა მიიღო</th>
+        <th>მწარმოებელი</th>
+        <th>მოდელი</th>
+        <th>კატეგორია</th>
+        <th>წელი</th>
+        <th>ტრანსმისია</th>
+        <th>მდებარეობა</th>
+        <th>საკონტაქტო ნომერი</th>
+        <th>ნაწილი</th>
+        <th>შენიშვნა</th>
+        <th>მომწოდებელი 1</th>
+        <th>მომწოდებელი 2</th>
+        <th>მომწოდებელი 3</th>
+        <th>შეკვეთა დახურა</th>
+        <th>შეკვეთის დახურვის თარიღი</th>
+    </tr>
+    @foreach (Order order in Model.orders)
+    {
+
+        <tr>
+            <td>
+                @order.OpenDate
+            </td>
+            <td>
+
+                @{
+        var n = Model.operators.Where(e => e.OperatorID == order.OpenOperatorID).FirstOrDefault();
+        string op = n == null ? noInfo : n.Name;
+                }
+                @op
+            </td>
+            <td>
+                @{
+        string manufacturer = order.ManufacturerID == null ? noInfo : order.Manufacturer.Name;
+                }
+                @manufacturer
+            </td>
+            <td>
+                @{
+        string carModel = order.CarModelID == null ? noInfo : order.CarModel.Name;
+                }
+                @carModel
+            </td>
+            <td>
+                @{
+        string category = order.CarCategoryID == null ? noInfo : order.CarCategory.Name;
+                }
+                @category
+            </td>
+            <td>@order.OutputDate</td>
+            <td>
+                @{
+        string transmision = order.TransmisionID == null ? noInfo : order.Transmision.Name;
+                }
+                @category
+            </td>
+            <td>
+                @{
+        string city = order.CityID == null ? noInfo : order.City.Name;
+                }
+                @city
+            </td>
+            <td>@order.Phone</td>
+            <td>@order.Part</td>
+            <td>@order.Note</td>
+            
+            <td></td>
+            <td></td>
+            <td></td>
+            @*<td>
+                            ///////////////////////////////////////gasaketebeliiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                            @{
+                var temp = Model.salerOrders.Where(e => e.OrderID == order.OrderID).FirstOrDefault().SellerID;
+                var temp2 = Model.sellers.Where(e => e.SalerID == temp).FirstOrDefault().Name;
+                    string op2 = n == null ? noInfo : n.Name;
+                            }
+                        </td>*@
+            <td>
+                @{
+            var m = Model.operators.Where(e => e.OperatorID == order.CloseOperatorID).FirstOrDefault();
+            string op2 = m == null ? noInfo : m.Name;
+                }
+                @op2
+            </td>
+            <td>@order.CloseDate</td>
+
+
+        </tr>
+
+
+
+    }
+
+
+</table>

@@ -90,6 +90,13 @@ namespace RomaAuto.Models
 
 
     }
+    public class AllOrder
+    {
+        public List<Order>orders { get; set; }
+        public List<Operator>operators { get; set; }
+        public List<Saler>sellers { get; set; }
+        public List<Seller_Order>salerOrders { get; set; }
+    }
 
     public class OrdersList
     {
