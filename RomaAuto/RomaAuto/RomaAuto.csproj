@@ -181,6 +181,7 @@
     <Compile Include="Controllers\OrderListController.cs" />
     <Compile Include="Controllers\AllOrdersListController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\SalersPartsController.cs" />
     <Compile Include="Controllers\SellersController.cs" />
     <Compile Include="Controllers\TestSellerController.cs" />
     <Compile Include="Filters\AccessFilter.cs" />
@@ -348,6 +349,12 @@
     <Content Include="Views\Orders1\Index.cshtml" />
     <Content Include="Views\AllOrdersList\Index.cshtml" />
     <Content Include="Views\AllOrdersList\A.cshtml" />
+    <Content Include="Views\SalersParts\Create.cshtml" />
+    <Content Include="Views\SalersParts\Delete.cshtml" />
+    <Content Include="Views\SalersParts\Details.cshtml" />
+    <Content Include="Views\SalersParts\Edit.cshtml" />
+    <Content Include="Views\SalersParts\Index.cshtml" />
+    <Content Include="Views\Shared\_SalerPart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,7 +15,7 @@
     }
     .form-wrapper {
         padding-right: 0 !important;
-        padding-left: 0 !important;
+        padding-left: 0 !important; 
     }
     a.btn {
         text-decoration: none;
@@ -35,28 +35,56 @@
 <a href="/Admin/Create" class="btn">მომწოდებლის დამატება</a>
 <br />
 <br />
+<table class="table">
+    <tr>
+        <th>
+           სახელი
+        </th>
+        <th>
+            გვარი
+        </th>
+        <th>
+            მისამართი
+        </th>
+        <th>
+            ტელეფონი
+        </th>
+        <th>
+            აქტიური
+        </th>
+        <th>
+            ქალაქი
+        </th>
+        <th></th>
+    </tr>
 
-    <table>
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>სახელი</th>
-            <th>გვარი</th>
-            <th>ტელეფონის ნომერი</th>
-            <th>მისამართი</th>
-            <th>ქალაქი</th>
-            <th></th>
-            <th></th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditSaler", new { id = item.SalerID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.SalerID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.SalerID })
+            </td>
         </tr>
+    }
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Name</td>
-                <td>@item.Lastname</td>
-                <td>@item.Phone</td>
-                <td>@item.Address</td>
-                <td>@item.City.Name</td>
-                <td> @Html.ActionLink("დეტალები", "Details", new { id = item.SalerID }) |</td>
-                <td>@Html.ActionLink("წაშლა", "Delete", new { id = item.SalerID })</td>
-            </tr>
-        }
-    </table>
+</table>

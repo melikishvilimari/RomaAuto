@@ -1,0 +1,90 @@
+﻿@model RomaAuto.Models.SalersPart
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SalersPart</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Helped)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Helped)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DontHelped)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DontHelped)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarModel.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarModel.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarModel1.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarModel1.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Saler.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Saler.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarCategory.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarCategory.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Transmision.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Transmision.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SalersPartID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<RomaAuto.Models.SalersPart>
+@{
+    ViewBag.Title = "_SalerPart";
+}
+<table class="table">
+    <tr>
+        <th>
+            დაგვეხმარა
+        </th>
+        <th>
+            ვერ დაგვეხმარა
+        </th>
+        <th>
+            შენიშვნა
+        </th>
+        <th>
+            მოდელი
+        </th>
+        <th>
+            მწარმოებელი
+        </th>
+        <th>
+            კატეგორია
+        </th>
+        <th>
+            ტრანსმისია
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Helped)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DontHelped)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarModel.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarCategory.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Transmision.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "SalersParts", new { id = item.SalersPartID, salerId = item.SalerID }, null) |
+                @Html.ActionLink("Delete", "Delete", "SalersParts", new { id = item.SalersPartID, salerId = item.SalerID }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+

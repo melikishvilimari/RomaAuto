@@ -278,3 +278,7 @@ C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\PagedList.dll
 C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\PagedList.Mvc.dll
 C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\PagedList.xml
 C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\PagedList.Mvc.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\PagedList.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\PagedList.Mvc.dll
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\PagedList.xml
+C:\Users\mari melikishvili\Desktop\RomaAuto-master\RomaAuto\RomaAuto\bin\PagedList.Mvc.xml

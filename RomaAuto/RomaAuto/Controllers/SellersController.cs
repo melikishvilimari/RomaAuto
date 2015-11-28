@@ -20,7 +20,7 @@ namespace RomaAuto.Controllers
             // ყველა როცა არის მონიშნული როგორ წამოიღოს ინფორმაცია ბაზიდან
             var sellers = _db.Salers.ToList();
 
-            var sellersList = (from item in _db.Salers
+            var sellersList = (from item in _db.Salers.Where(e=> e.IsActive == true)
                                let sellerparts = item.SalersParts.Where(
                                  s => ((s.CarModelsID == CarModelId || CarModelId == null) &&
                                      (s.CarCategoryID == CarCategoryId || CarCategoryId == null) &&

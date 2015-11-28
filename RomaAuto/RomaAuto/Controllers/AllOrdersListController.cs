@@ -15,9 +15,19 @@ namespace RomaAuto.Controllers
     public class AllOrdersListController : Controller
     {
         RomaDBEntities db = new RomaDBEntities();
-        public ActionResult Index(int page = 1)
+        public ActionResult Index(string operatorLastname = "", string sellerLastname = "",string openDate = "",string closeDate = "",int page = 1)
         {
-            var result = db.Orders.ToList();
+            ViewBag.OperatorLastname = operatorLastname;
+            ViewBag.SellerLastname = sellerLastname;
+            ViewBag.OpenDate = openDate;
+            ViewBag.CloseDate = closeDate;
+            var result = db.Orders
+                .ToList()
+                .Where(e => e.OpenDate.ToString("dd/MM/yyyy").Contains(openDate) 
+                    && (e.CloseDate == null || e.CloseDate.Value.ToString("dd/MM/yyyy").Contains(closeDate)) 
+                    && (e.Operator.Lastname.Contains(operatorLastname) || e.Operator1.Lastname.Contains(operatorLastname))
+                    && (sellerLastname == "" || e.Seller_Order.Any(m => m.Saler.Lastname.Contains(sellerLastname))))
+                                               .ToList();
             return View(result.ToPagedList(page, 10));
         }
     }

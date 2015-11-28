@@ -8,9 +8,22 @@
 }
 <style>
     .closed {
-        background-color: lightgreen;
+        background-color: lightgreen !important;
     }
 </style>
+<div class="">
+    <form method="get" action="/AllOrdersList/Index" >
+        <input name="OperatorLastname" type="text" value="@ViewBag.OperatorLastname" class="form-control" placeholder="ოპერატორი" style="float:left">
+        <input name="SellerLastname" type="text" value="@ViewBag.SellerLastname" class="form-control" placeholder="მომწოდებელი" style="float:left">
+        <input name="OpenDate" type="text" value="@ViewBag.OpenDate" class="form-control" placeholder="შეკვეთის მიღება" style="float:left" />
+        <input name="CloseDate" type="text" value="@ViewBag.CloseDate" class="form-control" placeholder="შეკვეთის დახურვა" style="float:left">
+        <input type="submit" value="ძებნა" class="btn" style="float:left" />
+    </form>
+</div>
+<br />
+<br />
+<br />
+
 
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 <table>
@@ -82,12 +95,14 @@
             <td>
                 @{
                     string creator = order.Operator == null ? noInfo : order.Operator.Name;
+                    creator += order.Operator == null ? "" : (" " + order.Operator.Lastname);
                 }
                 @creator
             </td>
             <td>
                 @{
                     string closer = order.Operator1 == null ? noInfo : order.Operator1.Name;
+                    closer += order.Operator1 == null ? "" : (" " +order.Operator1.Lastname);
                 }
                 @closer
             </td>
