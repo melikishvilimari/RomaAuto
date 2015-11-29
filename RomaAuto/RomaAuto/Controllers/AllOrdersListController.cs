@@ -28,7 +28,7 @@ namespace RomaAuto.Controllers
                 .ToList()
                 .Where(e => (openDate == "" || e.OpenDate.ToString("MM/dd/yyyy").Contains(openDate))
                     && (closeDate == "" || (e.CloseDate != null && e.CloseDate.Value.ToString("MM/dd/yyyy").Contains(closeDate)))
-                    && (e.Operator.Lastname.Contains(operatorLastname) || e.Operator1.Lastname.Contains(operatorLastname))
+                    && (e.Operator.Lastname.Contains(operatorLastname) || (e.Operator1 != null && e.Operator1.Lastname.Contains(operatorLastname)))
                     && (sellerLastname == "" || e.Seller_Order.Any(m => m.Saler.Lastname.Contains(sellerLastname))))
                                                .ToList();
             

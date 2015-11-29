@@ -159,7 +159,7 @@ namespace RomaAuto.Controllers
                     });
                    
                     _db.SaveChangesAsync();
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Create", "Orders");
                 }
             }
 
