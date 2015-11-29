@@ -1,8 +1,10 @@
 ﻿@using RomaAuto.Models;
-@model List<Saler>
+@using PagedList.Mvc;
+@model PagedList.IPagedList<RomaAuto.Models.Saler>
 @{
     ViewBag.Title = "ყველა მომწოდებელი";
 }
+<link href="~/Content/PagedList.css" rel="stylesheet" />
 <link href="~/Style/TableStyle.css" rel="stylesheet" />
 <h1>მომწოდებლების სია</h1>
 <style>
@@ -24,7 +26,7 @@
     }
 </style>
 <div class="col-lg-12 form-wrapper">
-    <form method="post" action="/Admin/Index">
+    <form method="get" action="/Admin/Index">
         <input name="Name" type="text" value="@ViewBag.Name" class="form-control" placeholder="სახელი">
         <input name="Lastname" type="text" value="@ViewBag.Lastname" class="form-control" placeholder="გვარი" />
         <input type="submit" value="ძებნა" class="btn" />
@@ -35,6 +37,7 @@
 <a href="/Admin/Create" class="btn">მომწოდებლის დამატება</a>
 <br />
 <br />
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, Name = ViewBag.Name, Lastname = ViewBag.Lastname }))
 <table class="table">
     <tr>
         <th>
@@ -80,11 +83,12 @@
                 @Html.DisplayFor(modelItem => item.City.Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditSaler", new { id = item.SalerID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.SalerID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.SalerID })
+                @Html.ActionLink("რედაქტირება", "EditSaler", new { id = item.SalerID }) |
+                @Html.ActionLink("დეტალები", "Details", new { id = item.SalerID }) |
+                @Html.ActionLink("წაშლა", "Delete", new { id = item.SalerID })
             </td>
         </tr>
     }
 
 </table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, Name = ViewBag.Name, Lastname = ViewBag.Lastname }))

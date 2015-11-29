@@ -4,27 +4,11 @@
     ViewBag.Title = "Delete";
 }
 <div>
-    <h4>წაშლა</h4>
+    <h4>გასაყიდი პროდუქციის წაშლა</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Helped)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Helped)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DontHelped)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DontHelped)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Note)
+            ჩანაწერი
         </dt>
 
         <dd>
@@ -32,7 +16,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CarModel.Name)
+            მოდელი
         </dt>
 
         <dd>
@@ -40,15 +24,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CarModel1.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CarModel1.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Manufacturer.Name)
+            მწარმოებელი
         </dt>
 
         <dd>
@@ -56,7 +32,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Saler.Name)
+            მომწოდებელი
         </dt>
 
         <dd>
@@ -64,7 +40,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CarCategory.Name)
+            კატეგორია
         </dt>
 
         <dd>
@@ -72,21 +48,34 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Transmision.Name)
+            ტრანსმისია
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Transmision.Name)
         </dd>
+        <dt>
+            დაგვეხმარა
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.Helped)
+        </dd>
+
+        <dt>
+            ვერ დაგვეხმარა
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DontHelped)
+        </dd>
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
     <input type="hidden" value="@ViewBag.SalerID" name="SalerID" />
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="წაშლა" class="btn btn-default" />
         </div>
     }
 </div>

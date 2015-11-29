@@ -9,9 +9,11 @@ using System.Web.Mvc;
 using RomaAuto.Models;
 using PagedList;
 using PagedList.Mvc;
+using RomaAuto.Filters;
 
 namespace RomaAuto.Controllers
 {
+    [LoginFilter]
     public class AllOrdersListController : Controller
     {
         RomaDBEntities db = new RomaDBEntities();
@@ -21,13 +23,15 @@ namespace RomaAuto.Controllers
             ViewBag.SellerLastname = sellerLastname;
             ViewBag.OpenDate = openDate;
             ViewBag.CloseDate = closeDate;
+            ViewBag.Page = page;
             var result = db.Orders
                 .ToList()
-                .Where(e => e.OpenDate.ToString("dd/MM/yyyy").Contains(openDate) 
-                    && (e.CloseDate == null || e.CloseDate.Value.ToString("dd/MM/yyyy").Contains(closeDate)) 
+                .Where(e => (openDate == "" || e.OpenDate.ToString("MM/dd/yyyy").Contains(openDate))
+                    && (closeDate == "" || (e.CloseDate != null && e.CloseDate.Value.ToString("MM/dd/yyyy").Contains(closeDate)))
                     && (e.Operator.Lastname.Contains(operatorLastname) || e.Operator1.Lastname.Contains(operatorLastname))
                     && (sellerLastname == "" || e.Seller_Order.Any(m => m.Saler.Lastname.Contains(sellerLastname))))
                                                .ToList();
+            
             return View(result.ToPagedList(page, 10));
         }
     }

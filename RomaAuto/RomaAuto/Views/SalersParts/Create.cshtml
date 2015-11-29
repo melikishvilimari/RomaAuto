@@ -16,9 +16,10 @@
                  contentType: "application/json; charset=utf-8",
                  data: JSON.stringify(json),
                  success: function (data) {
-                     $('#CarModelID').html('');
+                     console.log(data)
+                     $('#CarModelsID').html('');
                      jQuery.each(data, function (i, val) {
-                         $('<option>').val(val.ModelID).text(val.Name).appendTo('#CarModelID');
+                         $('<option>').val(val.ModelID).text(val.Name).appendTo('#CarModelsID');
                      });
                  },
                  error: function (request, status, error) {
@@ -40,7 +41,7 @@
         <input type="hidden" value="@ViewBag.SalerID" name="SalerID" />
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ManufacturerID, "ManufacturerID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ManufacturerID, "მწარმოებელი", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("ManufacturerID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ManufacturerID, "", new { @class = "text-danger" })
@@ -48,17 +49,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CarModelsID, "CarModelsID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CarModelsID, "მოდელი", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("CarModelsID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CarModelsID, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        
-
         <div class="form-group">
-            @Html.LabelFor(model => model.CarCategoryID, "CarCategoryID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CarCategoryID, "კატეგორია", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("CarCategoryID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CarCategoryID, "", new { @class = "text-danger" })
@@ -66,7 +65,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CarTransmissionID, "CarTransmissionID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CarTransmissionID, "ტრანსმისია", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("CarTransmissionID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CarTransmissionID, "", new { @class = "text-danger" })
@@ -74,7 +73,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Note, "შენიშვნა", htmlAttributes: new { @class = "control -label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })

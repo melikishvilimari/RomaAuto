@@ -7,9 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RomaAuto.Models;
+using RomaAuto.Filters;
 
 namespace RomaAuto.Controllers
 {
+    [LoginFilter]
+    [AccessFilter]
     public class SalersPartsController : Controller
     {
         private RomaDBEntities db = new RomaDBEntities();
@@ -85,7 +88,7 @@ namespace RomaAuto.Controllers
                 return HttpNotFound();
             }
             ViewBag.SalerID = salerId;
-            ViewBag.CarModelsID = new SelectList(db.CarModels, "ModelID", "Name", salersPart.CarModelsID);
+            ViewBag.CarModelsID = new SelectList(db.CarModels.Where(item => item.ManufacturerID == salersPart.ManufacturerID), "ModelID", "Name", salersPart.CarModelsID);
             ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufacturerID", "Name", salersPart.ManufacturerID);
             ViewBag.CarCategoryID = new SelectList(db.CarCategories, "CarCategoryID", "Name", salersPart.CarCategoryID);
             ViewBag.CarTransmissionID = new SelectList(db.Transmisions, "TransmisionID", "Name", salersPart.CarTransmissionID);

@@ -13,10 +13,12 @@
 </style>
 <div class="">
     <form method="get" action="/AllOrdersList/Index" >
-        <input name="OperatorLastname" type="text" value="@ViewBag.OperatorLastname" class="form-control" placeholder="ოპერატორი" style="float:left">
-        <input name="SellerLastname" type="text" value="@ViewBag.SellerLastname" class="form-control" placeholder="მომწოდებელი" style="float:left">
-        <input name="OpenDate" type="text" value="@ViewBag.OpenDate" class="form-control" placeholder="შეკვეთის მიღება" style="float:left" />
-        <input name="CloseDate" type="text" value="@ViewBag.CloseDate" class="form-control" placeholder="შეკვეთის დახურვა" style="float:left">
+        <input type="hidden" name="page" value="@ViewBag.Page" />
+        <input type="hidden" name="page" value="@ViewBag.Page" />
+        <input name="operatorLastname" type="text" value="@ViewBag.OperatorLastname" class="form-control" placeholder="ოპერატორი" style="float:left">
+        <input name="sellerLastname" type="text" value="@ViewBag.SellerLastname" class="form-control" placeholder="მომწოდებელი" style="float:left">
+        <input name="openDate" type="text" value="@ViewBag.OpenDate" class="form-control" placeholder="შეკვეთის მიღება" style="float:left" />
+        <input name="closeDate" type="text" value="@ViewBag.CloseDate" class="form-control" placeholder="შეკვეთის დახურვა" style="float:left">
         <input type="submit" value="ძებნა" class="btn" style="float:left" />
     </form>
 </div>
@@ -87,7 +89,7 @@
                     var sellers = "";
                     foreach (var item in order.Seller_Order)
                     {
-                        sellers += item.Saler.Name + "\n";
+                        sellers += item.Saler.Lastname + "\n";
                     }
                 }
                 @sellers

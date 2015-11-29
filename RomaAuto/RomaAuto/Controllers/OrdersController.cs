@@ -109,7 +109,7 @@ namespace RomaAuto.Controllers
 
         public ActionResult FilterCarModel(int id, bool isSalerPart = false)
         {
-            var result =  (from item in db.CarModels.Where(item => item.ModelID == id || id == 0)
+            var result =  (from item in db.CarModels.Where(item => item.ManufacturerID == id || id == 0)
                           select new { item.ModelID, item.Name }).ToList();
             if (!isSalerPart)
                 result.Insert(0, new { ModelID = 0, Name = "ყველა" });

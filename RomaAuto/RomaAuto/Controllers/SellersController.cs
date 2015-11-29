@@ -4,8 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RomaAuto.Models;
+using RomaAuto.Filters;
+
 namespace RomaAuto.Controllers
 {
+    [LoginFilter]
+    [AccessFilter]
     public class SellersController : Controller
     {
         RomaDBEntities _db = new RomaDBEntities();
