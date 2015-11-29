@@ -53,6 +53,7 @@
 
         $('#save').click(function () {
             var selectedInputs = $('input[type="checkbox"]:checked');
+            console.log(selectedInputs.length)
             if (selectedInputs.length != 0) {
                 var clibordText = ""
                 selectedInputs.each(function (index, value) {
@@ -87,7 +88,7 @@
 </style>
 <div class="col-lg-12 form-wrapper">
     <div class="col-lg-6 form-wrapper">
-        <form method="post" action="/Sellers/Index">
+        <form method="get" action="/Sellers/Index">
             <input name="part" type="text" value="@ViewBag.Part" class="form-control" style="float: left;" placeholder="ნაწილი">
             <input name="OrderID" type="hidden" value="@ViewBag.OrderID">
             <input name="ManufacturerId" type="hidden" value="@ViewBag.ManufacturerId">
