@@ -40,7 +40,7 @@ namespace RomaAuto.Filters
             RomaDBEntities _db = new RomaDBEntities();
             MainUser user = LoginHelper.CurrentUser();
 
-            if (_db.Operators.FirstOrDefault(item => item.CategoryID == user.Category) == null || user.Category < 3)
+            if (!LoginHelper.IsLoggedIn() || _db.Operators.FirstOrDefault(item => item.CategoryID == user.Category) == null || user.Category < 3)
             {
                 filterContext.Result = new HttpStatusCodeResult(HttpStatusCode.Forbidden);
             }

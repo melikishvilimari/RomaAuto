@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "ახალი ოპერატორის დამატება";
 }
-
+<link href="~/Style/TableStyle.css" rel="stylesheet" />
 <h2>ახალი ოპერატორის დამატება</h2>
 
 
@@ -52,6 +52,38 @@
         </div>
     </div>
 }
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            სახელი
+        </th>
+        <th>
+            გვარი
+        </th>
+        <th>
+            დონე
+        </th>
+    </tr>
+
+    @foreach (var item in ViewData["Operators"] as List<RomaAuto.Models.Operator>)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.name)
+            </td>
+        </tr>
+    }
+
+</table>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

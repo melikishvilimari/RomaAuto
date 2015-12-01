@@ -178,6 +178,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OperatorsController.cs" />
     <Compile Include="Controllers\OrderListController.cs" />
     <Compile Include="Controllers\AllOrdersListController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
@@ -355,6 +356,12 @@
     <Content Include="Views\SalersParts\Edit.cshtml" />
     <Content Include="Views\SalersParts\Index.cshtml" />
     <Content Include="Views\Shared\_SalerPart.cshtml" />
+    <Content Include="Views\Operators\Create.cshtml" />
+    <Content Include="Views\Operators\Delete.cshtml" />
+    <Content Include="Views\Operators\Details.cshtml" />
+    <Content Include="Views\Operators\Edit.cshtml" />
+    <Content Include="Views\Operators\Index.cshtml" />
+    <Content Include="Views\Account\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,11 +17,15 @@ namespace RomaAuto.Controllers
     {
         RomaDBEntities _db = new RomaDBEntities();
         // GET: Admin
-        public ActionResult Index(string name = "", string lastname = "", int page = 1)
+        public ActionResult Index(string name = "", string lastname = "", string phone = "", int page = 1)
         {
             ViewBag.Name = name;
             ViewBag.Lastname = lastname;
-            var result = _db.Salers.Where(e => e.Name.Contains(name) && e.Lastname.Contains(lastname)).ToList();
+            ViewBag.Phone = phone;
+            var result = _db.Salers
+                .Where(e => e.Name.Contains(name) && e.Lastname.Contains(lastname) && e.Phone.Contains(phone))
+                .OrderByDescending(e => e.SalerID)
+                .ToList();
             return View(result.ToPagedList(page, 10));
         }
 

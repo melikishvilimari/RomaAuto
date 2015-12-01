@@ -23,8 +23,8 @@
             }
         });
         $('.help').on('click', function () {
-            var td = $(this).parent(); //get parent tag
-            var id = parseInt($(this).attr('data-sellerpartid')); //get database object id
+            var td = $(this).parent();
+            var id = parseInt($(this).attr('data-sellerpartid')); 
             var func = $(this).attr('data-function');
             var json = { "id": id };
             $.ajax({
@@ -35,10 +35,10 @@
                 data: JSON.stringify(json),
                 success: function (data) {
                     console.log(data.success)
-                    if (data.success == true) { // if response was successful
+                    if (data.success == true) { 
                         var number = parseInt(td.text());
-                        td.text(number + 1); // increment number
-                        $(this).remove(); // remove button
+                        td.text(number + 1); 
+                        $(this).remove();
                     }
                 },
                 error: function (request, status, error) {
@@ -56,6 +56,7 @@
             console.log(selectedInputs.length)
             if (selectedInputs.length != 0) {
                 var clibordText = ""
+                var array = [];
                 selectedInputs.each(function (index, value) {
                     var name = $(this).parent().parent().find('td:nth-child(2)').text()
                     var sellerID = $(this).next().val();
@@ -63,19 +64,69 @@
 
                     var surname = $(this).parent().parent().find('td:nth-child(3)').text()
                     var phone = $(this).parent().parent().find('td:nth-child(4)').text()
+                    var address = $(this).parent().parent().find('td:nth-child(5)').text()
 
-                    clibordText += name + '-' + surname + '-' + phone + '; '
+                    clibordText = name + ' ' + surname + ' ' + phone + ' ' + address;
+                    array.push(clibordText)
                 });
 
-                console.log(clibordText)
-                var $temp = $("<input>");
+                clibordText = ToEng(array);
+                var $temp = $("<textarea>");
                 $("body").append($temp);
-                $temp.val(clibordText).select();
+                $temp.text(clibordText).select();
                 document.execCommand("copy");
                 $temp.remove();
                 $('form').submit();
             }
         });
+
+        var dict = new Object();
+            dict["ა"] = "a"
+            dict["ბ"] = "b"
+            dict["გ"] = "g"
+            dict["დ"] = "d"
+            dict["ე"] = "e"
+            dict["ვ"] = "v"
+            dict["ზ"] = "z"
+            dict["თ"] = "t"
+            dict["ი"] = "i"
+            dict["კ"] = "k"
+            dict["ლ"] = "l"
+            dict["მ"] = "m"
+            dict["ნ"] = "n"
+            dict["ო"] = "o"
+            dict["პ"] = "p"
+            dict["ჟ"] = "j"
+            dict["რ"] = "r"
+            dict["ს"] = "s"
+            dict["ტ"] = "t"
+            dict["უ"] = "u"
+            dict["ფ"] = "f"
+            dict["ქ"] = "q"
+            dict["ღ"] = "g"
+            dict["ყ"] = "y"
+            dict["შ"] = "sh"
+            dict["ჩ"] = "ch"
+            dict["ც"] = "c"
+            dict["ძ"] = "dz"
+            dict["წ"] = "w"
+            dict["ჭ"] = "wh"
+            dict["ხ"] = "x"
+            dict["ჯ"] = "j"
+            dict["ჰ"] = "h"
+
+        function ToEng(array) {
+            var text = "";
+            $.each(array, function (i, vi) {
+                for (var j = 0; j < vi.length; j++) {
+                    if (dict[vi[j]] == null)
+                        text += vi[j]
+                    else text += dict[vi[j]]
+                }
+                text += '\n';
+            });
+            return text;
+        }
     });
 </script>
 

@@ -29,6 +29,7 @@
     <form method="get" action="/Admin/Index">
         <input name="Name" type="text" value="@ViewBag.Name" class="form-control" placeholder="სახელი">
         <input name="Lastname" type="text" value="@ViewBag.Lastname" class="form-control" placeholder="გვარი" />
+        <input name="Phone" type="text" value="@ViewBag.Phone" class="form-control" placeholder="ტელეფონი" />
         <input type="submit" value="ძებნა" class="btn" />
     </form>
 </div>
@@ -37,7 +38,7 @@
 <a href="/Admin/Create" class="btn">მომწოდებლის დამატება</a>
 <br />
 <br />
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page, Name = ViewBag.Name, Lastname = ViewBag.Lastname }))
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, Name = ViewBag.Name, Lastname = ViewBag.Lastname, Phone = ViewBag.Phone }))
 <table class="table">
     <tr>
         <th>
@@ -91,4 +92,4 @@
     }
 
 </table>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page, Name = ViewBag.Name, Lastname = ViewBag.Lastname }))
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, Name = ViewBag.Name, Lastname = ViewBag.Lastname, Phone = ViewBag.Phone }))

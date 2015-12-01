@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using RomaAuto.Models;
 using RomaAuto.Filters;
 using RomaAuto.Helpers;
+using System.Net;
 
 namespace RomaAuto.Controllers
 {
@@ -138,6 +139,7 @@ namespace RomaAuto.Controllers
         public ActionResult RegisterOperator()
         {
             ViewBag.AdminCategoryId = new SelectList(_db.Categories, "CategoryID", "name");
+            ViewData["Operators"] = _db.Operators.OrderByDescending(e => e.OperatorID).ToList();
             return View();
         }
 
@@ -164,6 +166,7 @@ namespace RomaAuto.Controllers
             }
 
             ViewBag.AdminCategoryId = new SelectList(_db.Categories, "CategoryID", "name");
+            ViewData["Operators"] = _db.Operators.OrderByDescending(e => e.OperatorID).ToList();
             return View(model);
         }
 

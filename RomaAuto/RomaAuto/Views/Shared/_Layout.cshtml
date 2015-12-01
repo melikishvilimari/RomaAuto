@@ -27,9 +27,9 @@
                     
                     @if (RomaAuto.Helpers.LoginHelper.IsLoggedIn() && RomaAuto.Helpers.LoginHelper.CurrentUser().Category > 2)
                     {
-                        <li>@Html.ActionLink("მომწოდებლების რეგისტრაცია", "index", "Admin")</li>
+                        <li>@Html.ActionLink("მომწოდებლები", "index", "Admin")</li>
                         <li>
-                            @Html.ActionLink("რეგისტრაცია", "RegisterOperator", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+                            @Html.ActionLink("ადმინები", "RegisterOperator", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
                         </li>
                     }
                     
