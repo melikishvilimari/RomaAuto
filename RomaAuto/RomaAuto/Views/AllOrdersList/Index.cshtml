@@ -11,6 +11,9 @@
         background-color: lightgreen !important;
     }
 </style>
+<form method="get" action="/AllOrdersList/Excel" id="excel">
+</form>
+<a href="javascript:document.getElementById('excel').submit()">Excel</a>
 <div class="">
     <form method="get" action="/AllOrdersList/Index" >
         <input type="hidden" name="page" value="@ViewBag.Page" />
