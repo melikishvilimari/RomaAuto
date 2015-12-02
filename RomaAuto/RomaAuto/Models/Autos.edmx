@@ -56,6 +56,7 @@
           <Property Name="OpenOperatorID" Type="int" Nullable="false" />
           <Property Name="CloseOperatorID" Type="int" />
           <Property Name="IsClosed" Type="bit" Nullable="false" />
+          <Property Name="Kubatura" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Salers">
           <Key>
@@ -765,6 +766,7 @@
           <NavigationProperty Name="Seller_Order" Relationship="RomaDBModel.FK_Seller_Order_Orders" FromRole="Order" ToRole="Seller_Order" />
           <NavigationProperty Name="Operator" Relationship="RomaDBModel.FK_Orders_Operators" FromRole="Order" ToRole="Operator" />
           <NavigationProperty Name="Operator1" Relationship="RomaDBModel.FK_Orders_Operators1" FromRole="Order" ToRole="Operator" />
+          <Property Name="Kubatura" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="City">
           <Key>
@@ -992,6 +994,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="RomaDBModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Kubatura" ColumnName="Kubatura" />
                 <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
                 <ScalarProperty Name="CloseOperatorID" ColumnName="CloseOperatorID" />
                 <ScalarProperty Name="OpenOperatorID" ColumnName="OpenOperatorID" />

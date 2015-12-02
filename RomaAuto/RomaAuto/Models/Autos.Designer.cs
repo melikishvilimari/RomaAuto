@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\Models\Autos.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\mari melikishvili\Desktop\RomaAuto\RomaAuto\RomaAuto\Models\Autos.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

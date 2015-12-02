@@ -337,6 +337,7 @@
     <NavigationProperty Name="Seller_Order" Relationship="RomaDBModel.FK_Seller_Order_Orders" FromRole="Order" ToRole="Seller_Order" />
     <NavigationProperty Name="Operator" Relationship="RomaDBModel.FK_Orders_Operators" FromRole="Order" ToRole="Operator" />
     <NavigationProperty Name="Operator1" Relationship="RomaDBModel.FK_Orders_Operators1" FromRole="Order" ToRole="Operator" />
+    <Property Name="Kubatura" Type="Double" Nullable="false" />
   </EntityType>
   <EntityType Name="City">
     <Key>

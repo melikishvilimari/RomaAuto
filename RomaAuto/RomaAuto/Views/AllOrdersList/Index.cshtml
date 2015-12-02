@@ -35,6 +35,7 @@
     <tr>
         <th>მწარმოებელი</th>
         <th>მოდელი</th>
+        <th>კუბატურა</th>
         <th>კატეგორია</th>
         <th>წელი</th>
         <th>ტრანსმისია</th>
@@ -64,6 +65,7 @@
                 }
                 @carModel
             </td>
+            <td>@order.Kubatura</td>
             <td>
                 @{
                     string category = order.CarCategoryID == null ? noInfo : order.CarCategory.Name;

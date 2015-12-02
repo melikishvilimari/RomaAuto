@@ -51,6 +51,7 @@
     <Property Name="OpenOperatorID" Type="int" Nullable="false" />
     <Property Name="CloseOperatorID" Type="int" />
     <Property Name="IsClosed" Type="bit" Nullable="false" />
+    <Property Name="Kubatura" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="Salers">
     <Key>

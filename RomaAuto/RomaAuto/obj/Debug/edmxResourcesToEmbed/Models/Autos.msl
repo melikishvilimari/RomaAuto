@@ -104,6 +104,7 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="RomaDBModel.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Kubatura" ColumnName="Kubatura" />
           <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
           <ScalarProperty Name="CloseOperatorID" ColumnName="CloseOperatorID" />
           <ScalarProperty Name="OpenOperatorID" ColumnName="OpenOperatorID" />

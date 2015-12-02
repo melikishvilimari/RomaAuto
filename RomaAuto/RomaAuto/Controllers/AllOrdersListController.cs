@@ -58,6 +58,7 @@ namespace RomaAuto.Controllers
             ws.Cells[1, 12].Value = "შეკვეთა დახურა";
             ws.Cells[1, 13].Value = "შეკვეთის თარიღი";
             ws.Cells[1, 14].Value = "დახურვის თარიღი";
+            ws.Cells[1, 15].Value = "კუბატურა";
 
             ws.Columns[1].Width = 30 * 256;
             ws.Columns[2].Width = 30 * 256;
@@ -73,6 +74,7 @@ namespace RomaAuto.Controllers
             ws.Columns[12].Width = 30 * 256;
             ws.Columns[13].Width = 30 * 256;
             ws.Columns[14].Width = 30 * 256;
+            ws.Columns[15].Width = 30 * 256;
 
             var result = db.Orders.OrderByDescending(e => e.OrderID).ToList();
             string noInfo = "";
@@ -101,19 +103,10 @@ namespace RomaAuto.Controllers
                 ws.Cells[2 + i, 12].Value = closer;
                 ws.Cells[2 + i, 13].Value = result[i].OpenDate.ToShortDateString();
                 ws.Cells[2 + i, 14].Value = result[i].CloseDate == null ? "" : result[i].CloseDate.Value.ToShortDateString();
+                ws.Cells[2 + i, 15].Value = result[i].Kubatura;
             }
-            //// Using UNICODE string.
-            //ws.Cells[1, 1].Value = new string(new char[] { '\u0417', '\u0434', '\u0440', '\u0430', '\u0432', '\u0441', '\u0442', '\u0432', '\u0443', '\u0439', '\u0442', '\u0435' });
 
-            //ws.Cells[2, 0].Value = "Chinese:";
-            //// Using UNICODE string.
-            //ws.Cells[2, 1].Value = new string(new char[] { '\u4f60', '\u597d' });
-
-            //ws.Cells[4, 0].Value = "In order to see Russian and Chinese characters you need to have appropriate fonts on your PC.";
-            //ws.Cells.GetSubrangeAbsolute(4, 0, 4, 7).Merged = true;
-
-
-            string filename = "awdawdawdawd.xlsx";
+            string filename = DateTime.Now.ToString("MM-dd-yyyy") + ".xlsx";
             string path = Server.MapPath("~/Excel/" + filename);
             ef.Save(path);
 
