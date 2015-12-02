@@ -1,7 +1,17 @@
 ﻿@using PagedList.Mvc;
 @model PagedList.IPagedList<RomaAuto.Models.Order>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
 <link href="~/Content/PagedList.css" rel="stylesheet" />
 <link href="~/Style/TableStyle.css" rel="stylesheet" />
+
+<script src="~/Scripts/jquery-2.1.4.js"></script>
+@*<script src="~/Scripts/jquery-ui-1.11.4.js"></script>*@
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/moment.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+
 <h2>ყველა შეკვეთა</h2>
 @{
     string noInfo = "---------";
@@ -11,6 +21,11 @@
         background-color: lightgreen !important;
     }
 </style>
+<script>
+    $(document).ready(function () {
+        $('.datetimepicker').datetimepicker({ format: 'MM/DD/YYYY' });
+    });
+</script>
 <form method="get" action="/AllOrdersList/Excel" id="excel">
 </form>
 <a href="javascript:document.getElementById('excel').submit()">Excel</a>
@@ -20,8 +35,21 @@
         <input type="hidden" name="page" value="@ViewBag.Page" />
         <input name="operatorLastname" type="text" value="@ViewBag.OperatorLastname" class="form-control" placeholder="ოპერატორი" style="float:left">
         <input name="sellerLastname" type="text" value="@ViewBag.SellerLastname" class="form-control" placeholder="მომწოდებელი" style="float:left">
-        <input name="openDate" type="text" value="@ViewBag.OpenDate" class="form-control" placeholder="შეკვეთის მიღება" style="float:left" />
-        <input name="closeDate" type="text" value="@ViewBag.CloseDate" class="form-control" placeholder="შეკვეთის დახურვა" style="float:left">
+        
+        <div class='input-group date datetimepicker' style=" width: 180px; float: left;">
+            <input name="openDate" id="" type="text" value="@ViewBag.OpenDate" class="form-control" placeholder="მიღება" style="float:left" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+
+        <div class='input-group date datetimepicker' id='datetimepicker1' style=" width: 180px; float: left;">
+            <input name="closeDate" id="datetimepicker2" type="text" value="@ViewBag.CloseDate" class="form-control" placeholder="დახურვა" style="float:left">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+        
         <input type="submit" value="ძებნა" class="btn" style="float:left" />
     </form>
 </div>
