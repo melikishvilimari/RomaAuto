@@ -300,6 +300,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Autos.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Images\excel.png" />
     <Content Include="Models\Autos.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Autos.edmx</DependentUpon>

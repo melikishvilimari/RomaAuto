@@ -11,6 +11,7 @@ using PagedList;
 using PagedList.Mvc;
 using RomaAuto.Filters;
 using GemBox.Spreadsheet;
+using System.Drawing;
 
 namespace RomaAuto.Controllers
 {
@@ -38,43 +39,43 @@ namespace RomaAuto.Controllers
 
         public FileResult Excel()
         {
-            // If using Professional version, put your serial key below.
             SpreadsheetInfo.SetLicense("FREE-LIMITED-KEY");
 
             ExcelFile ef = new ExcelFile();
-            ExcelWorksheet ws = ef.Worksheets.Add("Hello World");
+            ExcelWorksheet ws = ef.Worksheets.Add("შეკვეთები");
 
-            ws.Cells[1, 1].Value = "მწარმოებელი";
-            ws.Cells[1, 2].Value = "მოდელი";
-            ws.Cells[1, 3].Value = "კატეგორია";
-            ws.Cells[1, 4].Value = "წელი";
-            ws.Cells[1, 5].Value = "ტრანსმისია";
-            ws.Cells[1, 6].Value = "მდებარეობა";
-            ws.Cells[1, 7].Value = "საკონტაქტო ნომერი";
-            ws.Cells[1, 8].Value = "ნაწილი";
-            ws.Cells[1, 9].Value = "შენიშვნა";
-            ws.Cells[1, 10].Value = "მომწოდებლები";
-            ws.Cells[1, 11].Value = "შეკვეთა მიიღო";
-            ws.Cells[1, 12].Value = "შეკვეთა დახურა";
-            ws.Cells[1, 13].Value = "შეკვეთის თარიღი";
-            ws.Cells[1, 14].Value = "დახურვის თარიღი";
-            ws.Cells[1, 15].Value = "კუბატურა";
+            var cellNames = new string[15]
+            {
+                "მწარმოებელი",
+                "მოდელი",
+                "კატეგორია",
+                "წელი",
+                "ტრანსმისია",
+                "მდებარეობა",
+                "საკონტაქტო ნომერი",
+                "ნაწილი",
+                "შენიშვნა",
+                "მომწოდებლები",
+                "შეკვეთა მიიღო",
+                "შეკვეთა დახურა",
+                "შეკვეთის თარიღი",
+                "დახურვის თარიღი",
+                "კუბატურა"
+            };
 
-            ws.Columns[1].Width = 30 * 256;
-            ws.Columns[2].Width = 30 * 256;
-            ws.Columns[3].Width = 30 * 256;
-            ws.Columns[4].Width = 30 * 256;
-            ws.Columns[5].Width = 30 * 256;
-            ws.Columns[6].Width = 30 * 256;
-            ws.Columns[7].Width = 30 * 256;
-            ws.Columns[8].Width = 30 * 256;
-            ws.Columns[9].Width = 30 * 256;
-            ws.Columns[10].Width = 30 * 256;
-            ws.Columns[11].Width = 30 * 256;
-            ws.Columns[12].Width = 30 * 256;
-            ws.Columns[13].Width = 30 * 256;
-            ws.Columns[14].Width = 30 * 256;
-            ws.Columns[15].Width = 30 * 256;
+            for (int i = 1; i < 16; i++)
+            {
+                ws.Cells[1, i].Value = cellNames[i - 1];
+                ws.Cells[1, i].Style.HorizontalAlignment = HorizontalAlignmentStyle.Center;
+                ws.Cells[1, i].Style.Font.Weight = ExcelFont.BoldWeight;
+                ws.Cells[1, i].Style.Font.Color = Color.White;
+                ws.Cells[1, i].Style.FillPattern.SetSolid(Color.LightGreen);
+            }
+
+            for(int i = 1; i < 16; i++)
+            {
+                ws.Columns[i].Width = 30 * 256;
+            }
 
             var result = db.Orders.OrderByDescending(e => e.OrderID).ToList();
             string noInfo = "";
@@ -106,7 +107,7 @@ namespace RomaAuto.Controllers
                 ws.Cells[2 + i, 15].Value = result[i].Kubatura;
             }
 
-            string filename = DateTime.Now.ToString("MM-dd-yyyy") + ".xlsx";
+            string filename = DateTime.Now.ToString("MM-dd-yyyy") + "-Orders.xlsx";
             string path = Server.MapPath("~/Excel/" + filename);
             ef.Save(path);
 

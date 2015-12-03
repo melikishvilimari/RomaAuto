@@ -8,6 +8,8 @@ using RomaAuto.Filters;
 using System.Net;
 using System.Data.Entity;
 using PagedList;
+using GemBox.Spreadsheet;
+using System.Drawing;
 
 namespace RomaAuto.Controllers
 {
@@ -40,11 +42,6 @@ namespace RomaAuto.Controllers
         // GET: Admin/Create
         public ActionResult Create()
         {
-            //ViewBag.CarModelID = new SelectList(_db.CarModels.Where(item => item.ManufacturerID == _db.Manufacturers.FirstOrDefault().ManufacturerID), "ModelID", "Name"); ;
-            //ViewBag.ManufacturerID = new SelectList(_db.Manufacturers, "ManufacturerID", "Name"); ;
-            //ViewBag.CarCategoryID = new SelectList(_db.CarCategories, "CarCategoryID", "Name");
-            //ViewBag.TransmisionID = new SelectList(_db.Transmisions, "TransmisionID", "Name");
-            //ViewBag.CityID = new SelectList(_db.Cities, "CityID", "Name");
             ViewBag.CityID = new SelectList(_db.Cities, "CityID", "Name");
             return View();
         }
@@ -62,43 +59,6 @@ namespace RomaAuto.Controllers
             }
 
             ViewBag.CityID = new SelectList(_db.Cities, "CityID", "Name", saler.CityID);
-            //var user = (MainUser)Session["user"];
-            //if (ModelState.IsValid && user != null)
-            //{
-            //    //order.OpenDate = DateTime.Now;
-            //   // order.CloseOperatorID = user.Id;
-            //    Saler saler = new Saler();
-            //    saler.Name = model.Name;
-            //    saler.Lastname = model.Lastname;
-            //    saler.Phone = model.Phone;
-            //    saler.CityID = model.CityID;
-            //    saler.Address = model.Address;
-            //    saler.IsActive = true;
-            //    _db.Salers.Add(saler);
-            //    _db.SaveChanges();
-            //    SalersPart sp = new SalersPart();
-            //    //sp.SalerID = model.SellerID;
-            //    sp.SalerID = _db.Salers.Where(e => e.Name == model.Name && e.Lastname == model.Lastname && e.Phone == model.Phone).FirstOrDefault().SalerID;
-            //    sp.ManufacturerID = model.ManufacturerID;
-            //    sp.Note = model.Note;
-            //    sp.CarModelsID = model.CarCategoryID;
-            //    sp.ManufacturerID = model.ManufacturerID;
-            //    sp.Helped = 0;
-            //    sp.DontHelped = 0;
-            //    sp.CarTransmissionID = 1;
-
-
-                
-            //    _db.SalersParts.Add(sp);
-            //    _db.SaveChanges();
-            //    return RedirectToAction("Create");
-            //}
-
-            //ViewBag.CarModelID = new SelectList(_db.CarModels.Where(item => item.ManufacturerID == model.ManufacturerID), "ModelID", "Name", model.ManufacturerID);
-            //ViewBag.ManufacturerID = new SelectList(_db.Manufacturers, "ManufacturerID", "Name", model.ManufacturerID);
-            //ViewBag.CarCategoryID = new SelectList(_db.CarCategories, "CarCategoryID", "Name", model.CarCategoryID);
-            //ViewBag.TransmisonID = new SelectList(_db.Transmisions, "TransmisionID", "Name", model.TransmisionID);
-            //ViewBag.CityID = new SelectList(_db.Cities, "CityID", "Name", model.CityID);
             return View(saler);
         }
         public ActionResult FilterCarModel(int id)
@@ -164,19 +124,8 @@ namespace RomaAuto.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(saler);
-
-
-
-
-
-            //var result = _db.Salers.FirstOrDefault(s => s.SalerID == id);
-            //result.IsActive = false;
-            //_db.SaveChanges();
-            //return RedirectToAction("Index", "Admin");
-            //return RedirectToAction("Index");
-
-           // return View();
         }
 
         // POST: Admin/Delete/5
@@ -192,13 +141,62 @@ namespace RomaAuto.Controllers
             return RedirectToAction("Index");
         }
 
+        public FileResult Excel()
+        {
+            SpreadsheetInfo.SetLicense("FREE-LIMITED-KEY");
 
-  
+            ExcelFile ef = new ExcelFile();
+            ExcelWorksheet ws = ef.Worksheets.Add("მომწოდებლები");
 
-      
+            var cellNames = new string[6]
+            {
+                "სახელი",
+                "გვარი",
+                "ქალაქი",
+                "მისამართი",
+                "ტელეფონი",
+                "აქტიური"
+            };
 
+            for (int i = 1; i < 7; i++)
+            {
+                ws.Cells[1, i].Value = cellNames[i - 1];
+                ws.Cells[1, i].Style.HorizontalAlignment = HorizontalAlignmentStyle.Center;
+                ws.Cells[1, i].Style.Font.Weight = ExcelFont.BoldWeight;
+                ws.Cells[1, i].Style.Font.Color = Color.White;
+                ws.Cells[1, i].Style.FillPattern.SetSolid(Color.LightGreen);
+            }
 
+            for (int i = 1; i < 7; i++)
+            {
+                ws.Columns[i].Width = 30 * 256;
+            }
 
+            var result = _db.Salers.OrderByDescending(e => e.SalerID).ToList();
+            for (int i = 0; i < result.Count(); i++)
+            {
+                ws.Cells[2 + i, 1].Value = result[i].Name;
+                ws.Cells[2 + i, 2].Value = result[i].Lastname;
+                ws.Cells[2 + i, 3].Value = result[i].City.Name;
+                ws.Cells[2 + i, 4].Value = result[i].Address;
+                ws.Cells[2 + i, 5].Value = result[i].Phone;
+                ws.Cells[2 + i, 6].Value = result[i].IsActive;
+            }
 
+            string filename = DateTime.Now.ToString("MM-dd-yyyy") + "-Sellers.xlsx";
+            string path = Server.MapPath("~/Excel/" + filename);
+            ef.Save(path);
+
+            var cd = new System.Net.Mime.ContentDisposition
+            {
+                FileName = filename,
+                Inline = true,
+            };
+            byte[] filedata = System.IO.File.ReadAllBytes(path);
+            string contentType = MimeMapping.GetMimeMapping(path);
+            Response.AppendHeader("Content-Disposition", cd.ToString());
+
+            return File(filedata, contentType);
+        }
     }
 }

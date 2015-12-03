@@ -374,3 +374,18 @@ C:\Users\mari melikishvili\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\System.
 C:\Users\mari melikishvili\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\mari melikishvili\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\vbc.exe.config
 C:\Users\mari melikishvili\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\vbc.rsp
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\csc.exe.config
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\csc.rsp
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\csi.exe
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\csi.rsp
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\System.AppContext.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\System.Console.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\vbc.exe.config
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\roslyn\vbc.rsp

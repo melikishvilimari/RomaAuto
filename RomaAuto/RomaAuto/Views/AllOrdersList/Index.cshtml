@@ -26,9 +26,7 @@
         $('.datetimepicker').datetimepicker({ format: 'MM/DD/YYYY' });
     });
 </script>
-<form method="get" action="/AllOrdersList/Excel" id="excel">
-</form>
-<a href="javascript:document.getElementById('excel').submit()">Excel</a>
+<form method="get" action="/AllOrdersList/Excel" id="excel"></form>
 <div class="">
     <form method="get" action="/AllOrdersList/Index" >
         <input type="hidden" name="page" value="@ViewBag.Page" />
@@ -56,9 +54,10 @@
 <br />
 <br />
 <br />
-
-
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+<a href="javascript:document.getElementById('excel').submit()">
+    <img src="~/Images/excel.png" style="width:30px; float: right;" />
+</a>
 <table>
     <tr>
         <th>მწარმოებელი</th>
