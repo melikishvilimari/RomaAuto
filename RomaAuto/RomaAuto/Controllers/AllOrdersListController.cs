@@ -19,28 +19,52 @@ namespace RomaAuto.Controllers
     public class AllOrdersListController : Controller
     {
         RomaDBEntities db = new RomaDBEntities();
-        public ActionResult Index(string operatorLastname = "", string sellerLastname = "",string openDate = "",string closeDate = "",int page = 1)
+        public ActionResult Index(string operatorLastname = "", string sellerLastname = "", string openDateStart = "", string openDateFinish = "", string closeDateStart = "", string closeDateFinish = "", int page = 1)
         {
+            //e.OpenDate.ToString("MM/dd/yyyy").Contains(openDate)
             ViewBag.OperatorLastname = operatorLastname;
             ViewBag.SellerLastname = sellerLastname;
-            ViewBag.OpenDate = openDate;
-            ViewBag.CloseDate = closeDate;
+            ViewBag.OpenDateStart = openDateStart;
+            ViewBag.OpenDateFinish = openDateFinish;
+            ViewBag.CloseDateStart = closeDateStart;
+            ViewBag.CloseDateFinish = closeDateFinish;
             ViewBag.Page = page;
             var result = db.Orders
                 .ToList()
-                .Where(e => (openDate == "" || e.OpenDate.ToString("MM/dd/yyyy").Contains(openDate))
-                    && (closeDate == "" || (e.CloseDate != null && e.CloseDate.Value.ToString("MM/dd/yyyy").Contains(closeDate)))
+                .Where(e => (openDateStart == "" || openDateFinish == "" ||
+                (e.OpenDate >= Convert.ToDateTime(openDateStart) && e.OpenDate <= Convert.ToDateTime(openDateFinish).AddDays(1)))
+                    && 
+                    (closeDateStart == "" || closeDateFinish == "" || (e.CloseDate != null &&
+                    Convert.ToDateTime((e.CloseDate.Value.ToShortDateString())) >= Convert.ToDateTime(closeDateStart) && Convert.ToDateTime((e.CloseDate.Value.ToShortDateString())) <= Convert.ToDateTime(closeDateFinish)))
                     && (e.Operator.Lastname.Contains(operatorLastname) || (e.Operator1 != null && e.Operator1.Lastname.Contains(operatorLastname)))
                     && (sellerLastname == "" || e.Seller_Order.Any(m => m.Saler.Lastname.Contains(sellerLastname))))
                                                .ToList();
-            
+            //foreach (var e in result)
+            //{
+            //    DateTime a = Convert.ToDateTime(closeDateFinish).AddDays(1);
+            //    DateTime aawd = e.CloseDate.Value;
+            //    DateTime awdawdawd = Convert.ToDateTime((e.CloseDate.Value.ToShortDateString()));
+            //    if (e.CloseDate.Value >= Convert.ToDateTime(closeDateStart) && e.CloseDate.Value <= Convert.ToDateTime(closeDateFinish).AddDays(1))
+            //    {
+            //        //awdaw
+            //    }
+            //}
+                //                                var result = db.Orders
+                //.ToList()
+                //.Where(e => (openDateStart == "" || openDateFinish == "" ||
+                //(e.OpenDate >= Convert.ToDateTime(openDateStart) && e.OpenDate <= Convert.ToDateTime(openDateFinish).AddDays(1)))
+                //    && (closeDateStart == "" || closeDateFinish == "" || (e.CloseDate != null &&
+                //    e.CloseDate.Value >= Convert.ToDateTime(closeDateStart) && e.CloseDate.Value <= Convert.ToDateTime(closeDateFinish).AddDays(1)))
+                //    && (e.Operator.Lastname.Contains(operatorLastname) || (e.Operator1 != null && e.Operator1.Lastname.Contains(operatorLastname)))
+                //    && (sellerLastname == "" || e.Seller_Order.Any(m => m.Saler.Lastname.Contains(sellerLastname))))
+                //                               .ToList();
+
             return View(result.ToPagedList(page, 10));
         }
 
         public FileResult Excel()
         {
             SpreadsheetInfo.SetLicense("FREE-LIMITED-KEY");
-
             ExcelFile ef = new ExcelFile();
             ExcelWorksheet ws = ef.Worksheets.Add("შეკვეთები");
 

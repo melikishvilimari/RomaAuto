@@ -20,6 +20,14 @@
     .closed {
         background-color: lightgreen !important;
     }
+    form input:nth-child(3), form input:nth-child(2), .datetimepicker {
+        width: 50%;
+        max-width: 100%;
+    }
+    .form-group > div {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
 </style>
 <script>
     $(document).ready(function () {
@@ -30,31 +38,57 @@
 <div class="">
     <form method="get" action="/AllOrdersList/Index" >
         <input type="hidden" name="page" value="@ViewBag.Page" />
-        <input type="hidden" name="page" value="@ViewBag.Page" />
         <input name="operatorLastname" type="text" value="@ViewBag.OperatorLastname" class="form-control" placeholder="ოპერატორი" style="float:left">
         <input name="sellerLastname" type="text" value="@ViewBag.SellerLastname" class="form-control" placeholder="მომწოდებელი" style="float:left">
-        
-        <div class='input-group date datetimepicker' style=" width: 180px; float: left;">
-            <input name="openDate" id="" type="text" value="@ViewBag.OpenDate" class="form-control" placeholder="მიღება" style="float:left" />
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
-            </span>
+        <div class="form-group" style="padding-top: 10px; clear: both;">
+            <div class="col-lg-6">
+                <div class='input-group date datetimepicker' style="float: left;">
+                    <input name="openDateStart" id="" type="text" value="@ViewBag.OpenDateStart" class="form-control" placeholder="მიღება" style="float:left" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                <div class='input-group date datetimepicker' id='datetimepicker1' style="float: left;">
+                    <input name="openDateFinish" id="datetimepicker2" type="text" value="@ViewBag.OpenDateFinish" class="form-control" placeholder="მიღება" style="float:left">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class='input-group date datetimepicker' style="float: left;">
+                    <input name="closeDateStart" id="" type="text" value="@ViewBag.closeDateStart" class="form-control" placeholder="დახურვა" style="float:left" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                <div class='input-group date datetimepicker' id='datetimepicker1' style="float: left;">
+                    <input name="closeDateFinish" id="datetimepicker2" type="text" value="@ViewBag.closeDateFinish" class="form-control" placeholder="დახურვა" style="float:left">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
         </div>
-
-        <div class='input-group date datetimepicker' id='datetimepicker1' style=" width: 180px; float: left;">
-            <input name="closeDate" id="datetimepicker2" type="text" value="@ViewBag.CloseDate" class="form-control" placeholder="დახურვა" style="float:left">
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
-            </span>
+        <div class="form-group">
+            <input type="submit" value="ძებნა" class="btn" style="margin-top:10px; float: right;" />
         </div>
-        
-        <input type="submit" value="ძებნა" class="btn" style="float:left" />
     </form>
 </div>
 <br />
 <br />
 <br />
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new
+    {
+        page,
+        operatorLastname = ViewBag.OperatorLastname,
+        sellerLastname = ViewBag.SellerLastname,
+        openDateStart = ViewBag.OpenDateStart,
+        openDateFinish = ViewBag.OpenDateFinish,
+        closeDateStart = ViewBag.CloseDateStart,
+        closeDateFinish = ViewBag.CloseDateFinish
+    }))
 <a href="javascript:document.getElementById('excel').submit()">
     <img src="~/Images/excel.png" style="width:30px; float: right;" />
 </a>
@@ -152,4 +186,14 @@
         </tr>
                     }
 </table>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new
+    {
+        page,
+        operatorLastname = ViewBag.OperatorLastname,
+        sellerLastname = ViewBag.SellerLastname,
+        openDateStart = ViewBag.OpenDateStart,
+        openDateFinish = ViewBag.OpenDateFinish,
+        closeDateStart = ViewBag.CloseDateStart,
+        closeDateFinish = ViewBag.CloseDateFinish
+    }))
