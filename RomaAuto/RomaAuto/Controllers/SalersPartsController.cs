@@ -15,7 +15,7 @@ namespace RomaAuto.Controllers
     [AccessFilter]
     public class SalersPartsController : Controller
     {
-        private RomaDBEntities db = new RomaDBEntities();
+        private GreenBox_GreenBoxEntities db = new GreenBox_GreenBoxEntities();
 
         // GET: SalersParts
         public ActionResult Index()

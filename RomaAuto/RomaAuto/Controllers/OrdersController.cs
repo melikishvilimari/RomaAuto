@@ -14,7 +14,7 @@ namespace RomaAuto.Controllers
     [LoginFilter]
     public class OrdersController : Controller
     {
-        private RomaDBEntities db = new RomaDBEntities();
+        private GreenBox_GreenBoxEntities db = new GreenBox_GreenBoxEntities();
 
         // GET: Orders
         public ActionResult Index()

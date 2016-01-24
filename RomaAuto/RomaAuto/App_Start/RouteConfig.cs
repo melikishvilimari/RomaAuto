@@ -16,7 +16,7 @@ namespace RomaAuto
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "orders", action = "create", id = UrlParameter.Optional }
+                defaults: new { controller = "home", action = "index", id = UrlParameter.Optional }
             );
         }
     }

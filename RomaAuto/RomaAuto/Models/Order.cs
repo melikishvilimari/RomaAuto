@@ -14,6 +14,7 @@ namespace RomaAuto.Models
     
     public partial class Order
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
         {
             this.Seller_Order = new HashSet<Seller_Order>();
@@ -38,11 +39,12 @@ namespace RomaAuto.Models
     
         public virtual CarModel CarModel { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
+        public virtual Operator Operator { get; set; }
+        public virtual Operator Operator1 { get; set; }
         public virtual CarCategory CarCategory { get; set; }
         public virtual City City { get; set; }
         public virtual Transmision Transmision { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Seller_Order> Seller_Order { get; set; }
-        public virtual Operator Operator { get; set; }
-        public virtual Operator Operator1 { get; set; }
     }
 }

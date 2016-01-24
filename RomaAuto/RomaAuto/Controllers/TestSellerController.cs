@@ -12,7 +12,7 @@ namespace RomaAuto.Controllers
 {
     public class TestSellerController : Controller
     {
-        private RomaDBEntities db = new RomaDBEntities();
+        private GreenBox_GreenBoxEntities db = new GreenBox_GreenBoxEntities();
 
         // GET: TestSeller
         public ActionResult Index()

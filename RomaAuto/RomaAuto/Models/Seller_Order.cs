@@ -18,7 +18,7 @@ namespace RomaAuto.Models
         public int SellerID { get; set; }
         public int OrderID { get; set; }
     
-        public virtual Saler Saler { get; set; }
         public virtual Order Order { get; set; }
+        public virtual Saler Saler { get; set; }
     }
 }

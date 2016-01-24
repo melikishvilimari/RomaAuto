@@ -19,7 +19,7 @@ namespace RomaAuto.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        RomaDBEntities _db = new RomaDBEntities();
+        GreenBox_GreenBoxEntities _db = new GreenBox_GreenBoxEntities();
 
         public AccountController()
         {

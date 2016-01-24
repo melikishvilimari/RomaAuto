@@ -14,6 +14,7 @@ namespace RomaAuto.Models
     
     public partial class Saler
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Saler()
         {
             this.SalersParts = new HashSet<SalersPart>();
@@ -28,8 +29,10 @@ namespace RomaAuto.Models
         public int CityID { get; set; }
         public bool IsActive { get; set; }
     
-        public virtual ICollection<SalersPart> SalersParts { get; set; }
-        public virtual ICollection<Seller_Order> Seller_Order { get; set; }
         public virtual City City { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalersPart> SalersParts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Seller_Order> Seller_Order { get; set; }
     }
 }

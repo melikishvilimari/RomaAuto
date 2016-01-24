@@ -18,7 +18,7 @@ namespace RomaAuto.Controllers
     [LoginFilter]
     public class AllOrdersListController : Controller
     {
-        RomaDBEntities db = new RomaDBEntities();
+        GreenBox_GreenBoxEntities db = new GreenBox_GreenBoxEntities();
         public ActionResult Index(string operatorLastname = "", string sellerLastname = "", string openDateStart = "", string openDateFinish = "", string closeDateStart = "", string closeDateFinish = "", int page = 1)
         {
             //e.OpenDate.ToString("MM/dd/yyyy").Contains(openDate)

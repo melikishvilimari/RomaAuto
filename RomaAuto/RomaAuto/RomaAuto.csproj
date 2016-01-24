@@ -194,59 +194,59 @@
     </Compile>
     <Compile Include="Helpers\LoginHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Autos.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Autos.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Autos.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Autos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Autos.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Autos.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\CarCategory.cs">
-      <DependentUpon>Autos.tt</DependentUpon>
+      <DependentUpon>GreenBoxDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CarModel.cs">
-      <DependentUpon>Autos.tt</DependentUpon>
+      <DependentUpon>GreenBoxDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs">
-      <DependentUpon>Autos.tt</DependentUpon>
+      <DependentUpon>GreenBoxDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\City.cs">
-      <DependentUpon>Autos.tt</DependentUpon>
+      <DependentUpon>GreenBoxDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GreenBoxDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GreenBoxDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GreenBoxDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GreenBoxDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GreenBoxDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GreenBoxDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Manufacturer.cs">
-      <DependentUpon>Autos.tt</DependentUpon>
+      <DependentUpon>GreenBoxDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Models.cs" />
     <Compile Include="Models\Operator.cs">
-      <DependentUpon>Autos.tt</DependentUpon>
+      <DependentUpon>GreenBoxDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Order.cs">
-      <DependentUpon>Autos.tt</DependentUpon>
+      <DependentUpon>GreenBoxDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Saler.cs">
-      <DependentUpon>Autos.tt</DependentUpon>
+      <DependentUpon>GreenBoxDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SalersPart.cs">
-      <DependentUpon>Autos.tt</DependentUpon>
+      <DependentUpon>GreenBoxDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Seller_Order.cs">
-      <DependentUpon>Autos.tt</DependentUpon>
+      <DependentUpon>GreenBoxDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>Autos.tt</DependentUpon>
+      <DependentUpon>GreenBoxDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Transmision.cs">
-      <DependentUpon>Autos.tt</DependentUpon>
+      <DependentUpon>GreenBoxDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -296,24 +296,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <EntityDeploy Include="Models\Autos.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Autos.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <Content Include="Images\excel.png" />
-    <Content Include="Models\Autos.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Autos.edmx</DependentUpon>
-      <LastGenOutput>Autos.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Autos.edmx.diagram">
-      <DependentUpon>Autos.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\Autos.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Autos.edmx</DependentUpon>
-      <LastGenOutput>Autos.cs</LastGenOutput>
-    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -322,8 +305,28 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <EntityDeploy Include="Models\GreenBoxDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GreenBoxDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\GreenBoxDB.edmx.diagram">
+      <DependentUpon>GreenBoxDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Excel\auto-model-2.xlsx" />
+    <Content Include="Excel\100.xlsx" />
+    <Content Include="Excel\12-03-2015-Orders.xlsx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Models\GreenBoxDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GreenBoxDB.edmx</DependentUpon>
+      <LastGenOutput>GreenBoxDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\GreenBoxDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GreenBoxDB.edmx</DependentUpon>
+      <LastGenOutput>GreenBoxDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -424,7 +427,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Excel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

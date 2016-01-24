@@ -13,7 +13,7 @@ namespace RomaAuto.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            RomaDBEntities _db = new RomaDBEntities();
+            GreenBox_GreenBoxEntities _db = new GreenBox_GreenBoxEntities();
             if (!LoginHelper.IsLoggedIn())
             {
                 filterContext.Result = new RedirectToRouteResult(
@@ -37,7 +37,7 @@ namespace RomaAuto.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            RomaDBEntities _db = new RomaDBEntities();
+            GreenBox_GreenBoxEntities _db = new GreenBox_GreenBoxEntities();
             MainUser user = LoginHelper.CurrentUser();
 
             if (!LoginHelper.IsLoggedIn() || _db.Operators.FirstOrDefault(item => item.CategoryID == user.Category) == null || user.Category < 3)

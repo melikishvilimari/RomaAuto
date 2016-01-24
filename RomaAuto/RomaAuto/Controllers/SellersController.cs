@@ -12,7 +12,7 @@ namespace RomaAuto.Controllers
     [AccessFilter]
     public class SellersController : Controller
     {
-        RomaDBEntities _db = new RomaDBEntities();
+        GreenBox_GreenBoxEntities _db = new GreenBox_GreenBoxEntities();
         // GET: Sellers
         public ActionResult Index(int OrderID, int? ManufacturerId = null, int? CarModelId = null, int? CarCategoryId = null, string part = "")
         {

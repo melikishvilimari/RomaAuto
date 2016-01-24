@@ -17,7 +17,7 @@ namespace RomaAuto.Controllers
     [AccessFilter]
     public class AdminController : Controller
     {
-        RomaDBEntities _db = new RomaDBEntities();
+        GreenBox_GreenBoxEntities _db = new GreenBox_GreenBoxEntities();
         // GET: Admin
         public ActionResult Index(string name = "", string lastname = "", string phone = "", int page = 1)
         {
