@@ -1,0 +1,103 @@
+﻿@using RomaAuto.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<RomaAuto.Models.Saler>
+@{
+    ViewBag.Title = "ყველა მომწოდებელი";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<link href="~/Style/TableStyle.css" rel="stylesheet" />
+<h1>მომწოდებლების სია</h1>
+<style>
+    form.form-wrapper {
+        float: left;
+        width: 100%;
+    }
+
+    .form-control {
+        display: inline;
+    }
+
+    .form-wrapper {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    a.btn {
+        text-decoration: none;
+        color: black;
+        background-color: lightgray;
+    }
+</style>
+<form method="get" action="/Admin/Excel" id="excel"></form>
+
+<div class="col-lg-12 form-wrapper">
+    <form method="get" action="/Admin/Index">
+        <input name="Name" type="text" value="@ViewBag.Name" class="form-control" placeholder="სახელი">
+        <input name="Lastname" type="text" value="@ViewBag.Lastname" class="form-control" placeholder="გვარი" />
+        <input name="Phone" type="text" value="@ViewBag.Phone" class="form-control" placeholder="ტელეფონი" />
+        <input type="submit" value="ძებნა" class="btn" />
+    </form>
+</div>
+<br />
+<br />
+<a href="/Admin/Create" class="btn">მომწოდებლის დამატება</a>
+<br />
+<br />
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, Name = ViewBag.Name, Lastname = ViewBag.Lastname, Phone = ViewBag.Phone }))
+<a href="javascript:document.getElementById('excel').submit()">
+    <img src="~/Images/excel.png" style="width:30px; float: right;" />
+</a>
+<table class="table">
+    <tr>
+        <th>
+            სახელი
+        </th>
+        <th>
+            გვარი
+        </th>
+        <th>
+            ქალაქი
+        </th>
+        <th>
+            მისამართი
+        </th>
+        <th>
+            ტელეფონი
+        </th>
+        <th>
+            აქტიური
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.ActionLink("რედაქტირება", "EditSaler", new { id = item.SalerID }) |
+                @Html.ActionLink("დეტალები", "Details", new { id = item.SalerID }) |
+                @Html.ActionLink("წაშლა", "Delete", new { id = item.SalerID })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, Name = ViewBag.Name, Lastname = ViewBag.Lastname, Phone = ViewBag.Phone }))

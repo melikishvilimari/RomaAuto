@@ -1,0 +1,76 @@
+﻿@using RomaAuto.Models;
+@model RomaAuto.Models.Saler
+
+
+<link href="~/Style/TableStyle.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "დეტალები";
+}
+<h3>მომწოდებელი</h3>
+<div>
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                სახელი
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                გვარი
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Lastname)
+            </dd>
+
+            <dt>
+                მისამართი
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+
+            <dt>
+                ტელეფონი
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+
+            <dt>
+                აქტიური
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+
+            <dt>
+                ქალაქი
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.City.Name)
+            </dd>
+        </dl>
+    </div>
+</div>
+<div class="Edit">
+    <div id="EditPersosnalInfo">
+        <p>  @Html.ActionLink("რედაქტირება", "EditSaler", new { id = Model.SalerID })</p>
+    </div>
+</div>
+<br />
+<h3>გასაყიდი პროდუქცია</h3>
+@{
+    List<SalersPart> list = ViewBag.SalerParts;
+}
+<p>
+    @Html.ActionLink("ახლის დამატება", "Create", "SalersParts", new { SalerID = Model.SalerID }, null)
+</p>
+@Html.Partial("_SalerPart", list)

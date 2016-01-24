@@ -1,0 +1,76 @@
+﻿@model IEnumerable<RomaAuto.Models.SalersPart>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Helped)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DontHelped)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarModel.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarModel1.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Saler.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarCategory.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Transmision.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Helped)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DontHelped)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarModel.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarModel1.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Saler.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarCategory.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Transmision.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SalersPartID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SalersPartID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SalersPartID })
+        </td>
+    </tr>
+}
+
+</table>

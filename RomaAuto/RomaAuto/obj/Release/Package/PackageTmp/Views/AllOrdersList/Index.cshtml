@@ -1,0 +1,199 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<RomaAuto.Models.Order>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<link href="~/Style/TableStyle.css" rel="stylesheet" />
+
+<script src="~/Scripts/jquery-2.1.4.js"></script>
+@*<script src="~/Scripts/jquery-ui-1.11.4.js"></script>*@
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/moment.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+
+<h2>ყველა შეკვეთა</h2>
+@{
+    string noInfo = "---------";
+}
+<style>
+    .closed {
+        background-color: lightgreen !important;
+    }
+    form input:nth-child(3), form input:nth-child(2), .datetimepicker {
+        width: 50%;
+        max-width: 100%;
+    }
+    .form-group > div {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $('.datetimepicker').datetimepicker({ format: 'MM/DD/YYYY' });
+    });
+</script>
+<form method="get" action="/AllOrdersList/Excel" id="excel"></form>
+<div class="">
+    <form method="get" action="/AllOrdersList/Index" >
+        <input type="hidden" name="page" value="@ViewBag.Page" />
+        <input name="operatorLastname" type="text" value="@ViewBag.OperatorLastname" class="form-control" placeholder="ოპერატორი" style="float:left">
+        <input name="sellerLastname" type="text" value="@ViewBag.SellerLastname" class="form-control" placeholder="მომწოდებელი" style="float:left">
+        <div class="form-group" style="padding-top: 10px; clear: both;">
+            <div class="col-lg-6">
+                <div class='input-group date datetimepicker' style="float: left;">
+                    <input name="openDateStart" id="" type="text" value="@ViewBag.OpenDateStart" class="form-control" placeholder="მიღება" style="float:left" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                <div class='input-group date datetimepicker' id='datetimepicker1' style="float: left;">
+                    <input name="openDateFinish" id="datetimepicker2" type="text" value="@ViewBag.OpenDateFinish" class="form-control" placeholder="მიღება" style="float:left">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class='input-group date datetimepicker' style="float: left;">
+                    <input name="closeDateStart" id="" type="text" value="@ViewBag.closeDateStart" class="form-control" placeholder="დახურვა" style="float:left" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                <div class='input-group date datetimepicker' id='datetimepicker1' style="float: left;">
+                    <input name="closeDateFinish" id="datetimepicker2" type="text" value="@ViewBag.closeDateFinish" class="form-control" placeholder="დახურვა" style="float:left">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="ძებნა" class="btn" style="margin-top:10px; float: right;" />
+        </div>
+    </form>
+</div>
+<br />
+<br />
+<br />
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new
+    {
+        page,
+        operatorLastname = ViewBag.OperatorLastname,
+        sellerLastname = ViewBag.SellerLastname,
+        openDateStart = ViewBag.OpenDateStart,
+        openDateFinish = ViewBag.OpenDateFinish,
+        closeDateStart = ViewBag.CloseDateStart,
+        closeDateFinish = ViewBag.CloseDateFinish
+    }))
+<a href="javascript:document.getElementById('excel').submit()">
+    <img src="~/Images/excel.png" style="width:30px; float: right;" />
+</a>
+<table>
+    <tr>
+        <th>მწარმოებელი</th>
+        <th>მოდელი</th>
+        <th>კუბატურა</th>
+        <th>კატეგორია</th>
+        <th>წელი</th>
+        <th>ტრანსმისია</th>
+        <th>მდებარეობა</th>
+        <th>საკონტაქტო ნომერი</th>
+        <th>ნაწილი</th>
+        <th>შენიშვნა</th>
+        <th>მომწოდებლები</th>
+        <th>შეკვეთა მიიღო</th>
+        <th>შეკვეთა დახურა</th>
+        <th>შეკვეთის თარიღი</th>
+        <th>დახურვის თარიღი</th>
+    </tr>
+    @foreach (var order in Model)
+    {
+        var isClosedColor = order.IsClosed ? "closed" : "";
+        <tr class="@isClosedColor">
+            <td>
+                @{
+                    string manufacturer = order.ManufacturerID == null ? noInfo : order.Manufacturer.Name;
+                }
+                @manufacturer
+            </td>
+            <td>
+                @{
+                    string carModel = order.CarModelID == null ? noInfo : order.CarModel.Name;
+                }
+                @carModel
+            </td>
+            <td>@order.Kubatura</td>
+            <td>
+                @{
+                    string category = order.CarCategoryID == null ? noInfo : order.CarCategory.Name;
+                }
+                @category
+            </td>
+            <td>@order.OutputDate</td>
+            <td>
+                @{
+                    string transmision = order.TransmisionID == null ? noInfo : order.Transmision.Name;
+                }
+                @category
+            </td>
+            <td>
+                @{
+                    string city = order.CityID == null ? noInfo : order.City.Name;
+                }
+                @city
+            </td>
+            <td>@order.Phone</td>
+            <td>@order.Part</td>
+            <td>@order.Note</td>
+
+            <td>
+                @{
+                    var sellers = "";
+                    foreach (var item in order.Seller_Order)
+                    {
+                        sellers += item.Saler.Lastname + "\n";
+                    }
+                }
+                @sellers
+            </td>
+            <td>
+                @{
+                    string creator = order.Operator == null ? noInfo : order.Operator.Name;
+                    creator += order.Operator == null ? "" : (" " + order.Operator.Lastname);
+                }
+                @creator
+            </td>
+            <td>
+                @{
+                    string closer = order.Operator1 == null ? noInfo : order.Operator1.Name;
+                    closer += order.Operator1 == null ? "" : (" " +order.Operator1.Lastname);
+                }
+                @closer
+            </td>
+            <td>
+                @order.OpenDate.ToShortDateString()
+            </td>
+            <td>
+                @{
+                    var closeDate = order.CloseDate == null ? "" : order.CloseDate.Value.ToShortDateString();
+                }
+                @closeDate
+            </td>
+        </tr>
+                    }
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new
+    {
+        page,
+        operatorLastname = ViewBag.OperatorLastname,
+        sellerLastname = ViewBag.SellerLastname,
+        openDateStart = ViewBag.OpenDateStart,
+        openDateFinish = ViewBag.OpenDateFinish,
+        closeDateStart = ViewBag.CloseDateStart,
+        closeDateFinish = ViewBag.CloseDateFinish
+    }))

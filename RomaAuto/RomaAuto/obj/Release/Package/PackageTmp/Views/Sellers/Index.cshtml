@@ -1,0 +1,205 @@
+﻿@using RomaAuto.Models;
+@model List<OrdersList>
+@{
+    ViewBag.Title = "მომწოდებლები";
+}
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<link href="~/Style/TableStyle.css" rel="stylesheet" />
+<script>
+
+    $(document).ready(function () {
+        $('.msgRow').click(function () {
+            //Check to see if background color is set or if it's set to white.
+            if ($(this).parent().css('background-color') != 'rgb(0, 128, 0)') {
+                $(this).parent().css('background-color', 'green');
+            }
+            else {
+                var x;
+                if (confirm("გსურთ მონიშნულის გაუქმება?!") == true) {
+                    $(this).parent().css('background-color', 'white');
+                } else {
+                    $(this).parent().css('background-color', 'green');
+                }
+            }
+        });
+        $('.help').on('click', function () {
+            var td = $(this).parent();
+            var id = parseInt($(this).attr('data-sellerpartid')); 
+            var func = $(this).attr('data-function');
+            var json = { "id": id };
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "/Sellers/" + func,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                success: function (data) {
+                    console.log(data.success)
+                    if (data.success == true) { 
+                        var number = parseInt(td.text());
+                        td.text(number + 1); 
+                        $(this).remove();
+                    }
+                },
+                error: function (request, status, error) {
+                    console.log(error + " " + status)
+                }
+            });
+        });
+
+        $('input[type="checkbox"]').on('change', function () {
+            $('.label').text($('input[type="checkbox"]:checked').length);
+        });
+
+        $('#save').click(function () {
+            var selectedInputs = $('input[type="checkbox"]:checked');
+            console.log(selectedInputs.length)
+            if (selectedInputs.length != 0) {
+                var clibordText = ""
+                var array = [];
+                selectedInputs.each(function (index, value) {
+                    var name = $(this).parent().parent().find('td:nth-child(2)').text()
+                    var sellerID = $(this).next().val();
+                    $('form').append('<input type="hidden" name="SellerIDs[' + index + ']" value="' + sellerID + '" />')
+
+                    var surname = $(this).parent().parent().find('td:nth-child(3)').text()
+                    var phone = $(this).parent().parent().find('td:nth-child(4)').text()
+                    var address = $(this).parent().parent().find('td:nth-child(5)').text()
+
+                    clibordText = name + ' ' + surname + ' ' + phone + ' ' + address;
+                    array.push(clibordText)
+                });
+
+                clibordText = ToEng(array);
+                var $temp = $("<textarea>");
+                $("body").append($temp);
+                $temp.text(clibordText).select();
+                document.execCommand("copy");
+                $temp.remove();
+                $('form').submit();
+            }
+        });
+
+        var dict = new Object();
+            dict["ა"] = "a"
+            dict["ბ"] = "b"
+            dict["გ"] = "g"
+            dict["დ"] = "d"
+            dict["ე"] = "e"
+            dict["ვ"] = "v"
+            dict["ზ"] = "z"
+            dict["თ"] = "t"
+            dict["ი"] = "i"
+            dict["კ"] = "k"
+            dict["ლ"] = "l"
+            dict["მ"] = "m"
+            dict["ნ"] = "n"
+            dict["ო"] = "o"
+            dict["პ"] = "p"
+            dict["ჟ"] = "j"
+            dict["რ"] = "r"
+            dict["ს"] = "s"
+            dict["ტ"] = "t"
+            dict["უ"] = "u"
+            dict["ფ"] = "f"
+            dict["ქ"] = "q"
+            dict["ღ"] = "g"
+            dict["ყ"] = "y"
+            dict["შ"] = "sh"
+            dict["ჩ"] = "ch"
+            dict["ც"] = "c"
+            dict["ძ"] = "dz"
+            dict["წ"] = "w"
+            dict["ჭ"] = "wh"
+            dict["ხ"] = "x"
+            dict["ჯ"] = "j"
+            dict["ჰ"] = "h"
+
+        function ToEng(array) {
+            var text = "";
+            $.each(array, function (i, vi) {
+                for (var j = 0; j < vi.length; j++) {
+                    if (dict[vi[j]] == null)
+                        text += vi[j]
+                    else text += dict[vi[j]]
+                }
+                text += '\n';
+            });
+            return text;
+        }
+    });
+</script>
+
+<h2>შეკვეთების სია</h2>
+<style>
+    .form-wrapper {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+</style>
+<div class="col-lg-12 form-wrapper">
+    <div class="col-lg-6 form-wrapper">
+        <form method="get" action="/Sellers/Index">
+            <input name="part" type="text" value="@ViewBag.Part" class="form-control" style="float: left;" placeholder="ნაწილი">
+            <input name="OrderID" type="hidden" value="@ViewBag.OrderID">
+            <input name="ManufacturerId" type="hidden" value="@ViewBag.ManufacturerId">
+            <input name="CarModelId" type="hidden" value="@ViewBag.CarModelId">
+            <input name="CarCategoryId" type="hidden" value="@ViewBag.CarCategoryId">
+            <input type="submit" value="ძებნა" class="btn" />
+        </form>
+    </div>
+    <div class="col-lg-6 form-wrapper">
+        <form method="post" action="/Orders/CloseOrder">
+            <input type="hidden" value="@ViewBag.OrderID" name="OrderID" />
+        </form>
+        <button id="save" class="btn btn-success" style="float:right;">დახურვა</button>
+        <span class="label label-danger" style="float:right;">0</span>
+    </div>
+</div>
+<br />
+<br />
+
+<table id="mytable">
+    <tr>
+        <th></th>
+        <th>სახელი</th>
+        <th>გვარი</th>
+        <th>ტელეფონის ნომერი</th>
+        <th>მისამართი</th>
+        <th>ქალაქი</th>
+        <th>შენიშვნა</th>
+        <th>დაგვეხმარა</th>
+        <th>ვერ დაგვეხმარა</th>
+        <th>დაკავშირება</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <input type="checkbox" name="name1">
+                <input type="hidden" value="@item.SalerID" />
+            </td>
+            <td>@item.Name</td>
+            <td>@item.Lastname</td>
+            <td>@item.Phone</td>
+            <td>@item.Address</td>
+            <td>@item.City</td>
+            <td>@item.Note</td>
+            <td>
+                @item.Helped
+                <button class="help btn" data-function="helped" data-sellerpartid="@item.SellerPartID" style="float: right;">დაგვეხმარა</button>
+            </td>
+            <td>
+                @item.NotHelped
+                <button class="help btn" data-function="nothelped" data-sellerpartid="@item.SellerPartID" style="float: right;">ვერ დაგვეხმარა</button>
+            </td>
+            <td class="msgRow" style="color:tomato;"><strong>დავუკავშირდი</strong></td>
+        </tr>
+    }
+</table>
+
+
+
+  
+

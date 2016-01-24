@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNet.Identity
+@if (RomaAuto.Helpers.LoginHelper.IsLoggedIn())
+{
+    var user = RomaAuto.Helpers.LoginHelper.CurrentUser();
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <p style="color: white; margin: 15px 0;">გამარჯობა: @user.Name @user.LastName</p>
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        @{
+    string actionName = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+    string controllerName = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+        }
+       
+        @if (!(actionName == "Login" && controllerName == "Account"))
+        {
+            <li>@Html.ActionLink("შესვლა", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        }
+    </ul>
+}

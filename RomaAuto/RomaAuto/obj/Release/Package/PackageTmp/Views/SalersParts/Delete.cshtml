@@ -1,0 +1,81 @@
+﻿@model RomaAuto.Models.SalersPart
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div>
+    <h4>გასაყიდი პროდუქციის წაშლა</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            ჩანაწერი
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+        <dt>
+            მოდელი
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarModel.Name)
+        </dd>
+
+        <dt>
+            მწარმოებელი
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.Name)
+        </dd>
+
+        <dt>
+            მომწოდებელი
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Saler.Name)
+        </dd>
+
+        <dt>
+            კატეგორია
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarCategory.Name)
+        </dd>
+
+        <dt>
+            ტრანსმისია
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Transmision.Name)
+        </dd>
+        <dt>
+            დაგვეხმარა
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Helped)
+        </dd>
+
+        <dt>
+            ვერ დაგვეხმარა
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DontHelped)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+    <input type="hidden" value="@ViewBag.SalerID" name="SalerID" />
+        <div class="form-actions no-color">
+            <input type="submit" value="წაშლა" class="btn btn-default" />
+        </div>
+    }
+</div>
