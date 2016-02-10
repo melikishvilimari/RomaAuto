@@ -150,7 +150,7 @@
         <PropertyRef Name="CarCategoryID" />
       </Principal>
       <Dependent Role="Orders">
-        <PropertyRef Name="CarModelID" />
+        <PropertyRef Name="CarCategoryID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

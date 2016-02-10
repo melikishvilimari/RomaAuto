@@ -24,11 +24,11 @@ namespace RomaAuto.Models
         public Nullable<int> CarTransmissionID { get; set; }
         public string Note { get; set; }
     
-        public virtual CarModel CarModel { get; set; }
-        public virtual CarModel CarModel1 { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
         public virtual Saler Saler { get; set; }
         public virtual CarCategory CarCategory { get; set; }
         public virtual Transmision Transmision { get; set; }
+        public virtual CarModel CarModel { get; set; }
+        public virtual CarModel CarModel1 { get; set; }
     }
 }
