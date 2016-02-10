@@ -44,7 +44,16 @@ namespace RomaAuto.Controllers
         {
             ViewBag.SalerID = salerID;
             var manufacturers = db.Manufacturers.ToList();
-            var carModels = db.CarModels.Where(item => item.ManufacturerID == db.Manufacturers.FirstOrDefault().ManufacturerID).ToList();
+            manufacturers.Insert(0, new Manufacturer() { ManufacturerID = 0, Name = "ყველა" });
+            //var carModels = db.CarModels.Where(item => item.ManufacturerID == db.Manufacturers.FirstOrDefault().ManufacturerID).ToList();
+            var carModels = db.CarModels.ToList();
+            carModels.Insert(0, new CarModel() { ModelID = 0, Name = "ყველა" });
+            var carCategorys = db.CarCategories.ToList();
+            carCategorys.Insert(0, new CarCategory() { CarCategoryID = 0, Name = "ყველა" });
+            var transmisions = db.Transmisions.ToList();
+            transmisions.Insert(0, new Transmision() { TransmisionID = 0, Name = "ყველა" });
+
+
             ViewBag.CarModelsID = new SelectList(carModels, "ModelID", "Name");
             ViewBag.ManufacturerID = new SelectList(manufacturers, "ManufacturerID", "Name");
             ViewBag.CarCategoryID = new SelectList(db.CarCategories, "CarCategoryID", "Name");
@@ -57,16 +66,42 @@ namespace RomaAuto.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SalersPartID,Helped,DontHelped,SalerID,CarModelsID,ManufacturerID,CarCategoryID,CarTransmissionID,Note")] SalersPart salersPart)
+        public ActionResult Create([Bind(Include = "SalersPartID,Year,Helped,DontHelped,SalerID,CarModelsID,ManufacturerID,CarCategoryID,CarTransmissionID,Note")] SalersPart salersPart)
         {
-            if (ModelState.IsValid)
+            var user = (MainUser)Session["user"];
+            if (ModelState.IsValid && user != null)
             {
+                if (salersPart.ManufacturerID == 0)
+                {
+                    salersPart.ManufacturerID = null;
+                }
+                if (salersPart.CarCategoryID == 0)
+                {
+                    salersPart.CarCategoryID = null;
+                }
+                if (salersPart.CarTransmissionID == 0)
+                {
+                    salersPart.CarTransmissionID = null;
+                }
+                if (salersPart.CarModelsID == 0)
+                {
+                    salersPart.CarModelsID = null;
+                }
                 salersPart.Helped = 0;
                 salersPart.DontHelped = 0;
                 db.SalersParts.Add(salersPart);
                 db.SaveChanges();
                 return RedirectToAction("Details", "Admin", new { id = salersPart.SalerID });
             }
+
+            //if (ModelState.IsValid)
+            //{
+            //    salersPart.Helped = 0;
+            //    salersPart.DontHelped = 0;
+            //    db.SalersParts.Add(salersPart);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Details", "Admin", new { id = salersPart.SalerID });
+            //}
 
             ViewBag.CarModelsID = new SelectList(db.CarModels.Where(item => item.ManufacturerID == salersPart.ManufacturerID), "ModelID", "Name", salersPart.ManufacturerID);
             ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufacturerID", "Name", salersPart.ManufacturerID);
