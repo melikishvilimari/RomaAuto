@@ -83,6 +83,7 @@
           <Property Name="CarCategoryID" Type="int" />
           <Property Name="CarTransmissionID" Type="int" />
           <Property Name="Note" Type="nvarchar" MaxLength="500" />
+          <Property Name="Year" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -494,6 +495,7 @@
           <NavigationProperty Name="Transmision" Relationship="Self.FK_SalersPart_Transmision" FromRole="SalersPart" ToRole="Transmision" />
           <NavigationProperty Name="CarModel" Relationship="GreenBox_GreenBoxModel.FK_SalersPart_CarModels" FromRole="SalersPart" ToRole="CarModel" />
           <NavigationProperty Name="CarModel1" Relationship="GreenBox_GreenBoxModel.FK_SalersPart_CarModels1" FromRole="SalersPart" ToRole="CarModel" />
+          <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -934,6 +936,7 @@
           <EntitySetMapping Name="SalersParts">
             <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.SalersPart">
               <MappingFragment StoreEntitySet="SalersPart">
+                <ScalarProperty Name="Year" ColumnName="Year" />
                 <ScalarProperty Name="SalersPartID" ColumnName="SalersPartID" />
                 <ScalarProperty Name="Helped" ColumnName="Helped" />
                 <ScalarProperty Name="DontHelped" ColumnName="DontHelped" />

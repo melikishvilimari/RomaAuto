@@ -65,6 +65,7 @@
     <NavigationProperty Name="Transmision" Relationship="Self.FK_SalersPart_Transmision" FromRole="SalersPart" ToRole="Transmision" />
     <NavigationProperty Name="CarModel" Relationship="GreenBox_GreenBoxModel.FK_SalersPart_CarModels" FromRole="SalersPart" ToRole="CarModel" />
     <NavigationProperty Name="CarModel1" Relationship="GreenBox_GreenBoxModel.FK_SalersPart_CarModels1" FromRole="SalersPart" ToRole="CarModel" />
+    <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>

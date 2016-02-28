@@ -56,8 +56,8 @@ namespace RomaAuto.Controllers
 
             ViewBag.CarModelsID = new SelectList(carModels, "ModelID", "Name");
             ViewBag.ManufacturerID = new SelectList(manufacturers, "ManufacturerID", "Name");
-            ViewBag.CarCategoryID = new SelectList(db.CarCategories, "CarCategoryID", "Name");
-            ViewBag.CarTransmissionID = new SelectList(db.Transmisions, "TransmisionID", "Name");
+            ViewBag.CarCategoryID = new SelectList(carCategorys, "CarCategoryID", "Name");
+            ViewBag.CarTransmissionID = new SelectList(transmisions, "TransmisionID", "Name");
             return View();
         }
 
@@ -122,11 +122,24 @@ namespace RomaAuto.Controllers
             {
                 return HttpNotFound();
             }
+
+
             ViewBag.SalerID = salerId;
-            ViewBag.CarModelsID = new SelectList(db.CarModels.Where(item => item.ManufacturerID == salersPart.ManufacturerID), "ModelID", "Name", salersPart.CarModelsID);
-            ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufacturerID", "Name", salersPart.ManufacturerID);
-            ViewBag.CarCategoryID = new SelectList(db.CarCategories, "CarCategoryID", "Name", salersPart.CarCategoryID);
-            ViewBag.CarTransmissionID = new SelectList(db.Transmisions, "TransmisionID", "Name", salersPart.CarTransmissionID);
+            var manufacturers = db.Manufacturers.ToList();
+            manufacturers.Insert(0, new Manufacturer() { ManufacturerID = 0, Name = "ყველა" });
+            var carModels = db.CarModels.Where(item => item.ManufacturerID == salersPart.ManufacturerID).ToList();
+            carModels.Insert(0, new CarModel() { ModelID = 0, Name = "ყველა" });
+            var carCategorys = db.CarCategories.ToList();
+            carCategorys.Insert(0, new CarCategory() { CarCategoryID = 0, Name = "ყველა" });
+            var transmisions = db.Transmisions.ToList();
+            transmisions.Insert(0, new Transmision() { TransmisionID = 0, Name = "ყველა" });
+
+
+            ViewBag.CarModelsID = new SelectList(carModels, "ModelID", "Name", salersPart.CarModelsID == null ? 0 : salersPart.CarModelsID);
+            ViewBag.ManufacturerID = new SelectList(manufacturers, "ManufacturerID", "Name", salersPart.ManufacturerID == null ? 0 : salersPart.ManufacturerID);
+            ViewBag.CarCategoryID = new SelectList(carCategorys, "CarCategoryID", "Name", salersPart.CarCategoryID == null ? 0 : salersPart.CarCategoryID);
+            ViewBag.CarTransmissionID = new SelectList(transmisions, "TransmisionID", "Name", salersPart.CarTransmissionID == null ? 0 : salersPart.CarTransmissionID);
+
             return View(salersPart);
         }
 
@@ -139,16 +152,43 @@ namespace RomaAuto.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (salersPart.ManufacturerID == 0)
+                {
+                    salersPart.ManufacturerID = null;
+                }
+                if (salersPart.CarCategoryID == 0)
+                {
+                    salersPart.CarCategoryID = null;
+                }
+                if (salersPart.CarTransmissionID == 0)
+                {
+                    salersPart.CarTransmissionID = null;
+                }
+                if (salersPart.CarModelsID == 0)
+                {
+                    salersPart.CarModelsID = null;
+                }
                 db.Entry(salersPart).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Details", "Admin", new { id = salersPart.SalerID });
             }
-            ViewBag.CarModelsID = new SelectList(db.CarModels, "ModelID", "Name", salersPart.CarModelsID);
-            ViewBag.CarModelsID = new SelectList(db.CarModels, "ModelID", "Name", salersPart.CarModelsID);
-            ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufacturerID", "Name", salersPart.ManufacturerID);
-            ViewBag.SalerID = new SelectList(db.Salers, "SalerID", "Name", salersPart.SalerID);
-            ViewBag.CarCategoryID = new SelectList(db.CarCategories, "CarCategoryID", "Name", salersPart.CarCategoryID);
-            ViewBag.CarTransmissionID = new SelectList(db.Transmisions, "TransmisionID", "Name", salersPart.CarTransmissionID);
+
+            ViewBag.SalerID = salersPart.SalerID;
+
+            var manufacturers = db.Manufacturers.ToList();
+            manufacturers.Insert(0, new Manufacturer() { ManufacturerID = 0, Name = "ყველა" });
+            var carModels = db.CarModels.Where(item => item.ManufacturerID == salersPart.ManufacturerID).ToList();
+            carModels.Insert(0, new CarModel() { ModelID = 0, Name = "ყველა" });
+            var carCategorys = db.CarCategories.ToList();
+            carCategorys.Insert(0, new CarCategory() { CarCategoryID = 0, Name = "ყველა" });
+            var transmisions = db.Transmisions.ToList();
+            transmisions.Insert(0, new Transmision() { TransmisionID = 0, Name = "ყველა" });
+
+
+            ViewBag.CarModelsID = new SelectList(carModels, "ModelID", "Name", salersPart.CarModelsID == null ? 0 : salersPart.CarModelsID);
+            ViewBag.ManufacturerID = new SelectList(manufacturers, "ManufacturerID", "Name", salersPart.ManufacturerID == null ? 0 : salersPart.ManufacturerID);
+            ViewBag.CarCategoryID = new SelectList(carCategorys, "CarCategoryID", "Name", salersPart.CarCategoryID == null ? 0 : salersPart.CarCategoryID);
+            ViewBag.CarTransmissionID = new SelectList(transmisions, "TransmisionID", "Name", salersPart.CarTransmissionID == null ? 0 : salersPart.CarTransmissionID);
             return View(salersPart);
         }
 

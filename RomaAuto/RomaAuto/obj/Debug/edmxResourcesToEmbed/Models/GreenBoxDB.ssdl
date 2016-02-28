@@ -78,6 +78,7 @@
     <Property Name="CarCategoryID" Type="int" />
     <Property Name="CarTransmissionID" Type="int" />
     <Property Name="Note" Type="nvarchar" MaxLength="500" />
+    <Property Name="Year" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

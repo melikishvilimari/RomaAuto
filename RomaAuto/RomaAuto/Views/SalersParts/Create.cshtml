@@ -8,7 +8,7 @@
     $(document).ready(function () {
 
         $('#ManufacturerID').on('change', function () {
-            var json = { "id": this.value, "isSalerPart" : true };
+            var json = { "id": this.value };
             $.ajax({
                  async: true,
                  type: "POST",

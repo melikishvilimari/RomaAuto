@@ -27,9 +27,9 @@ namespace RomaAuto.Controllers
             var sellersList = (from item in _db.Salers.Where(e=> e.IsActive == true)
                                let sellerparts = item.SalersParts.Where(
                                  s => ((s.CarModelsID == CarModelId || CarModelId == null || s.CarModelsID == null) &&
-                                     (s.CarCategoryID == CarCategoryId || CarCategoryId == null|| s.CarCategoryID == null) &&
-                                     (s.ManufacturerID == ManufacturerId || ManufacturerId == null|| s.ManufacturerID == null) && 
-                                      s.Note.Contains(part))
+                                     (s.CarCategoryID == CarCategoryId || CarCategoryId == null || s.CarCategoryID == null) &&
+                                     (s.ManufacturerID == ManufacturerId || ManufacturerId == null || s.ManufacturerID == null) && 
+                                      (s.Note.Contains(part) || s.Note == null ))
                                ).ToList().FirstOrDefault()
                                where sellerparts != null
                                select new OrdersList()

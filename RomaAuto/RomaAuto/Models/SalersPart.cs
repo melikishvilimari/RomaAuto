@@ -23,6 +23,7 @@ namespace RomaAuto.Models
         public Nullable<int> CarCategoryID { get; set; }
         public Nullable<int> CarTransmissionID { get; set; }
         public string Note { get; set; }
+        public string Year { get; set; }
     
         public virtual Manufacturer Manufacturer { get; set; }
         public virtual Saler Saler { get; set; }

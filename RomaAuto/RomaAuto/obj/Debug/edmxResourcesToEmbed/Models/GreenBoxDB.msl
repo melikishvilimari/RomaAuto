@@ -44,6 +44,7 @@
     <EntitySetMapping Name="SalersParts">
       <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.SalersPart">
         <MappingFragment StoreEntitySet="SalersPart">
+          <ScalarProperty Name="Year" ColumnName="Year" />
           <ScalarProperty Name="SalersPartID" ColumnName="SalersPartID" />
           <ScalarProperty Name="Helped" ColumnName="Helped" />
           <ScalarProperty Name="DontHelped" ColumnName="DontHelped" />

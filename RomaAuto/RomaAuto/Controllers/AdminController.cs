@@ -43,7 +43,9 @@ namespace RomaAuto.Controllers
         public ActionResult Create()
         {
             ViewBag.CityID = new SelectList(_db.Cities, "CityID", "Name");
-            return View();
+            var s = new Saler();
+            s.IsActive = true;
+            return View(s);
         }
 
         // POST: Admin/Create
