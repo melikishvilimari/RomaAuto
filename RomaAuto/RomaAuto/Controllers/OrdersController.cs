@@ -92,6 +92,7 @@ namespace RomaAuto.Controllers
                 {
                     order.CityID = null;
                 }
+                order.Note = string.IsNullOrEmpty(order.Note) ? "" : order.Note; 
                 order.OpenDate = DateTime.Now;
                 order.OpenOperatorID = user.Id;
                 db.Orders.Add(order);

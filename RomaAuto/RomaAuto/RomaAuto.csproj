@@ -309,6 +309,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GreenBoxDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Images\greenbox.logo.jpg" />
     <Content Include="Models\GreenBoxDB.edmx.diagram">
       <DependentUpon>GreenBoxDB.edmx</DependentUpon>
     </Content>
