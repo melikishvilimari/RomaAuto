@@ -110,6 +110,7 @@ namespace RomaAuto.Models
         public int? Helped { get; set; }
         public int? NotHelped { get; set; }
         public string Note { get; set; }
+        public string Manufacturer { get; set; }
     }
    
 }
