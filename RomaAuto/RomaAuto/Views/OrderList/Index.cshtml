@@ -44,13 +44,18 @@
                     string category = order.CarCategoryID == null ? noInfo : order.CarCategory.Name;
                 }
                 @category
+
+                @*@{
+                    bool category = order.CarCategory == null;
+                }
+                @category*@
             </td>
             <td>@order.OutputDate</td>
             <td>
                 @{
                     string transmision = order.TransmisionID == null ? noInfo : order.Transmision.Name;
                 }
-                @category
+                @transmision
             </td>
             <td>
                 @{

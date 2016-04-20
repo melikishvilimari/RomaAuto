@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="GreenBox_GreenBoxModelStoreContainer" CdmEntityContainer="GreenBox_GreenBoxEntities">
-    <EntitySetMapping Name="CarModels">
-      <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.CarModel">
-        <MappingFragment StoreEntitySet="CarModels">
-          <ScalarProperty Name="ModelID" ColumnName="ModelID" />
-          <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Categories">
       <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.Category">
         <MappingFragment StoreEntitySet="Category">
@@ -37,28 +28,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.Order">
-        <MappingFragment StoreEntitySet="Orders">
-          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-          <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
-          <ScalarProperty Name="CarModelID" ColumnName="CarModelID" />
-          <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
-          <ScalarProperty Name="CarCategoryID" ColumnName="CarCategoryID" />
-          <ScalarProperty Name="OutputDate" ColumnName="OutputDate" />
-          <ScalarProperty Name="TransmisionID" ColumnName="TransmisionID" />
-          <ScalarProperty Name="CityID" ColumnName="CityID" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Part" ColumnName="Part" />
-          <ScalarProperty Name="Note" ColumnName="Note" />
-          <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
-          <ScalarProperty Name="OpenOperatorID" ColumnName="OpenOperatorID" />
-          <ScalarProperty Name="CloseOperatorID" ColumnName="CloseOperatorID" />
-          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
-          <ScalarProperty Name="Kubatura" ColumnName="Kubatura" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Salers">
       <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.Saler">
         <MappingFragment StoreEntitySet="Salers">
@@ -75,6 +44,7 @@
     <EntitySetMapping Name="SalersParts">
       <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.SalersPart">
         <MappingFragment StoreEntitySet="SalersPart">
+          <ScalarProperty Name="Year" ColumnName="Year" />
           <ScalarProperty Name="SalersPartID" ColumnName="SalersPartID" />
           <ScalarProperty Name="Helped" ColumnName="Helped" />
           <ScalarProperty Name="DontHelped" ColumnName="DontHelped" />
@@ -95,14 +65,6 @@
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CarCategories">
-      <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.CarCategory">
-        <MappingFragment StoreEntitySet="CarCategory">
-          <ScalarProperty Name="CarCategoryID" ColumnName="CarCategoryID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -128,6 +90,45 @@
         <MappingFragment StoreEntitySet="Transmision">
           <ScalarProperty Name="TransmisionID" ColumnName="TransmisionID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarModels">
+      <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.CarModel">
+        <MappingFragment StoreEntitySet="CarModels">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+          <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Kubatura" ColumnName="Kubatura" />
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="CloseOperatorID" ColumnName="CloseOperatorID" />
+          <ScalarProperty Name="OpenOperatorID" ColumnName="OpenOperatorID" />
+          <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Part" ColumnName="Part" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="TransmisionID" ColumnName="TransmisionID" />
+          <ScalarProperty Name="OutputDate" ColumnName="OutputDate" />
+          <ScalarProperty Name="CarCategoryID" ColumnName="CarCategoryID" />
+          <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
+          <ScalarProperty Name="CarModelID" ColumnName="CarModelID" />
+          <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarCategories">
+      <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.CarCategory">
+        <MappingFragment StoreEntitySet="CarCategory">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CarCategoryID" ColumnName="CarCategoryID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

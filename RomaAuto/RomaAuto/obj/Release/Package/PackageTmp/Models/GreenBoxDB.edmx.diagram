@@ -5,36 +5,36 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="dd6c229bd5974d89819dcfdf43ed8bc1" Name="Diagram1">
-        <EntityTypeShape EntityType="GreenBox_GreenBoxModel.CarModel" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="GreenBox_GreenBoxModel.Category" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GreenBox_GreenBoxModel.Manufacturer" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GreenBox_GreenBoxModel.Manufacturer" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="false" />
         <EntityTypeShape EntityType="GreenBox_GreenBoxModel.Operator" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GreenBox_GreenBoxModel.Order" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GreenBox_GreenBoxModel.Saler" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GreenBox_GreenBoxModel.SalersPart" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GreenBox_GreenBoxModel.sysdiagram" Width="1.5" PointX="7.75" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GreenBox_GreenBoxModel.CarCategory" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GreenBox_GreenBoxModel.City" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="GreenBox_GreenBoxModel.Seller_Order" Width="1.5" PointX="10.5" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GreenBox_GreenBoxModel.Transmision" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
-        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_CarModels_Manufacturers" ManuallyRouted="false" />
-        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Orders_CarModels" ManuallyRouted="false" />
-        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_SalersPart_CarModels" ManuallyRouted="false" />
-        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_SalersPart_CarModels1" ManuallyRouted="false" />
         <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Operators_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Orders_Manufacturers" ManuallyRouted="false" />
         <AssociationConnector Association="GreenBox_GreenBoxModel.FK_SalersPart_Manufacturers" ManuallyRouted="false" />
-        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Orders_Operators" ManuallyRouted="false" />
-        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Orders_Operators1" ManuallyRouted="false" />
-        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Orders_CarCategory" ManuallyRouted="false" />
-        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Orders_City" ManuallyRouted="false" />
-        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Orders_Transmision" ManuallyRouted="false" />
-        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Seller_Order_Orders" ManuallyRouted="false" />
         <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Salers_City" ManuallyRouted="false" />
         <AssociationConnector Association="GreenBox_GreenBoxModel.FK_SalersPart_Salers" ManuallyRouted="false" />
         <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Seller_Order_Salers" ManuallyRouted="false" />
-        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_SalersPart_CarCategory" ManuallyRouted="false" />
         <AssociationConnector Association="GreenBox_GreenBoxModel.FK_SalersPart_Transmision" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GreenBox_GreenBoxModel.CarModel" Width="1.5" PointX="2.875" PointY="6.125" IsExpanded="false" />
+        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_CarModels_Manufacturers" />
+        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_SalersPart_CarModels" />
+        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_SalersPart_CarModels1" />
+        <EntityTypeShape EntityType="GreenBox_GreenBoxModel.Order" Width="1.5" PointX="4.875" PointY="7.375" />
+        <EntityTypeShape EntityType="GreenBox_GreenBoxModel.CarCategory" Width="1.5" PointX="1.5" PointY="8.875" />
+        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Orders_CarModels" />
+        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Orders_Manufacturers" />
+        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Orders_Operators" />
+        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Orders_Operators1" />
+        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Orders_CarCategory" />
+        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Orders_City" />
+        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Orders_Transmision" />
+        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_Seller_Order_Orders" />
+        <AssociationConnector Association="GreenBox_GreenBoxModel.FK_SalersPart_CarCategory" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

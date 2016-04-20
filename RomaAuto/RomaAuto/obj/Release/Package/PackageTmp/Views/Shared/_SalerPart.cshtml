@@ -2,6 +2,9 @@
 @{
     ViewBag.Title = "_SalerPart";
 }
+@{
+    string noInfo = "---------";
+}
 <table class="table">
     <tr>
         
@@ -34,19 +37,37 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+                @{
+                  string manufacturer = item.ManufacturerID == null ? noInfo : item.Manufacturer.Name;
+                }
+                @manufacturer
+
+            </td>
+
+            <td>
+                @{
+                     string carModel = item.CarModelsID == null ? noInfo : item.CarModel.Name;
+                }
+                @carModel
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CarModel.Name)
+                @{
+                    string carCategory = item.CarCategoryID == null ? noInfo : item.CarCategory.Name;
+                }
+                @carCategory
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CarCategory.Name)
+                @{
+                    string transmision = item.CarTransmissionID == null ? noInfo : item.Transmision.Name;
+                }
+                @transmision
+               
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Transmision.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Note)
+                @{
+                    string carNote = item.Note == null ? noInfo : item.Note;
+                }
+                @carNote
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Helped)

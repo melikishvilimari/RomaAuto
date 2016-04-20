@@ -18,8 +18,8 @@ namespace RomaAuto.Models
         public Manufacturer()
         {
             this.SalersParts = new HashSet<SalersPart>();
-            this.Orders = new HashSet<Order>();
             this.CarModels = new HashSet<CarModel>();
+            this.Orders = new HashSet<Order>();
         }
     
         public int ManufacturerID { get; set; }
@@ -28,8 +28,8 @@ namespace RomaAuto.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalersPart> SalersParts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CarModel> CarModels { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

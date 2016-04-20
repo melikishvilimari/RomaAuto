@@ -31,11 +31,11 @@ namespace RomaAuto.Models
         public virtual DbSet<Saler> Salers { get; set; }
         public virtual DbSet<SalersPart> SalersParts { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<CarCategory> CarCategories { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Seller_Order> Seller_Order { get; set; }
         public virtual DbSet<Transmision> Transmisions { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<CarModel> CarModels { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<CarCategory> CarCategories { get; set; }
     }
 }

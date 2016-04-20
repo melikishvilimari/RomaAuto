@@ -87,3 +87,4 @@ C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.Tw
 C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\obj\Release\RomaAuto.dll
 C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\obj\Release\RomaAuto.pdb
+C:\Users\shota\Desktop\RomaAuto\RomaAuto\RomaAuto\obj\Release\RomaAuto.csprojResolveAssemblyReference.cache

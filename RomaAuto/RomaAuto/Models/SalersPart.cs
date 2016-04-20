@@ -27,9 +27,9 @@ namespace RomaAuto.Models
     
         public virtual Manufacturer Manufacturer { get; set; }
         public virtual Saler Saler { get; set; }
-        public virtual CarCategory CarCategory { get; set; }
         public virtual Transmision Transmision { get; set; }
         public virtual CarModel CarModel { get; set; }
         public virtual CarModel CarModel1 { get; set; }
+        public virtual CarCategory CarCategory { get; set; }
     }
 }

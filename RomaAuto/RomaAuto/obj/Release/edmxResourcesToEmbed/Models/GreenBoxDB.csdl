@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="GreenBox_GreenBoxModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="CarModel">
-    <Key>
-      <PropertyRef Name="ModelID" />
-    </Key>
-    <Property Name="ModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Manufacturer" Relationship="Self.FK_CarModels_Manufacturers" FromRole="CarModels" ToRole="Manufacturers" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_CarModels" FromRole="CarModels" ToRole="Orders" />
-    <NavigationProperty Name="SalersParts" Relationship="Self.FK_SalersPart_CarModels" FromRole="CarModels" ToRole="SalersPart" />
-    <NavigationProperty Name="SalersParts1" Relationship="Self.FK_SalersPart_CarModels1" FromRole="CarModels" ToRole="SalersPart" />
-  </EntityType>
   <EntityType Name="Category">
     <Key>
       <PropertyRef Name="CategoryID" />
@@ -26,9 +14,9 @@
     </Key>
     <Property Name="ManufacturerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="CarModels" Relationship="Self.FK_CarModels_Manufacturers" FromRole="Manufacturers" ToRole="CarModels" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Manufacturers" FromRole="Manufacturers" ToRole="Orders" />
     <NavigationProperty Name="SalersParts" Relationship="Self.FK_SalersPart_Manufacturers" FromRole="Manufacturers" ToRole="SalersPart" />
+    <NavigationProperty Name="CarModels" Relationship="GreenBox_GreenBoxModel.FK_CarModels_Manufacturers" FromRole="Manufacturer" ToRole="CarModel" />
+    <NavigationProperty Name="Orders" Relationship="GreenBox_GreenBoxModel.FK_Orders_Manufacturers" FromRole="Manufacturer" ToRole="Order" />
   </EntityType>
   <EntityType Name="Operator">
     <Key>
@@ -40,37 +28,8 @@
     <Property Name="CategoryID" Type="Int32" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Category" Relationship="Self.FK_Operators_Category" FromRole="Operators" ToRole="Category" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Operators" FromRole="Operators" ToRole="Orders" />
-    <NavigationProperty Name="Orders1" Relationship="Self.FK_Orders_Operators1" FromRole="Operators" ToRole="Orders" />
-  </EntityType>
-  <EntityType Name="Order">
-    <Key>
-      <PropertyRef Name="OrderID" />
-    </Key>
-    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ManufacturerID" Type="Int32" />
-    <Property Name="CarModelID" Type="Int32" />
-    <Property Name="OpenDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="CarCategoryID" Type="Int32" />
-    <Property Name="OutputDate" Type="Int32" Nullable="false" />
-    <Property Name="TransmisionID" Type="Int32" />
-    <Property Name="CityID" Type="Int32" />
-    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Part" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Note" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="CloseDate" Type="DateTime" Precision="3" />
-    <Property Name="OpenOperatorID" Type="Int32" Nullable="false" />
-    <Property Name="CloseOperatorID" Type="Int32" />
-    <Property Name="IsClosed" Type="Boolean" Nullable="false" />
-    <Property Name="Kubatura" Type="Double" Nullable="false" />
-    <NavigationProperty Name="CarModel" Relationship="Self.FK_Orders_CarModels" FromRole="Orders" ToRole="CarModels" />
-    <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Orders_Manufacturers" FromRole="Orders" ToRole="Manufacturers" />
-    <NavigationProperty Name="Operator" Relationship="Self.FK_Orders_Operators" FromRole="Orders" ToRole="Operators" />
-    <NavigationProperty Name="Operator1" Relationship="Self.FK_Orders_Operators1" FromRole="Orders" ToRole="Operators" />
-    <NavigationProperty Name="CarCategory" Relationship="Self.FK_Orders_CarCategory" FromRole="Orders" ToRole="CarCategory" />
-    <NavigationProperty Name="City" Relationship="Self.FK_Orders_City" FromRole="Orders" ToRole="City" />
-    <NavigationProperty Name="Transmision" Relationship="Self.FK_Orders_Transmision" FromRole="Orders" ToRole="Transmision" />
-    <NavigationProperty Name="Seller_Order" Relationship="Self.FK_Seller_Order_Orders" FromRole="Orders" ToRole="Seller_Order" />
+    <NavigationProperty Name="Orders" Relationship="GreenBox_GreenBoxModel.FK_Orders_Operators" FromRole="Operator" ToRole="Order" />
+    <NavigationProperty Name="Orders1" Relationship="GreenBox_GreenBoxModel.FK_Orders_Operators1" FromRole="Operator" ToRole="Order" />
   </EntityType>
   <EntityType Name="Saler">
     <Key>
@@ -100,12 +59,13 @@
     <Property Name="CarCategoryID" Type="Int32" />
     <Property Name="CarTransmissionID" Type="Int32" />
     <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="CarModel" Relationship="Self.FK_SalersPart_CarModels" FromRole="SalersPart" ToRole="CarModels" />
-    <NavigationProperty Name="CarModel1" Relationship="Self.FK_SalersPart_CarModels1" FromRole="SalersPart" ToRole="CarModels" />
     <NavigationProperty Name="Manufacturer" Relationship="Self.FK_SalersPart_Manufacturers" FromRole="SalersPart" ToRole="Manufacturers" />
     <NavigationProperty Name="Saler" Relationship="Self.FK_SalersPart_Salers" FromRole="SalersPart" ToRole="Salers" />
-    <NavigationProperty Name="CarCategory" Relationship="Self.FK_SalersPart_CarCategory" FromRole="SalersPart" ToRole="CarCategory" />
     <NavigationProperty Name="Transmision" Relationship="Self.FK_SalersPart_Transmision" FromRole="SalersPart" ToRole="Transmision" />
+    <NavigationProperty Name="CarModel" Relationship="GreenBox_GreenBoxModel.FK_SalersPart_CarModels" FromRole="SalersPart" ToRole="CarModel" />
+    <NavigationProperty Name="CarModel1" Relationship="GreenBox_GreenBoxModel.FK_SalersPart_CarModels1" FromRole="SalersPart" ToRole="CarModel" />
+    <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CarCategory" Relationship="GreenBox_GreenBoxModel.FK_SalersPart_CarCategory" FromRole="SalersPart" ToRole="CarCategory" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -117,23 +77,14 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <EntityType Name="CarCategory">
-    <Key>
-      <PropertyRef Name="CarCategoryID" />
-    </Key>
-    <Property Name="CarCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_CarCategory" FromRole="CarCategory" ToRole="Orders" />
-    <NavigationProperty Name="SalersParts" Relationship="Self.FK_SalersPart_CarCategory" FromRole="CarCategory" ToRole="SalersPart" />
-  </EntityType>
   <EntityType Name="City">
     <Key>
       <PropertyRef Name="CityID" />
     </Key>
     <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_City" FromRole="City" ToRole="Orders" />
     <NavigationProperty Name="Salers" Relationship="Self.FK_Salers_City" FromRole="City" ToRole="Salers" />
+    <NavigationProperty Name="Orders" Relationship="GreenBox_GreenBoxModel.FK_Orders_City" FromRole="City" ToRole="Order" />
   </EntityType>
   <EntityType Name="Seller_Order">
     <Key>
@@ -142,8 +93,8 @@
     <Property Name="SellerOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SellerID" Type="Int32" Nullable="false" />
     <Property Name="OrderID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Order" Relationship="Self.FK_Seller_Order_Orders" FromRole="Seller_Order" ToRole="Orders" />
     <NavigationProperty Name="Saler" Relationship="Self.FK_Seller_Order_Salers" FromRole="Seller_Order" ToRole="Salers" />
+    <NavigationProperty Name="Order" Relationship="GreenBox_GreenBoxModel.FK_Seller_Order_Orders" FromRole="Seller_Order" ToRole="Order" />
   </EntityType>
   <EntityType Name="Transmision">
     <Key>
@@ -151,57 +102,9 @@
     </Key>
     <Property Name="TransmisionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Transmision" FromRole="Transmision" ToRole="Orders" />
     <NavigationProperty Name="SalersParts" Relationship="Self.FK_SalersPart_Transmision" FromRole="Transmision" ToRole="SalersPart" />
+    <NavigationProperty Name="Orders" Relationship="GreenBox_GreenBoxModel.FK_Orders_Transmision" FromRole="Transmision" ToRole="Order" />
   </EntityType>
-  <Association Name="FK_CarModels_Manufacturers">
-    <End Role="Manufacturers" Type="Self.Manufacturer" Multiplicity="1" />
-    <End Role="CarModels" Type="Self.CarModel" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Manufacturers">
-        <PropertyRef Name="ManufacturerID" />
-      </Principal>
-      <Dependent Role="CarModels">
-        <PropertyRef Name="ManufacturerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Orders_CarModels">
-    <End Role="CarModels" Type="Self.CarModel" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CarModels">
-        <PropertyRef Name="ModelID" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="CarModelID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SalersPart_CarModels">
-    <End Role="CarModels" Type="Self.CarModel" Multiplicity="0..1" />
-    <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CarModels">
-        <PropertyRef Name="ModelID" />
-      </Principal>
-      <Dependent Role="SalersPart">
-        <PropertyRef Name="CarModelsID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SalersPart_CarModels1">
-    <End Role="CarModels" Type="Self.CarModel" Multiplicity="0..1" />
-    <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CarModels">
-        <PropertyRef Name="ModelID" />
-      </Principal>
-      <Dependent Role="SalersPart">
-        <PropertyRef Name="CarModelsID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Operators_Category">
     <End Role="Category" Type="Self.Category" Multiplicity="1" />
     <End Role="Operators" Type="Self.Operator" Multiplicity="*" />
@@ -214,18 +117,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Orders_Manufacturers">
-    <End Role="Manufacturers" Type="Self.Manufacturer" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Manufacturers">
-        <PropertyRef Name="ManufacturerID" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="ManufacturerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_SalersPart_Manufacturers">
     <End Role="Manufacturers" Type="Self.Manufacturer" Multiplicity="0..1" />
     <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
@@ -235,78 +126,6 @@
       </Principal>
       <Dependent Role="SalersPart">
         <PropertyRef Name="ManufacturerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Orders_Operators">
-    <End Role="Operators" Type="Self.Operator" Multiplicity="1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Operators">
-        <PropertyRef Name="OperatorID" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="OpenOperatorID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Orders_Operators1">
-    <End Role="Operators" Type="Self.Operator" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Operators">
-        <PropertyRef Name="OperatorID" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="CloseOperatorID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Orders_CarCategory">
-    <End Role="CarCategory" Type="Self.CarCategory" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CarCategory">
-        <PropertyRef Name="CarCategoryID" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="CarModelID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Orders_City">
-    <End Role="City" Type="Self.City" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="City">
-        <PropertyRef Name="CityID" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="CityID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Orders_Transmision">
-    <End Role="Transmision" Type="Self.Transmision" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Transmision">
-        <PropertyRef Name="TransmisionID" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="TransmisionID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Seller_Order_Orders">
-    <End Role="Orders" Type="Self.Order" Multiplicity="1" />
-    <End Role="Seller_Order" Type="Self.Seller_Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Orders">
-        <PropertyRef Name="OrderID" />
-      </Principal>
-      <Dependent Role="Seller_Order">
-        <PropertyRef Name="OrderID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -346,18 +165,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SalersPart_CarCategory">
-    <End Role="CarCategory" Type="Self.CarCategory" Multiplicity="0..1" />
-    <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CarCategory">
-        <PropertyRef Name="CarCategoryID" />
-      </Principal>
-      <Dependent Role="SalersPart">
-        <PropertyRef Name="CarCategoryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_SalersPart_Transmision">
     <End Role="Transmision" Type="Self.Transmision" Multiplicity="0..1" />
     <End Role="SalersPart" Type="Self.SalersPart" Multiplicity="*" />
@@ -371,69 +178,22 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="GreenBox_GreenBoxEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="CarModels" EntityType="Self.CarModel" />
     <EntitySet Name="Categories" EntityType="Self.Category" />
     <EntitySet Name="Manufacturers" EntityType="Self.Manufacturer" />
     <EntitySet Name="Operators" EntityType="Self.Operator" />
-    <EntitySet Name="Orders" EntityType="Self.Order" />
     <EntitySet Name="Salers" EntityType="Self.Saler" />
     <EntitySet Name="SalersParts" EntityType="Self.SalersPart" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-    <EntitySet Name="CarCategories" EntityType="Self.CarCategory" />
     <EntitySet Name="Cities" EntityType="Self.City" />
     <EntitySet Name="Seller_Order" EntityType="Self.Seller_Order" />
     <EntitySet Name="Transmisions" EntityType="Self.Transmision" />
-    <AssociationSet Name="FK_CarModels_Manufacturers" Association="Self.FK_CarModels_Manufacturers">
-      <End Role="Manufacturers" EntitySet="Manufacturers" />
-      <End Role="CarModels" EntitySet="CarModels" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Orders_CarModels" Association="Self.FK_Orders_CarModels">
-      <End Role="CarModels" EntitySet="CarModels" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SalersPart_CarModels" Association="Self.FK_SalersPart_CarModels">
-      <End Role="CarModels" EntitySet="CarModels" />
-      <End Role="SalersPart" EntitySet="SalersParts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SalersPart_CarModels1" Association="Self.FK_SalersPart_CarModels1">
-      <End Role="CarModels" EntitySet="CarModels" />
-      <End Role="SalersPart" EntitySet="SalersParts" />
-    </AssociationSet>
     <AssociationSet Name="FK_Operators_Category" Association="Self.FK_Operators_Category">
       <End Role="Category" EntitySet="Categories" />
       <End Role="Operators" EntitySet="Operators" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_Manufacturers" Association="Self.FK_Orders_Manufacturers">
-      <End Role="Manufacturers" EntitySet="Manufacturers" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
     <AssociationSet Name="FK_SalersPart_Manufacturers" Association="Self.FK_SalersPart_Manufacturers">
       <End Role="Manufacturers" EntitySet="Manufacturers" />
       <End Role="SalersPart" EntitySet="SalersParts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Orders_Operators" Association="Self.FK_Orders_Operators">
-      <End Role="Operators" EntitySet="Operators" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Orders_Operators1" Association="Self.FK_Orders_Operators1">
-      <End Role="Operators" EntitySet="Operators" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Orders_CarCategory" Association="Self.FK_Orders_CarCategory">
-      <End Role="CarCategory" EntitySet="CarCategories" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Orders_City" Association="Self.FK_Orders_City">
-      <End Role="City" EntitySet="Cities" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Orders_Transmision" Association="Self.FK_Orders_Transmision">
-      <End Role="Transmision" EntitySet="Transmisions" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Seller_Order_Orders" Association="Self.FK_Seller_Order_Orders">
-      <End Role="Orders" EntitySet="Orders" />
-      <End Role="Seller_Order" EntitySet="Seller_Order" />
     </AssociationSet>
     <AssociationSet Name="FK_Salers_City" Association="Self.FK_Salers_City">
       <End Role="City" EntitySet="Cities" />
@@ -447,13 +207,254 @@
       <End Role="Salers" EntitySet="Salers" />
       <End Role="Seller_Order" EntitySet="Seller_Order" />
     </AssociationSet>
-    <AssociationSet Name="FK_SalersPart_CarCategory" Association="Self.FK_SalersPart_CarCategory">
-      <End Role="CarCategory" EntitySet="CarCategories" />
-      <End Role="SalersPart" EntitySet="SalersParts" />
-    </AssociationSet>
     <AssociationSet Name="FK_SalersPart_Transmision" Association="Self.FK_SalersPart_Transmision">
       <End Role="Transmision" EntitySet="Transmisions" />
       <End Role="SalersPart" EntitySet="SalersParts" />
     </AssociationSet>
+    <EntitySet Name="CarModels" EntityType="GreenBox_GreenBoxModel.CarModel" />
+    <AssociationSet Name="FK_CarModels_Manufacturers" Association="GreenBox_GreenBoxModel.FK_CarModels_Manufacturers">
+      <End Role="Manufacturer" EntitySet="Manufacturers" />
+      <End Role="CarModel" EntitySet="CarModels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalersPart_CarModels" Association="GreenBox_GreenBoxModel.FK_SalersPart_CarModels">
+      <End Role="CarModel" EntitySet="CarModels" />
+      <End Role="SalersPart" EntitySet="SalersParts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalersPart_CarModels1" Association="GreenBox_GreenBoxModel.FK_SalersPart_CarModels1">
+      <End Role="CarModel" EntitySet="CarModels" />
+      <End Role="SalersPart" EntitySet="SalersParts" />
+    </AssociationSet>
+    <EntitySet Name="Orders" EntityType="GreenBox_GreenBoxModel.Order" />
+    <EntitySet Name="CarCategories" EntityType="GreenBox_GreenBoxModel.CarCategory" />
+    <AssociationSet Name="FK_Orders_CarModels" Association="GreenBox_GreenBoxModel.FK_Orders_CarModels">
+      <End Role="CarModel" EntitySet="CarModels" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Manufacturers" Association="GreenBox_GreenBoxModel.FK_Orders_Manufacturers">
+      <End Role="Manufacturer" EntitySet="Manufacturers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Operators" Association="GreenBox_GreenBoxModel.FK_Orders_Operators">
+      <End Role="Operator" EntitySet="Operators" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Operators1" Association="GreenBox_GreenBoxModel.FK_Orders_Operators1">
+      <End Role="Operator" EntitySet="Operators" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_CarCategory" Association="GreenBox_GreenBoxModel.FK_Orders_CarCategory">
+      <End Role="CarCategory" EntitySet="CarCategories" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_City" Association="GreenBox_GreenBoxModel.FK_Orders_City">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Transmision" Association="GreenBox_GreenBoxModel.FK_Orders_Transmision">
+      <End Role="Transmision" EntitySet="Transmisions" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seller_Order_Orders" Association="GreenBox_GreenBoxModel.FK_Seller_Order_Orders">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Seller_Order" EntitySet="Seller_Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalersPart_CarCategory" Association="GreenBox_GreenBoxModel.FK_SalersPart_CarCategory">
+      <End Role="CarCategory" EntitySet="CarCategories" />
+      <End Role="SalersPart" EntitySet="SalersParts" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="CarModel">
+    <Key>
+      <PropertyRef Name="ModelID" />
+    </Key>
+    <Property Name="ModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Manufacturer" Relationship="GreenBox_GreenBoxModel.FK_CarModels_Manufacturers" FromRole="CarModel" ToRole="Manufacturer" />
+    <NavigationProperty Name="SalersParts" Relationship="GreenBox_GreenBoxModel.FK_SalersPart_CarModels" FromRole="CarModel" ToRole="SalersPart" />
+    <NavigationProperty Name="SalersParts1" Relationship="GreenBox_GreenBoxModel.FK_SalersPart_CarModels1" FromRole="CarModel" ToRole="SalersPart" />
+    <NavigationProperty Name="Orders" Relationship="GreenBox_GreenBoxModel.FK_Orders_CarModels" FromRole="CarModel" ToRole="Order" />
+  </EntityType>
+  <Association Name="FK_CarModels_Manufacturers">
+    <End Type="GreenBox_GreenBoxModel.Manufacturer" Role="Manufacturer" Multiplicity="1" />
+    <End Type="GreenBox_GreenBoxModel.CarModel" Role="CarModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="ManufacturerID" />
+      </Principal>
+      <Dependent Role="CarModel">
+        <PropertyRef Name="ManufacturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalersPart_CarModels">
+    <End Type="GreenBox_GreenBoxModel.CarModel" Role="CarModel" Multiplicity="0..1" />
+    <End Type="GreenBox_GreenBoxModel.SalersPart" Role="SalersPart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarModel">
+        <PropertyRef Name="ModelID" />
+      </Principal>
+      <Dependent Role="SalersPart">
+        <PropertyRef Name="CarModelsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalersPart_CarModels1">
+    <End Type="GreenBox_GreenBoxModel.CarModel" Role="CarModel" Multiplicity="0..1" />
+    <End Type="GreenBox_GreenBoxModel.SalersPart" Role="SalersPart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarModel">
+        <PropertyRef Name="ModelID" />
+      </Principal>
+      <Dependent Role="SalersPart">
+        <PropertyRef Name="CarModelsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ManufacturerID" Type="Int32" />
+    <Property Name="CarModelID" Type="Int32" />
+    <Property Name="OpenDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CarCategoryID" Type="Int32" />
+    <Property Name="OutputDate" Type="Int32" Nullable="false" />
+    <Property Name="TransmisionID" Type="Int32" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Part" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Note" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CloseDate" Type="DateTime" Precision="3" />
+    <Property Name="OpenOperatorID" Type="Int32" Nullable="false" />
+    <Property Name="CloseOperatorID" Type="Int32" />
+    <Property Name="IsClosed" Type="Boolean" Nullable="false" />
+    <Property Name="Kubatura" Type="Double" Nullable="false" />
+    <NavigationProperty Name="CarModel" Relationship="GreenBox_GreenBoxModel.FK_Orders_CarModels" FromRole="Order" ToRole="CarModel" />
+    <NavigationProperty Name="Manufacturer" Relationship="GreenBox_GreenBoxModel.FK_Orders_Manufacturers" FromRole="Order" ToRole="Manufacturer" />
+    <NavigationProperty Name="Operator" Relationship="GreenBox_GreenBoxModel.FK_Orders_Operators" FromRole="Order" ToRole="Operator" />
+    <NavigationProperty Name="Operator1" Relationship="GreenBox_GreenBoxModel.FK_Orders_Operators1" FromRole="Order" ToRole="Operator" />
+    <NavigationProperty Name="CarCategory" Relationship="GreenBox_GreenBoxModel.FK_Orders_CarCategory" FromRole="Order" ToRole="CarCategory" />
+    <NavigationProperty Name="City" Relationship="GreenBox_GreenBoxModel.FK_Orders_City" FromRole="Order" ToRole="City" />
+    <NavigationProperty Name="Transmision" Relationship="GreenBox_GreenBoxModel.FK_Orders_Transmision" FromRole="Order" ToRole="Transmision" />
+    <NavigationProperty Name="Seller_Order" Relationship="GreenBox_GreenBoxModel.FK_Seller_Order_Orders" FromRole="Order" ToRole="Seller_Order" />
+  </EntityType>
+  <EntityType Name="CarCategory">
+    <Key>
+      <PropertyRef Name="CarCategoryID" />
+    </Key>
+    <Property Name="CarCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="GreenBox_GreenBoxModel.FK_Orders_CarCategory" FromRole="CarCategory" ToRole="Order" />
+    <NavigationProperty Name="SalersParts" Relationship="GreenBox_GreenBoxModel.FK_SalersPart_CarCategory" FromRole="CarCategory" ToRole="SalersPart" />
+  </EntityType>
+  <Association Name="FK_Orders_CarModels">
+    <End Type="GreenBox_GreenBoxModel.CarModel" Role="CarModel" Multiplicity="0..1" />
+    <End Type="GreenBox_GreenBoxModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarModel">
+        <PropertyRef Name="ModelID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CarModelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Manufacturers">
+    <End Type="GreenBox_GreenBoxModel.Manufacturer" Role="Manufacturer" Multiplicity="0..1" />
+    <End Type="GreenBox_GreenBoxModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="ManufacturerID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ManufacturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Operators">
+    <End Type="GreenBox_GreenBoxModel.Operator" Role="Operator" Multiplicity="1" />
+    <End Type="GreenBox_GreenBoxModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operator">
+        <PropertyRef Name="OperatorID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="OpenOperatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Operators1">
+    <End Type="GreenBox_GreenBoxModel.Operator" Role="Operator" Multiplicity="0..1" />
+    <End Type="GreenBox_GreenBoxModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operator">
+        <PropertyRef Name="OperatorID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CloseOperatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_CarCategory">
+    <End Type="GreenBox_GreenBoxModel.CarCategory" Role="CarCategory" Multiplicity="0..1" />
+    <End Type="GreenBox_GreenBoxModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarCategory">
+        <PropertyRef Name="CarCategoryID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CarCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_City">
+    <End Type="GreenBox_GreenBoxModel.City" Role="City" Multiplicity="0..1" />
+    <End Type="GreenBox_GreenBoxModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Transmision">
+    <End Type="GreenBox_GreenBoxModel.Transmision" Role="Transmision" Multiplicity="0..1" />
+    <End Type="GreenBox_GreenBoxModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transmision">
+        <PropertyRef Name="TransmisionID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="TransmisionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seller_Order_Orders">
+    <End Type="GreenBox_GreenBoxModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="GreenBox_GreenBoxModel.Seller_Order" Role="Seller_Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="Seller_Order">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalersPart_CarCategory">
+    <End Type="GreenBox_GreenBoxModel.CarCategory" Role="CarCategory" Multiplicity="0..1" />
+    <End Type="GreenBox_GreenBoxModel.SalersPart" Role="SalersPart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarCategory">
+        <PropertyRef Name="CarCategoryID" />
+      </Principal>
+      <Dependent Role="SalersPart">
+        <PropertyRef Name="CarCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
