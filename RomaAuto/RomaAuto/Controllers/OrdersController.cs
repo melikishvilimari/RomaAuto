@@ -101,7 +101,7 @@ namespace RomaAuto.Controllers
                 return RedirectToAction("Create");
             }
 
-            ViewBag.CarModelID = new SelectList(db.CarModels.Where(item => item.ManufacturerID == order.ManufacturerID), "ModelID", "Name", order.ManufacturerID);
+            ViewBag.CarModelID = new SelectList(db.CarModels.Where(item => item.ManufacturerID == order.ManufacturerID), "ModelID", "Name", order.CarModelID);
             ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufacturerID", "Name", order.ManufacturerID);
             ViewBag.CarCategoryID = new SelectList(db.CarCategories, "CarCategoryID", "Name", order.CarCategoryID);
             ViewBag.TransmisonID = new SelectList(db.Transmisions, "TransmisionID", "Name", order.TransmisionID);
@@ -130,8 +130,26 @@ namespace RomaAuto.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CarModelID = new SelectList(db.CarModels, "ModelID", "Name", order.CarModelID);
-            ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufacturerID", "Name", order.ManufacturerID);
+            //ViewBag.CarModelID = new SelectList(db.CarModels, "ModelID", "Name", order.CarModelID);
+            //ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufacturerID", "Name", order.ManufacturerID);
+
+            var manufacturers = db.Manufacturers.ToList();
+            manufacturers.Insert(0, new Manufacturer() { ManufacturerID = 0, Name = "ყველა" });
+            var carModels = db.CarModels.ToList();
+            carModels.Insert(0, new CarModel() { ModelID = 0, Name = "ყველა" });
+            var carCategorys = db.CarCategories.ToList();
+            carCategorys.Insert(0, new CarCategory() { CarCategoryID = 0, Name = "ყველა" });
+            var transmisions = db.Transmisions.ToList();
+            transmisions.Insert(0, new Transmision() { TransmisionID = 0, Name = "ყველა" });
+            var cities = db.Cities.ToList();
+            cities.Insert(0, new City() { CityID = 0, Name = "ყველა" });
+
+            ViewBag.CarModelID = new SelectList(db.CarModels.Where(item => item.ManufacturerID == order.ManufacturerID), "ModelID", "Name", order.CarModelID);
+            ViewBag.ManufacturerID = new SelectList(manufacturers, "ManufacturerID", "Name", order.ManufacturerID);
+            ViewBag.CarCategoryID = new SelectList(carCategorys, "CarCategoryID", "Name", order.CarCategoryID);
+            ViewBag.TransmisionID = new SelectList(transmisions, "TransmisionID", "Name", order.TransmisionID);
+            ViewBag.CityID = new SelectList(cities, "CityID", "Name", order.CityID);
+
             return View(order);
         }
 
@@ -140,16 +158,34 @@ namespace RomaAuto.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderID,ManufacturerID,CarModelID,OpenDate,Category,BirthDate,Transmision,Address,Phone,Part,Note,CloseDate,OpenOperatorID,CloseOperatorID")] Order order)
+        public ActionResult Edit([Bind(Include = "IsShop,Kubatura,OrderID,ManufacturerID,CarModelID,CarCategoryID,OutputDate,TransmisionID,CityID,Phone,Part,Note")] Order order)
         {
-            if (ModelState.IsValid)
+            var user = (MainUser)Session["user"];
+            var orderFromDb = db.Orders.FirstOrDefault(o => o.OrderID == order.OrderID);
+            if (ModelState.IsValid && user != null && orderFromDb != null)
             {
-                db.Entry(order).State = EntityState.Modified;
+                orderFromDb.ManufacturerID = order.ManufacturerID == 0 ? null : order.ManufacturerID;
+                orderFromDb.CarCategoryID = order.CarCategoryID == 0 ? null : order.CarCategoryID;
+                orderFromDb.TransmisionID = order.TransmisionID == 0 ? null : order.TransmisionID;
+                orderFromDb.CarModelID = order.CarModelID == 0 ? null : order.CarModelID;
+                orderFromDb.CityID = order.CityID == 0 ? null : order.CityID;
+                orderFromDb.Note = string.IsNullOrEmpty(order.Note) ? "" : order.Note;
+                orderFromDb.Kubatura = order.Kubatura;
+                orderFromDb.OutputDate = order.OutputDate;
+                orderFromDb.Part = order.Part;
+                orderFromDb.Phone = order.Phone;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "OrderList");
             }
-            ViewBag.CarModelID = new SelectList(db.CarModels, "ModelID", "Name", order.CarModelID);
+            //ViewBag.CarModelID = new SelectList(db.CarModels, "ModelID", "Name", order.CarModelID);
+            //ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufacturerID", "Name", order.ManufacturerID);
+
+            ViewBag.CarModelID = new SelectList(db.CarModels.Where(item => item.ManufacturerID == order.ManufacturerID), "ModelID", "Name", order.CarModelID);
             ViewBag.ManufacturerID = new SelectList(db.Manufacturers, "ManufacturerID", "Name", order.ManufacturerID);
+            ViewBag.CarCategoryID = new SelectList(db.CarCategories, "CarCategoryID", "Name", order.CarCategoryID);
+            ViewBag.TransmisonID = new SelectList(db.Transmisions, "TransmisionID", "Name", order.TransmisionID);
+            ViewBag.CityID = new SelectList(db.Cities, "CityID", "Name", order.CityID);
+
             return View(order);
         }
 

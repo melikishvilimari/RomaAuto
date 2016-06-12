@@ -23,6 +23,7 @@
         <th>ნაწილი</th>
         <th>შენიშვნა</th>
         <th>გამყიდვეების სია</th>
+        <th>რედაქტირება</th>
     </tr>
     @foreach (var order in Model)
     {
@@ -79,6 +80,7 @@
                 }
                 <a href="/Sellers/Index?OrderID=@order.OrderID&ManufacturerId=@manId&CarModelId=@carId&CarCategoryId=@catId" target="_blank">გამყიდველების სია</a>
             </td>
+            <td><a href="/Orders/Edit/@order.OrderID">რედაქტირება</a></td>
         </tr>
     }
 </table>
