@@ -11,6 +11,7 @@
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 <table>
     <tr>
+        <th>გახსნის თარიღი</th>
         <th>მწარმოებელი</th>
         <th>მოდელი</th>
         <th>კუბატურა</th>
@@ -26,6 +27,9 @@
     @foreach (var order in Model)
     {
         <tr>
+            <td>
+                @order.OpenDate
+            </td>
             <td>
                 @{
                     string manufacturer = order.ManufacturerID == null ? noInfo : order.Manufacturer.Name;
