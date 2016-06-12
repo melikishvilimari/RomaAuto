@@ -44,7 +44,8 @@ namespace RomaAuto.Controllers
                                    NotHelped = sellerparts.DontHelped,
                                    Note = sellerparts.Note,
                                    City = item.City.Name,
-                                   Manufacturer = sellerparts.Manufacturer.Name
+                                   Manufacturer = sellerparts.Manufacturer.Name,
+                                   CarModel = sellerparts.CarModel.Name 
                                }).ToList<OrdersList>();
             return View(sellersList);
         }

@@ -52,6 +52,7 @@
     <Property Name="CloseOperatorID" Type="int" />
     <Property Name="IsClosed" Type="bit" Nullable="false" />
     <Property Name="Kubatura" Type="float" Nullable="false" />
+    <Property Name="IsShop" Type="bit" />
   </EntityType>
   <EntityType Name="Salers">
     <Key>
@@ -64,6 +65,7 @@
     <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CityID" Type="int" Nullable="false" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsShop" Type="bit" />
   </EntityType>
   <EntityType Name="SalersPart">
     <Key>

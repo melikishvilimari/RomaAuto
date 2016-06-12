@@ -31,6 +31,7 @@
     <EntitySetMapping Name="Salers">
       <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.Saler">
         <MappingFragment StoreEntitySet="Salers">
+          <ScalarProperty Name="IsShop" ColumnName="IsShop" />
           <ScalarProperty Name="SalerID" ColumnName="SalerID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Lastname" ColumnName="Lastname" />
@@ -68,14 +69,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CarCategories">
-      <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.CarCategory">
-        <MappingFragment StoreEntitySet="CarCategory">
-          <ScalarProperty Name="CarCategoryID" ColumnName="CarCategoryID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Cities">
       <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.City">
         <MappingFragment StoreEntitySet="City">
@@ -101,9 +94,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CarModels">
+      <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.CarModel">
+        <MappingFragment StoreEntitySet="CarModels">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+          <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="IsShop" ColumnName="IsShop" />
           <ScalarProperty Name="Kubatura" ColumnName="Kubatura" />
           <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
           <ScalarProperty Name="CloseOperatorID" ColumnName="CloseOperatorID" />
@@ -123,12 +126,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CarModels">
-      <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.CarModel">
-        <MappingFragment StoreEntitySet="CarModels">
+    <EntitySetMapping Name="CarCategories">
+      <EntityTypeMapping TypeName="GreenBox_GreenBoxModel.CarCategory">
+        <MappingFragment StoreEntitySet="CarCategory">
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
-          <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+          <ScalarProperty Name="CarCategoryID" ColumnName="CarCategoryID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

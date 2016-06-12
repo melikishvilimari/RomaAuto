@@ -28,6 +28,7 @@ namespace RomaAuto.Models
         public string Phone { get; set; }
         public int CityID { get; set; }
         public bool IsActive { get; set; }
+        public Nullable<bool> IsShop { get; set; }
     
         public virtual City City { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

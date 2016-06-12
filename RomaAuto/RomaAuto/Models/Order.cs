@@ -36,6 +36,7 @@ namespace RomaAuto.Models
         public Nullable<int> CloseOperatorID { get; set; }
         public bool IsClosed { get; set; }
         public double Kubatura { get; set; }
+        public Nullable<bool> IsShop { get; set; }
     
         public virtual CarModel CarModel { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
