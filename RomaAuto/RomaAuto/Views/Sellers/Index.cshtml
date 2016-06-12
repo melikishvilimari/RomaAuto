@@ -145,6 +145,36 @@
             <input name="ManufacturerId" type="hidden" value="@ViewBag.ManufacturerId">
             <input name="CarModelId" type="hidden" value="@ViewBag.CarModelId">
             <input name="CarCategoryId" type="hidden" value="@ViewBag.CarCategoryId">
+            <select name="Shop">
+                @if (ViewBag.Shop == 0)
+                {
+                    <option value="0" selected>ყველა</option>
+                }
+                else
+                {
+                    <option value="0">ყველა</option>
+                }
+
+
+                @if (ViewBag.Shop == 1)
+                {
+                    <option value="1" selected>მაღაზია</option>
+                }
+                else
+                {
+                    <option value="1">მაღაზია</option>
+                }
+
+                @if (ViewBag.Shop == 2)
+                {
+                    <option value="2" selected>გამყიდველი</option>
+                }
+                else
+                {
+                    <option value="2">გამყიდველი</option>
+                }
+            </select>
+
             <input type="submit" value="ძებნა" class="btn" />
         </form>
     </div>

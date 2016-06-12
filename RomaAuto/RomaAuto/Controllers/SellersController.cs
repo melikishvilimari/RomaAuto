@@ -14,17 +14,18 @@ namespace RomaAuto.Controllers
     {
         GreenBox_GreenBoxEntities _db = new GreenBox_GreenBoxEntities();
         // GET: Sellers
-        public ActionResult Index(int OrderID, int? ManufacturerId = null, int? CarModelId = null, int? CarCategoryId = null, string part = "")
+        public ActionResult Index(int OrderID, int? ManufacturerId = null, int? CarModelId = null, int? CarCategoryId = null, int Shop = 0,  string part = "")
         {
             ViewBag.OrderID = OrderID;
             ViewBag.Part = part;
             ViewBag.ManufacturerId = ManufacturerId;
             ViewBag.CarModelId = CarModelId;
             ViewBag.CarCategoryId = CarCategoryId;
+            ViewBag.Shop = Shop;
             // ყველა როცა არის მონიშნული როგორ წამოიღოს ინფორმაცია ბაზიდან
             var sellers = _db.Salers.ToList();
-
-            var sellersList = (from item in _db.Salers.Where(e=> e.IsActive == true)
+            var isShop = Shop == 1 ? true : false;
+            var sellersList = (from item in _db.Salers.Where(e => e.IsActive == true && (Shop == 0 || e.IsShop == isShop))
                                let sellerparts = item.SalersParts.Where(
                                  s => ((s.CarModelsID == CarModelId || CarModelId == null || s.CarModelsID == null) &&
                                      (s.CarCategoryID == CarCategoryId || CarCategoryId == null || s.CarCategoryID == null) &&

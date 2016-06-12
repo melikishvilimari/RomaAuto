@@ -19,13 +19,16 @@ namespace RomaAuto.Controllers
     {
         GreenBox_GreenBoxEntities _db = new GreenBox_GreenBoxEntities();
         // GET: Admin
-        public ActionResult Index(string name = "", string lastname = "", string phone = "", int page = 1)
+        public ActionResult Index(string name = "", string lastname = "", string phone = "", string note = "", int shop = 0, int page = 1)
         {
             ViewBag.Name = name;
             ViewBag.Lastname = lastname;
             ViewBag.Phone = phone;
+            ViewBag.Note = note;
+            ViewBag.Shop = shop;
+            var isShop = shop == 1 ? true : false;
             var result = _db.Salers
-                .Where(e => e.Name.Contains(name) && e.Lastname.Contains(lastname) && e.Phone.Contains(phone))
+                .Where(e => e.Name.Contains(name) && e.Lastname.Contains(lastname) && e.Phone.Contains(phone) && (shop == 0 || e.IsShop == isShop) && e.SalersParts.Any(s => s.Note.Contains(note)))
                 .OrderByDescending(e => e.SalerID)
                 .ToList();
             return View(result.ToPagedList(page, 10));
@@ -102,7 +105,7 @@ namespace RomaAuto.Controllers
 
         // POST: Admin/Edit/5
         [HttpPost]
-        public ActionResult EditSaler([Bind(Include = "SalerID,Name,Lastname,Address,Phone,CityID,IsActive")] Saler saler)
+        public ActionResult EditSaler([Bind(Include = "IsShop,SalerID,Name,Lastname,Address,Phone,CityID,IsActive")] Saler saler)
         {
             if (ModelState.IsValid)
             {

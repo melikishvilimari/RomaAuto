@@ -45,7 +45,7 @@
     <NavigationProperty Name="City" Relationship="Self.FK_Salers_City" FromRole="Salers" ToRole="City" />
     <NavigationProperty Name="SalersParts" Relationship="Self.FK_SalersPart_Salers" FromRole="Salers" ToRole="SalersPart" />
     <NavigationProperty Name="Seller_Order" Relationship="Self.FK_Seller_Order_Salers" FromRole="Salers" ToRole="Seller_Order" />
-    <Property Name="IsShop" Type="Boolean" />
+    <Property Name="IsShop" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="SalersPart">
     <Key>
@@ -340,7 +340,7 @@
     <NavigationProperty Name="City" Relationship="GreenBox_GreenBoxModel.FK_Orders_City" FromRole="Order" ToRole="City" />
     <NavigationProperty Name="Transmision" Relationship="GreenBox_GreenBoxModel.FK_Orders_Transmision" FromRole="Order" ToRole="Transmision" />
     <NavigationProperty Name="Seller_Order" Relationship="GreenBox_GreenBoxModel.FK_Seller_Order_Orders" FromRole="Order" ToRole="Seller_Order" />
-    <Property Name="IsShop" Type="Boolean" />
+    <Property Name="IsShop" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="CarCategory">
     <Key>

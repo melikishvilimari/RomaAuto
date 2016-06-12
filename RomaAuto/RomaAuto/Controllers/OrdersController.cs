@@ -67,7 +67,7 @@ namespace RomaAuto.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Kubatura,OrderID,ManufacturerID,CarModelID,CarCategoryID,OutputDate,TransmisionID,CityID,Phone,Part,Note")] Order order)
+        public ActionResult Create([Bind(Include = "IsShop,Kubatura,OrderID,ManufacturerID,CarModelID,CarCategoryID,OutputDate,TransmisionID,CityID,Phone,Part,Note")] Order order)
         {
             var user = (MainUser)Session["user"];
             if (ModelState.IsValid && user != null)
@@ -95,6 +95,7 @@ namespace RomaAuto.Controllers
                 order.Note = string.IsNullOrEmpty(order.Note) ? "" : order.Note; 
                 order.OpenDate = DateTime.Now;
                 order.OpenOperatorID = user.Id;
+                order.IsShop = order.IsShop;
                 db.Orders.Add(order);
                 db.SaveChanges();
                 return RedirectToAction("Create");
